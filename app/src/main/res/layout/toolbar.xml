@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- La ActionBar implementada como una Toolbar será utilizada en prácticamente en todas las Activity de nuestra app con exactamente la misma definición
+      así que sería muy práctico poder reutilizarla fácilmente. Para esto definiremos la toolbar en su propio XML -->
+
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolBar"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:animationCache="false"
+    android:background="@color/authui_colorPrimary"
+    android:elevation="40dp"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+    <LinearLayout
+        android:id="@+id/layoutAtrasT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/iconoback" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutHomeT"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="160dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:src="@drawable/iconohome" />
+
+        <TextView
+            android:id="@+id/tvhome"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+
+            android:text="Menú"
+            android:textAlignment="center"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutProfileT"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:gravity="left"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/perfilToolbar"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
+            android:src="@drawable/iconoperfil" />
+
+        <TextView
+            android:id="@+id/tvuser"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+
+            android:text="Perfil"
+            android:textAlignment="center"
+            android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
+    </LinearLayout>
+
+
+</android.support.v7.widget.Toolbar>

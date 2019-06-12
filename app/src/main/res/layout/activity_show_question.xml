@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondopregunta"
+    tools:context=".PackageGameRaceQr.Questions.ActivityShowQuestion">
+
+    <TextView
+        android:id="@+id/textViewPregunta"
+        android:layout_width="267dp"
+        android:layout_height="99dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupRespuestas"
+        android:layout_width="275dp"
+        android:layout_height="197dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center|start|center_horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSiguiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPregunta"
+        app:layout_constraintVertical_bias="0.569">
+
+        <RadioButton
+            android:id="@+id/rbRespuestaUno"
+            android:layout_width="257dp"
+            android:layout_height="13dp"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/rbRespuestaDos"
+            android:layout_width="257dp"
+            android:layout_height="13dp"
+            android:layout_weight="1"
+            android:visibility="visible" />
+
+        <RadioButton
+            android:id="@+id/rbRespuestaTres"
+            android:layout_width="257dp"
+            android:layout_height="13dp"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/rbRespuestaCuatro"
+            android:layout_width="257dp"
+            android:layout_height="13dp"
+            android:layout_weight="1" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonSiguiente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPuntos"
+        android:layout_width="84dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="80dp"
+        android:text="0"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPregunta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
