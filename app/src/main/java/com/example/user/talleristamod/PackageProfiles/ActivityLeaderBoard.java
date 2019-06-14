@@ -49,9 +49,15 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
         switch (v.getId())
         {
             case R.id.buttonFinishQr:
+                DatabaseReference databaseStateAQr = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY);
 
-                DatabaseReference databaseStateAQr = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY+"/stateA");
-                databaseStateAQr.setValue("Disable");
+                if (GlobalVariables.IS_COPY.equals("true")) {
+                    databaseStateAQr.removeValue();
+                } else databaseStateAQr.child("stateA").setValue("Disable");
+
+
+
+
 
                 Intent intent = new Intent(this, ActivityProfileTallerista.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);

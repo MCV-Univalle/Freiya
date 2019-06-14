@@ -46,11 +46,17 @@ public class AdaptadorFirebaseChallenges extends FirebaseRecyclerAdapter<ObjectA
             public void onClick(View view) {
                 selectedChallenge = model.getChallengeName();
 
-                if( GlobalVariables.ACTIVITY_FUNCTION == "Activate")
-                {
-                dataBaseSets.obtainActivatedChallenge(selectedChallenge);
-                }
+                if( GlobalVariables.ACTIVITY_FUNCTION == "Activate"){
 
+                    if (model.getStateA().equals("Enabled")){
+                        GlobalVariables.IS_COPY = "true";
+                        dataBaseSets.createChallengeCopy(model);
+                    }
+                    else{
+                        GlobalVariables.IS_COPY = "false";
+                        dataBaseSets.obtainActivatedChallenge(selectedChallenge);
+                    }
+                }
 
     }
 });

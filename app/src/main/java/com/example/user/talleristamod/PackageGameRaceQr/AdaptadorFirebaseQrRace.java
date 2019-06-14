@@ -53,11 +53,18 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
             public void onClick(View view) {
                 selectedActivity = model.getNombre();
 
-                if( GlobalVariables.ACTIVITY_FUNCTION == "Activate")
-                {
-                    dataBaseSets.obtenerIdQrRace(selectedActivity);
-                }
 
+                if( GlobalVariables.ACTIVITY_FUNCTION == "Activate"){
+
+                    if (model.getStateA().equals("Enabled")){
+                        GlobalVariables.IS_COPY = "true";
+                        dataBaseSets.createQrRaceCopy(model);
+                    }
+                    else{
+                        GlobalVariables.IS_COPY = "false";
+                        dataBaseSets.obtenerIdQrRace(selectedActivity);
+                    }
+                }
 
 
             }
