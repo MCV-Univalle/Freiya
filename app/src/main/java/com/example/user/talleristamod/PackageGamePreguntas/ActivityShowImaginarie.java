@@ -63,8 +63,6 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
                 break;
             case R.id.buttonFinishImg:
 
-
-
                 DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
 
                 if (GlobalVariables.IS_COPY.equals("true")) {

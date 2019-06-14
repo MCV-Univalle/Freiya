@@ -47,8 +47,8 @@ public class AdapterFirebaseImaginaries extends FirebaseRecyclerAdapter<ObjectAc
         {
             @Override
             public void onClick(View view) {
-                selectedActivity = model.getNombre();
 
+                selectedActivity = model.getNombre();
                 selectedActivityId = model.getId();
 
                 if( GlobalVariables.ACTIVITY_FUNCTION == "Activate"){

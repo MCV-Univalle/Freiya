@@ -60,8 +60,12 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
         {
 
             case R.id.buttonFinishChallenge:
-                DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/stateA");
-                databaseStateAImg.setValue("Disable");
+                DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE);
+               // databaseStateAImg.setValue("Disable");
+
+                if (GlobalVariables.IS_COPY.equals("true")) {
+                    databaseStateAImg.removeValue();
+                } else databaseStateAImg.child("stateA").setValue("Disable");
 
                 Intent intent = new Intent(this, ActivityProfileTallerista.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);

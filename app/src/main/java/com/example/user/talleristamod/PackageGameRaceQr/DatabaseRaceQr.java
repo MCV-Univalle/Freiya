@@ -32,6 +32,23 @@ public class DatabaseRaceQr {
         this.context = context;
     }
 
+    public void createQrRaceCopy(ObjectActivityQrRace objectActivityQrRace) {
+
+        SecureRandom random = new SecureRandom();
+        String randomCode = new BigInteger(30, random).toString(32).toUpperCase();
+        GlobalVariables.JOIN_CODE = randomCode;
+
+        DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace");
+        String id = databaseCreateImg.push().getKey();
+        databaseCreateImg.child(id).setValue(objectActivityQrRace);
+        databaseCreateImg.child(id).child("Copy").setValue(true);
+        databaseCreateImg.child(id).child("joinCode").setValue(randomCode);
+
+        GlobalVariables.ID_ACTIVITY = id;
+        Intent intent = new Intent(context, ActivityLeaderBoard.class);
+        context.startActivity(intent);
+    }
+
     public void ObtainRace(final ArrayList<String> selected, final String raceName) {
 
         DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Question");
