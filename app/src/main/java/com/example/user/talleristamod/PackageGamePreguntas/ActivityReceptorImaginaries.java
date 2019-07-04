@@ -20,5 +20,6 @@ public class ActivityReceptorImaginaries extends AppCompatActivity {
         dataBaseSets = new DatabaseImaginaries(this);
         textViewSelectedStudent = findViewById(R.id.textViewSelectedStudent);
         dataBaseSets.receptorSignal(textViewSelectedStudent);
+        dataBaseSets.signalFinishActivity();
     }
 }

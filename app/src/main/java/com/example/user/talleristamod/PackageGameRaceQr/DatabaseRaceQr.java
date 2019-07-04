@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGamePreguntas.ObjectActivityImaginaries;
 import com.example.user.talleristamod.PackageGameRaceQr.Questions.ObjectQuestion;
+import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
 import com.example.user.talleristamod.PackageProfiles.ActivityLeaderBoard;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +31,30 @@ public class DatabaseRaceQr {
 
     public DatabaseRaceQr(Context context) {
         this.context = context;
+    }
+
+    public void signalFinishActivity (){
+
+        DatabaseReference databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY+"/stateA");
+
+        databaseChosen.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String stateActivity = (String) dataSnapshot.getValue();
+
+                if (stateActivity.equals("Disable")){
+                    Intent intent = new Intent(context, ActivityActivitiesFreiya.class);
+                    Toast.makeText(context, "Actividad Deshabilitada", Toast.LENGTH_SHORT).show();
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void createQrRaceCopy(ObjectActivityQrRace objectActivityQrRace) {
@@ -241,14 +266,13 @@ public class DatabaseRaceQr {
         databaseReferenceRace.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                ArrayList <String> listRaceQr = new ArrayList<>();
                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren())
                 {
                     ArrayList<String> idQuestion = new ArrayList<String>();
                     ObjectActivityQrRace race = objectQuestionsSnapShot.getValue(ObjectActivityQrRace.class);
                     race.setId(objectQuestionsSnapShot.getKey());
-                    String idRace = race.getId();
-
+                    listRaceQr.add(race.getJoinCode());
 
                     if (race.getJoinCode().equals(selectedActivityCode))
                     {
@@ -257,12 +281,14 @@ public class DatabaseRaceQr {
                             idQuestion.add(race.getIdQuestions().get(i));
                         }
 
-                        GlobalVariables.ID_ACTIVITY = idRace;
+                        GlobalVariables.ID_ACTIVITY = race.getId();
                         obtenerIdPreguntasActividadSeleccionada(idQuestion);
                         break;
 
-                    } else Toast.makeText(context, "Error al digitar el codigo de ingreso", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
+                if (!listRaceQr.contains(selectedActivityCode)) Toast.makeText(context, "Error al digitar el codigo de ingreso", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

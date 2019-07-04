@@ -7,16 +7,18 @@ public class ObjectActivityImaginaries {
     private String pregunta;
     private String joinCode;
     private String stateA;
+    private boolean copyA;
 
     public ObjectActivityImaginaries() {
     }
 
-    public ObjectActivityImaginaries(String id, String nombre, String pregunta, String joinCode, String stateA) {
+    public ObjectActivityImaginaries(String id, String nombre, String pregunta, String joinCode, String stateA, boolean copyA) {
         this.id = id;
         this.nombre = nombre;
         this.pregunta = pregunta;
         this.joinCode = joinCode;
         this.stateA = stateA;
+        this.copyA = copyA;
     }
 
     public ObjectActivityImaginaries(String nombre, String pregunta, String joinCode, String stateA) {
@@ -65,4 +67,14 @@ public class ObjectActivityImaginaries {
     public void setStateA(String stateA) {
         this.stateA = stateA;
     }
+
+    public boolean isCopyA() {
+        return copyA;
+    }
+
+    public void setCopyA(boolean copyA) {
+        this.copyA = copyA;
+    }
+
+
 }
