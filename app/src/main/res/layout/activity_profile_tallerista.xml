@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +9,10 @@
     android:orientation="vertical"
     android:weightSum="10"
     tools:context=".PackageProfiles.ProfileTallerista.ActivityProfileTallerista">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <!-- Toolbar -->
     <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -70,206 +74,200 @@
 
     </LinearLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="wrap_content"
-        android:layout_height="125dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="138dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginEnd="126dp"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
-        android:src="@drawable/foto"
-        android:visibility="visible"
-        app:civ_border_color="#FFF"
-        app:civ_border_width="2dp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="125dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="121dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="143dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            android:src="@drawable/foto"
+            android:visibility="visible"
+            app:civ_border_color="#FFF"
+            app:civ_border_width="2dp" />
 
 
-    <GridLayout
-        android:id="@+id/mainGrid"
-        android:layout_width="382dp"
-        android:layout_height="262dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="top"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight="4"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2"
-        android:columnOrderPreserved="false"
-        android:padding="0dp"
-        android:rowCount="3">
-
-        <!-- ROW 1  -->
-        <!-- COLUMN 1  -->
+        <GridLayout
+            android:id="@+id/mainGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="262dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="top"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="4"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:padding="0dp"
+            android:rowCount="3">
 
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cdSettings"
-            android:layout_width="18dp"
-            android:layout_height="14dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="18dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            <!-- COLUMN 1  -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/cdActivities"
+                android:layout_width="6dp"
+                android:layout_height="7dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="73dp"
-                    android:layout_height="66dp"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/gears" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Herramientas"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="14sp"
-                    android:visibility="visible" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="73dp"
+                        android:layout_height="66dp"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/apps" />
 
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="31dp"
+                        android:text="Crear Actividades"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
 
-        <!-- COLUMN 2  -->
+                </LinearLayout>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cdActivities"
-            android:layout_width="6dp"
-            android:layout_height="7dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            </android.support.v7.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+            <!-- COLUMN 2  -->
 
-                <ImageView
-                    android:layout_width="73dp"
-                    android:layout_height="66dp"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/apps" />
+            <android.support.v7.widget.CardView
+                android:id="@+id/cdAtivateActivities"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="31dp"
-                    android:text="Crear Actividades"
-                    android:textAlignment="center"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+                <LinearLayout
+                    android:layout_width="138dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/immersive" />
 
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Usar Actividades"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat" />
 
+                </LinearLayout>
 
-        <!-- ROW 2  -->
-        <!-- COLUMN 1  -->
+            </android.support.v7.widget.CardView>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cdAtivateActivities"
-            android:layout_width="0dp"
-            android:layout_height="14dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="18dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            <!-- COLUMN 2  -->
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+            <android.support.v7.widget.CardView
+                android:id="@+id/cdSettings"
+                android:layout_width="18dp"
+                android:layout_height="14dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
-                <ImageView
-                    android:layout_width="72dp"
-                    android:layout_height="64dp"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/immersive" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Estudiantes"
-                    android:textAppearance="@style/TextAppearance.AppCompat" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="113dp"
+                        android:layout_height="66dp"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/badge" />
 
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="Insignias"
+                        android:textAlignment="center"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:visibility="visible" />
 
-        <!-- COLUMN 2  -->
+                </LinearLayout>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            </android.support.v7.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical">
+            <!-- COLUMN 4  -->
 
-                <ImageView
-                    android:layout_width="73dp"
-                    android:layout_height="66dp"
-                    android:layout_gravity="center_horizontal"
-                    app:srcCompat="@drawable/seo" />
+            <android.support.v7.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
 
-                <TextView
-                    android:layout_width="75dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Reportes"
-                    android:textAppearance="@style/TextAppearance.AppCompat" />
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="73dp"
+                        android:layout_height="66dp"
+                        android:layout_gravity="center_horizontal"
+                        app:srcCompat="@drawable/seo" />
 
-        </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="128dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Reportes"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
 
 
-        <!-- ROW 3  -->
-
-
-        <!-- COLUMN 2  -->
-
-    </GridLayout>
+        </GridLayout>
 
     <TextView
         android:id="@+id/textView5"
@@ -286,6 +284,6 @@
         android:textAlignment="center"
         android:textColor="@color/buttonTextColor"
         android:textSize="24sp" />
+    </RelativeLayout>
 
-
-</RelativeLayout>
+</ScrollView>
