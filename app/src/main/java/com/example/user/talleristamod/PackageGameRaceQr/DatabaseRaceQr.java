@@ -8,10 +8,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
-import com.example.user.talleristamod.PackageGamePreguntas.ObjectActivityImaginaries;
 import com.example.user.talleristamod.PackageGameRaceQr.Questions.ObjectQuestion;
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
-import com.example.user.talleristamod.PackageProfiles.ActivityLeaderBoard;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -60,7 +58,7 @@ public class DatabaseRaceQr {
     public void createQrRaceCopy(ObjectActivityQrRace objectActivityQrRace) {
 
         SecureRandom random = new SecureRandom();
-        String randomCode = new BigInteger(30, random).toString(32).toUpperCase();
+        String randomCode = new BigInteger(20, random).toString(32).toUpperCase();
         GlobalVariables.JOIN_CODE = randomCode;
 
         DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace");
@@ -167,7 +165,7 @@ public class DatabaseRaceQr {
                     if (race.getNombre().equals(selectedActivity))
                     {
                         SecureRandom random = new SecureRandom();
-                        String randomCode = new BigInteger(30, random).toString(32).toUpperCase();
+                        String randomCode = new BigInteger(20, random).toString(32).toUpperCase();
                         GlobalVariables.ID_ACTIVITY = idRace;
                         GlobalVariables.JOIN_CODE = randomCode;
 

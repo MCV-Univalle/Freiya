@@ -1,15 +1,19 @@
-package com.example.user.talleristamod.PackageProfiles;
+package com.example.user.talleristamod.PackageGameRaceQr;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageProfiles.DatabaseProfiles;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DatabaseReference;
@@ -79,26 +83,49 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
 
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId())
         {
             case R.id.buttonFinishQr:
-                DatabaseReference databaseStateAQr = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY);
-
-                if (GlobalVariables.IS_COPY.equals("true")) {
-                    databaseStateAQr.removeValue();
-                } else databaseStateAQr.child("stateA").setValue("Disable");
-
-
-
-
-
-                Intent intent = new Intent(this, ActivityProfileTallerista.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                finishChallenge();
                 break;
 
         }
+    }
+
+    public void onBackPressed (){
+        finishChallenge();
+    }
+
+    public void finishChallenge(){
+        new AlertDialog.Builder(this)
+                .setTitle("Finalizar Actividad ")
+                .setMessage("¿Estas seguro que deseas finalizar la actividad?")
+                .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
+
+                        DatabaseReference databaseStateAQr = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY);
+
+                        if (GlobalVariables.IS_COPY.equals("true")) {
+                            databaseStateAQr.removeValue();
+                        } else databaseStateAQr.child("stateA").setValue("Disable");
+
+                        Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                }).show();
     }
 }

@@ -1,7 +1,9 @@
 package com.example.user.talleristamod.PackageGameChallenge.TalleristaProfile;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,8 +12,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageGameChallenge.DatabaseChallenge;
+import com.example.user.talleristamod.PackageGameChallenge.ObjectActivityChallenge;
 import com.example.user.talleristamod.PackageGameChallenge.ObjectResourceChallenge;
 import com.example.user.talleristamod.PackageGameChallenge.TalleristaProfile.AdaptadorFirebaseChallengesResources;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
@@ -19,6 +24,9 @@ import com.example.user.talleristamod.QrRaceHolder;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.math.BigInteger;
+import java.security.SecureRandom;
 
 public class ActivityShowActivateChallenge extends AppCompatActivity implements View.OnClickListener{
 
@@ -55,18 +63,48 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
         {
 
             case R.id.buttonFinishChallenge:
-                DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE);
-               // databaseStateAImg.setValue("Disable");
-
-                if (GlobalVariables.IS_COPY.equals("true")) {
-                    databaseStateAImg.removeValue();
-                } else databaseStateAImg.child("stateA").setValue("Disable");
-
-                Intent intent = new Intent(this, ActivityProfileTallerista.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                finishChallenge();
                 break;
 
         }
     }
+
+    @Override
+    public void onBackPressed (){
+        finishChallenge();
+    }
+
+
+    public void finishChallenge(){
+        new AlertDialog.Builder(this)
+                .setTitle("Finalizar Actividad ")
+                .setMessage("¿Estas seguro que deseas finalizar la actividad?")
+                .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
+
+                        DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE);
+
+                        if (GlobalVariables.IS_COPY.equals("true")) {
+                            databaseStateAImg.removeValue();
+                        } else databaseStateAImg.child("stateA").setValue("Disable");
+
+                        Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+
+
 }

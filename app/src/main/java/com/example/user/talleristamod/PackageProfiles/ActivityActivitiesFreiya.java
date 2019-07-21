@@ -22,6 +22,7 @@ import com.example.user.talleristamod.PackageGamePreguntas.ActivitySelectImg;
 import com.example.user.talleristamod.PackageGamePreguntas.DatabaseImaginaries;
 import com.example.user.talleristamod.PackageGameRaceQr.ActivitySelectRaceQr;
 import com.example.user.talleristamod.PackageGameRaceQr.DatabaseRaceQr;
+import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 
 import static com.example.user.talleristamod.GlobalVariables.GlobalVariables.USER_TYPE;
@@ -56,13 +57,6 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
     }
 
     public void textButtons (){
-        if(USER_TYPE.equals("Estudiante"))
-        {
-
-            bCreateImg.setText("Unirse");
-            bCreateReto.setText("Unirse");
-            bCreateRace.setText("Unirse");
-        }
 
         if(USER_TYPE.equals("Tallerista")){
 
@@ -85,7 +79,6 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
         switch (view.getId())
         {
             case R.id.buttonCreateRace:
-               //GlobalVariables.ACTIVITY_TYPE = "RACEQR";
 
                 if(USER_TYPE.equals("Tallerista")){
 
@@ -110,7 +103,6 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                 break;
 
             case R.id.buttonCreateRetos:
-                //GlobalVariables.ACTIVITY_TYPE = "CHALLENGE";
 
                 if(USER_TYPE.equals("Tallerista")){
                     if( GlobalVariables.ACTIVITY_FUNCTION == "Create"){
@@ -234,4 +226,6 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                     }
                 }).show();
     }
+
+
 }

@@ -77,7 +77,7 @@ public class DatabaseChallenge {
     public void createChallengeCopy(ObjectActivityChallenge objectActivityImaginaries) {
 
         SecureRandom random = new SecureRandom();
-        String randomCode = new BigInteger(30, random).toString(32).toUpperCase();
+        String randomCode = new BigInteger(20, random).toString(32).toUpperCase();
         GlobalVariables.JOIN_CODE = randomCode;
 
         DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge");
@@ -117,7 +117,7 @@ public class DatabaseChallenge {
                 if (challenge.getChallengeName().equals(selectedActivity))
                 {
                     SecureRandom random = new SecureRandom();
-                    String randomCode = new BigInteger(30, random).toString(32).toUpperCase();
+                    String randomCode = new BigInteger(20, random).toString(32).toUpperCase();
 
                     GlobalVariables.JOIN_CODE = randomCode;
                     GlobalVariables.SELECTED_CHALLENGE = challenge.getChallengeId();
@@ -137,6 +137,8 @@ public class DatabaseChallenge {
 
             }
         }
+
+
 
         @Override
         public void onCancelled(@NonNull DatabaseError databaseError) {

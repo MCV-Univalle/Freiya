@@ -38,4 +38,6 @@ public class ActivitySettingsTallerista extends AppCompatActivity implements Vie
                 break;
         }
     }
+
+
 }

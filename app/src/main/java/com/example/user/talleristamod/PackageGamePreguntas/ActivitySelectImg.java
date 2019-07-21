@@ -1,5 +1,6 @@
 package com.example.user.talleristamod.PackageGamePreguntas;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
 import com.example.user.talleristamod.QrRaceHolder;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DatabaseReference;
@@ -34,4 +36,6 @@ public class ActivitySelectImg extends AppCompatActivity {
         recyclerViewImg.setAdapter(adaptadorFirebase);
         recyclerViewImg.setLayoutManager(new GridLayoutManager(this,1, LinearLayoutManager.VERTICAL,false));
     }
+
+
 }

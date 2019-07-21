@@ -1,7 +1,9 @@
 package com.example.user.talleristamod.PackageGamePreguntas;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,19 +42,13 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
         buttonFinishImg.setOnClickListener(this);
         dataBaseSets = new DatabaseImaginaries(this);
         showStudents();
-
-        Toast.makeText(this, "id = "+GlobalVariables.ID_ACTIVITY, Toast.LENGTH_LONG).show();
-    }
+        }
 
     public void showStudents(){
         recyclerViewStudents = (RecyclerView) findViewById(R.id.recyclerViewImaginarieStudents);
         recyclerViewStudents.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL, false));
         dataBaseSets.obtainListStudents(recyclerViewStudents);
     }
-
-
-
-
 
     @Override
     public void onClick(View v) {
@@ -62,18 +58,44 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
                 dataBaseSets.sendSignal(textSelectedStudent);
                 break;
             case R.id.buttonFinishImg:
-
-                DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
-
-                if (GlobalVariables.IS_COPY.equals("true")) {
-                    databaseStateAImg.removeValue();
-                } else databaseStateAImg.child("stateA").setValue("Disable");
-
-                Intent intent = new Intent(this, ActivityProfileTallerista.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                finishChallenge();
                 break;
 
         }
+    }
+
+    public void finishChallenge(){
+        new AlertDialog.Builder(this)
+                .setTitle("Finalizar Actividad ")
+                .setMessage("¿Estas seguro que deseas finalizar la actividad?")
+                .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
+
+                        DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
+
+                        if (GlobalVariables.IS_COPY.equals("true")) {
+                            databaseStateAImg.removeValue();
+                        } else databaseStateAImg.child("stateA").setValue("Disable");
+
+                        Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
+
+    @Override
+    public void onBackPressed (){
+        finishChallenge();
     }
 }
