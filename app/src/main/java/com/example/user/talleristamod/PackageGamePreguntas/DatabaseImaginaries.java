@@ -225,7 +225,7 @@ public class DatabaseImaginaries {
                         }
                     },7000);
 
-                } else textViewSelectedStudent.setText("Aun no");
+                } else textViewSelectedStudent.setText("Espera a ser selegido");
             }
 
             @Override

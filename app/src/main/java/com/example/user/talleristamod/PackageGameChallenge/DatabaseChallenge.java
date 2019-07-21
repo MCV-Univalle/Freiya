@@ -12,6 +12,7 @@ import com.example.user.talleristamod.PackageGamePreguntas.ObjectActivityImagina
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -30,19 +31,40 @@ public class DatabaseChallenge {
 
     public void signalFinishActivity (){
 
-        DatabaseReference databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/stateA");
+
+        DatabaseReference databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/");
+
 
         databaseChosen.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String stateActivity = (String) dataSnapshot.getValue();
+                ArrayList <String> listChallenge = new ArrayList<>();
+                String stateActivity = "";
 
-                if (stateActivity.equals("Disable")){
+                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
+                    String challenge = objectQuestionsSnapShot.getKey();
+                    listChallenge.add(challenge);
+                    //Toast.makeText(context, challenge, Toast.LENGTH_SHORT).show();
+
+                    if (challenge.equals(GlobalVariables.SELECTED_CHALLENGE)) {
+                        stateActivity = (String) dataSnapshot.child(GlobalVariables.SELECTED_CHALLENGE).child("stateA").getValue();
+                        break;
+                    }
+                }
+                if (!listChallenge.contains(GlobalVariables.SELECTED_CHALLENGE)) {
+                    Toast.makeText(context, "Actividad Deshabilitada", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, ActivityActivitiesFreiya.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    context.startActivity(intent); }
+
+                if (stateActivity.equals("Disable")) {
                     Intent intent = new Intent(context, ActivityActivitiesFreiya.class);
                     Toast.makeText(context, "Actividad Deshabilitada", Toast.LENGTH_SHORT).show();
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
                     context.startActivity(intent);
+
                 }
+
             }
 
             @Override
