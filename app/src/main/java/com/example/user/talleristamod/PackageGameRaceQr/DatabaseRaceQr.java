@@ -164,8 +164,6 @@ public class DatabaseRaceQr {
                     race.setId(objectQuestionsSnapShot.getKey());
                     String idRace = race.getId();
 
-                    //Toast.makeText(context, race.getNombre()+"="+selectedActivity,Toast.LENGTH_SHORT).show();
-
                     if (race.getNombre().equals(selectedActivity))
                     {
                         SecureRandom random = new SecureRandom();
