@@ -32,17 +32,12 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
         setContentView(R.layout.activity_show_activate_challenge);
 
         recyclerViewChallenges = findViewById(R.id.recyclerActivateChallenge);
-        title = (TextView) findViewById(R.id.textViewTitleActivateChallenges);
         textViewJoinCodeChallenge = (TextView) findViewById(R.id.textViewJoinCodeChallenge);
         textViewJoinCodeChallenge.setText(GlobalVariables.JOIN_CODE);
 
         buttonFinishChallenge = (Button) findViewById(R.id.buttonFinishChallenge);
         buttonFinishChallenge.setOnClickListener(this);
 
-
-        //Cambiar fuente
-        Typeface face=Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
-        title.setTypeface(face);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference referencia = database.getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/Resources");

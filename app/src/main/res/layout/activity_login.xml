@@ -9,79 +9,51 @@
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/loginButtonFacebook"
-        android:layout_width="186dp"
-        android:layout_height="47dp"
+        android:layout_width="200dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="260dp"
         android:layout_marginEnd="8dp"
+        android:text="Continua"
+        android:textColor="#FCFCFC"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="255dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="224dp"
-        android:layout_marginEnd="8dp"
-        android:autoText="false"
-        android:backgroundTint="@color/buttonTextColor"
-        android:ems="9"
-        android:hint="Nombre:"
-        android:inputType="text"
-        android:textAppearance="@android:style/TextAppearance.Medium.Inverse"
-        android:textColorHighlight="@color/buttonTextColor"
-        android:textColorHint="@color/buttonTextColor"
-        android:textColorLink="@color/buttonTextColor"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="254dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/buttonTextColor"
-        android:ems="10"
-        android:hint="Contraseña:"
-        android:inputType="textPassword"
-        android:textColor="@color/buttonTextColor"
-        android:textColorHint="@color/buttonTextColor"
-        android:textColorLink="@color/buttonTextColor"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="268dp"
-        android:layout_height="46dp"
+        android:layout_width="264dp"
+        android:layout_height="47dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="@color/white"
-        android:text="GO"
+        android:backgroundTint="#FCFCFC"
+        android:text="Regístrate con tu correo electrónico"
         android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButtonFacebook" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="¿Tienes una cuenta? inicia sesión"
+        android:textColor="#FCFCFC"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-
-
-
-
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.065" />
 
 
 </android.support.constraint.ConstraintLayout>

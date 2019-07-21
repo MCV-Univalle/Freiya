@@ -35,6 +35,7 @@ public class ActivityLogin extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         loginButtonFacebook = (LoginButton) findViewById(R.id.loginButtonFacebook);
+        loginButtonFacebook.setText("Continúa con Facebook");
 
 
         callbackManager = CallbackManager.Factory.create();
