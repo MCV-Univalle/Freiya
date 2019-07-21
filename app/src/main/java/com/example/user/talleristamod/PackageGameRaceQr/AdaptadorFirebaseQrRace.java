@@ -34,18 +34,6 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
     protected void populateViewHolder(final QrRaceHolder viewHolder, final ObjectActivityQrRace model, int position) {
         dataBaseSets = new DatabaseRaceQr(context);
 
-        if (model.getStateA().equals("Enabled")) {
-            //viewHolder.imagen.setImageResource(R.drawable.warning);
-            viewHolder.unirse.setText("COPIADA");
-
-        }
-
-        if (model.getStateA().equals("Disable")) {
-            //viewHolder.imagen.setImageResource(R.drawable.good);
-            viewHolder.unirse.setText("USAR");
-
-        }
-
         viewHolder.nombre.setText(model.getNombre());
         viewHolder.cardView.setOnClickListener(new View.OnClickListener()
         {
@@ -54,7 +42,7 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
                 selectedActivity = model.getNombre();
 
 
-                if( GlobalVariables.ACTIVITY_FUNCTION == "Activate"){
+                if(GlobalVariables.ACTIVITY_FUNCTION == "Activate"){
 
                     if (model.getStateA().equals("Enabled")){
                         GlobalVariables.IS_COPY = "true";

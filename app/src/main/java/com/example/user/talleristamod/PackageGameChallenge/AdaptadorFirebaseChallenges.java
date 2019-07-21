@@ -28,21 +28,6 @@ public class AdaptadorFirebaseChallenges extends FirebaseRecyclerAdapter<ObjectA
         dataBaseSets = new DatabaseChallenge(context);
 
 
-
-        if (model.getStateA().equals("Enabled")) {
-
-            viewHolder.unirse.setText("EN USO");
-            //viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#A4FF5722"));
-            viewHolder.cardView.setVisibility(View.INVISIBLE);
-        }
-
-        if (model.getStateA().equals("Disable")) {
-
-            viewHolder.unirse.setText("LIBRE");
-            //viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#a4c639"));
-
-        }
-
         viewHolder.nombre.setText(model.getChallengeName());
         viewHolder.cardView.setOnClickListener(new View.OnClickListener()
         {
