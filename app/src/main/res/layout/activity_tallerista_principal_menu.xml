@@ -37,7 +37,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="@color/colorAccent"
+        android:backgroundTint="#00BCD4"
         android:elevation="13dp"
         android:text="Estudiante"
         app:layout_constraintBottom_toBottomOf="parent"

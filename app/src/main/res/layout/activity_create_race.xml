@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/b"
+    android:background="@drawable/fondoselectqr"
     tools:context=".PackageGameRaceQr.ActivityCreateRace">
 
     <EditText
@@ -66,7 +66,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="#2196F3"
         android:text="Siguiente"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,30 +113,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:tabIndicatorColor="#4CAF50">
 
         <android.support.design.widget.TabItem
             android:id="@+id/paso1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Paso 1"
-            />
+            android:text="Paso 1" />
 
         <android.support.design.widget.TabItem
             android:id="@+id/paso2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
-            android:text="Paso 2"
-            />
+            android:text="Paso 2" />
 
         <android.support.design.widget.TabItem
             android:id="@+id/paso3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
-            android:text="Paso 3"
-            />
+            android:text="Paso 3" />
     </android.support.design.widget.TabLayout>
 
 

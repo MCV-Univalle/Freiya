@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/banner"
+    android:background="@drawable/fondoselectqr"
     tools:context=".PackageGamePreguntas.ActivityCreateImag">
 
     <Button
@@ -15,6 +15,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/roundedbutton"
+        android:backgroundTint="#03A9F4"
         android:text="Crear"
         android:textColor="#FDFDFD"
         app:layout_constraintEnd_toEndOf="parent"
