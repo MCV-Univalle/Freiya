@@ -41,6 +41,7 @@ public class ActivityCreateImag extends AppCompatActivity implements View.OnClic
                 objectActivityImaginaries.setPregunta(editTextImgQuestion.getText().toString());
                 objectActivityImaginaries.setJoinCode("none");
                 objectActivityImaginaries.setStateA("Disable");
+                objectActivityImaginaries.setCopyA(false);
 
 
                 new AlertDialog.Builder(this)

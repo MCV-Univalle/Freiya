@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,7 +40,33 @@ public class DatabaseImaginaries {
     }
 
 
+    public void signalFinishActivity (){
+
+        DatabaseReference databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/stateA");
+
+        databaseChosen.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String stateActivity = (String) dataSnapshot.getValue();
+
+                if (stateActivity.equals("Disable")){
+                    Intent intent = new Intent(context, ActivityActivitiesFreiya.class);
+                    Toast.makeText(context, "Actividad Deshabilitada", Toast.LENGTH_SHORT).show();
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
     public void createImaginaresCopy(ObjectActivityImaginaries objectActivityImaginaries) {
+        objectActivityImaginaries.setCopyA(true);
 
         SecureRandom random = new SecureRandom();
         String randomCode = new BigInteger(30, random).toString(32).toUpperCase();
@@ -48,7 +75,6 @@ public class DatabaseImaginaries {
         DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries");
         String id = databaseCreateImg.push().getKey();
         databaseCreateImg.child(id).setValue(objectActivityImaginaries);
-        databaseCreateImg.child(id).child("Copy").setValue(true);
         databaseCreateImg.child(id).child("joinCode").setValue(randomCode);
 
         GlobalVariables.ID_ACTIVITY = id;
@@ -92,11 +118,10 @@ public class DatabaseImaginaries {
                         GlobalVariables.ID_ACTIVITY = idImg;
                         GlobalVariables.JOIN_CODE = randomCode;
 
-                        DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/joinCode");
-                        databaseQuestion.setValue(randomCode);
+                        DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
+                        databaseQuestion.child("joinCode").setValue(randomCode);
+                        databaseQuestion.child("stateA").setValue("Enabled");
 
-                        DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/stateA");
-                        databaseStateAImg.setValue("Enabled");
 
                         Intent intent = new Intent(context, ActivityShowImaginarie.class);
                         context.startActivity(intent);
@@ -122,10 +147,8 @@ public class DatabaseImaginaries {
         databaseReferenceRace.child(userUid).setValue(userName);
 
         Intent intent = new Intent(context, ActivityReceptorImaginaries.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
-
-
-
     }
 
     public void sendSignal(final TextView textSelectedStudent){
@@ -202,7 +225,7 @@ public class DatabaseImaginaries {
                         }
                     },7000);
 
-                } else textViewSelectedStudent.setText("Aun no");
+                } else textViewSelectedStudent.setText("Espera a ser selegido");
             }
 
             @Override
@@ -227,21 +250,21 @@ public class DatabaseImaginaries {
         databaseReferenceRace.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                ArrayList <String> listQuestions = new ArrayList<>();
                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren())
                 {
                     ObjectActivityImaginaries img = objectQuestionsSnapShot.getValue(ObjectActivityImaginaries.class);
                     img.setId(objectQuestionsSnapShot.getKey());
-                    String idImg = img.getId();
-
+                    listQuestions.add(img.getJoinCode());
 
                     if (img.getJoinCode().equals(selectedActivityCode))
                     {
-                        GlobalVariables.ID_ACTIVITY = idImg;
+                        GlobalVariables.ID_ACTIVITY = img.getId();
                         joinActivityImaginaries();
                         break;
-                    } else Toast.makeText(context, "Error al digitar el codigo de ingreso", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                if (!listQuestions.contains(selectedActivityCode)) Toast.makeText(context, "Error al digitar el codigo de ingreso", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

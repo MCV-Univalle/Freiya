@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables
+import com.example.user.talleristamod.PackageGameChallenge.DatabaseChallenge
 import com.example.user.talleristamod.R
 import com.google.android.gms.common.api.CommonStatusCodes
 import java.util.ArrayList
@@ -17,11 +18,15 @@ class ActivityFollowCodeQr : AppCompatActivity() {
     private lateinit var mResultTextView: TextView
     internal var idQuestion: ArrayList<String>? = null
     internal var classActivityId: Int? = null
+    internal val databaseRaceQr = DatabaseRaceQr(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_follow_code_qr)
         idQuestion = ArrayList<String>()
+
+        databaseRaceQr.signalFinishActivity()
+
         val parametros = this.intent.extras
         if (parametros != null) {
             idQuestion = parametros.getStringArrayList("idQuestion")
@@ -31,13 +36,13 @@ class ActivityFollowCodeQr : AppCompatActivity() {
 
         mResultTextView = findViewById(R.id.result_textview)
         mResultTextView.text = (GlobalVariables.QRVISIT.get(GlobalVariables.POINTS_EARNED)).toString();
-
+        //signalFinishActivity ();
         findViewById<Button>(R.id.buttonAceptarReto).setOnClickListener {
             val intent = Intent(applicationContext, BarcodeCaptureActivity::class.java)
             intent.putStringArrayListExtra("idQuestion", idQuestion)
             intent.putExtra("activityClassId", 1)
             startActivityForResult(intent, BARCODE_READER_REQUEST_CODE)
-            finish()
+
         }
     }
 

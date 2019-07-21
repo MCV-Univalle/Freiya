@@ -30,40 +30,31 @@ public class AdapterFirebaseImaginaries extends FirebaseRecyclerAdapter<ObjectAc
 
         dataBaseSets = new DatabaseImaginaries(context);
 
-        if (model.getStateA().equals("Enabled")) {
-            viewHolder.imagen.setImageResource(R.drawable.warning);
-            viewHolder.unirse.setText("EN USO");
-            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#A4FF5722"));
-        }
+        if (model.isCopyA()) {
+            viewHolder.cardView.setVisibility(View.INVISIBLE);
+        } else {
+            viewHolder.nombre.setText(model.getNombre());
+            viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-        if (model.getStateA().equals("Disable")) {
-            viewHolder.imagen.setImageResource(R.drawable.good);
-            viewHolder.unirse.setText("LIBRE");
-            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#a4c639"));
-        }
+                    selectedActivity = model.getNombre();
+                    selectedActivityId = model.getId();
 
-        viewHolder.nombre.setText(model.getNombre());
-        viewHolder.cardView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view) {
+                    if (GlobalVariables.ACTIVITY_FUNCTION == "Activate") {
 
-                selectedActivity = model.getNombre();
-                selectedActivityId = model.getId();
-
-                if( GlobalVariables.ACTIVITY_FUNCTION == "Activate"){
-
-                    if (model.getStateA().equals("Enabled")){
-                        GlobalVariables.IS_COPY = "true";
-                        dataBaseSets.createImaginaresCopy(model);
+                        if (model.getStateA().equals("Enabled")) {
+                            GlobalVariables.IS_COPY = "true";
+                            dataBaseSets.createImaginaresCopy(model);
+                        } else {
+                            GlobalVariables.IS_COPY = "false";
+                            dataBaseSets.showActivityImaginaries(selectedActivity);
+                        }
                     }
-                    else{
-                        GlobalVariables.IS_COPY = "false";
-                        dataBaseSets.showActivityImaginaries(selectedActivity);
-                    }
+
                 }
+            });
+        }
 
-            }
-        });
     }
 }

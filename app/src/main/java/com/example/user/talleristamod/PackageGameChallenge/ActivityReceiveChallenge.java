@@ -17,11 +17,13 @@ public class ActivityReceiveChallenge extends AppCompatActivity implements View.
     String description;
     TextView areaDescripcion;
     Button buttonAceptarReto;
+    DatabaseChallenge databaseChallenge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive_challenge);
+        databaseChallenge = new DatabaseChallenge(this);
 
         Bundle parametros = this.getIntent().getExtras();
         if (parametros != null)
@@ -34,6 +36,7 @@ public class ActivityReceiveChallenge extends AppCompatActivity implements View.
         buttonAceptarReto = findViewById(R.id.buttonAceptarReto);
         buttonAceptarReto.setOnClickListener(this);
         areaDescripcion.setText(description);
+        databaseChallenge.signalFinishActivity();
 
     }
 
