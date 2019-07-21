@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.user.talleristamod.PackageGameRaceQr.ActivityCreateRace;
+import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
 import com.example.user.talleristamod.R;
 
 public class ActivityDescriptionActivities extends AppCompatActivity implements View.OnClickListener{
@@ -19,7 +20,6 @@ public class ActivityDescriptionActivities extends AppCompatActivity implements 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description_activities);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         tablayout = findViewById(R.id.tabLayout);
         tvDescripcioion = findViewById(R.id.textViewDescripcion);
@@ -67,4 +67,9 @@ public class ActivityDescriptionActivities extends AppCompatActivity implements 
         }
 
     }
+
+
+
+
+
 }

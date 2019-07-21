@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
+import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
 import com.example.user.talleristamod.R;
 
 public class ActivityProfileTallerista extends AppCompatActivity implements View.OnClickListener {
@@ -53,10 +54,8 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
                startActivity(intentC);
                GlobalVariables.ACTIVITY_FUNCTION = "Activate";
                break;
-
-
-
-
        }
     }
+
+
 }

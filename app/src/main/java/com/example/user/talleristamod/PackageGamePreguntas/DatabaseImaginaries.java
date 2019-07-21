@@ -69,7 +69,7 @@ public class DatabaseImaginaries {
         objectActivityImaginaries.setCopyA(true);
 
         SecureRandom random = new SecureRandom();
-        String randomCode = new BigInteger(30, random).toString(32).toUpperCase();
+        String randomCode = new BigInteger(20, random).toString(32).toUpperCase();
         GlobalVariables.JOIN_CODE = randomCode;
 
         DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries");
@@ -114,7 +114,7 @@ public class DatabaseImaginaries {
                     if (img.getNombre().equals(selectedActivity))
                     {
                         SecureRandom random = new SecureRandom();
-                        String randomCode = new BigInteger(30, random).toString(32).toUpperCase();
+                        String randomCode = new BigInteger(20, random).toString(32).toUpperCase();
                         GlobalVariables.ID_ACTIVITY = idImg;
                         GlobalVariables.JOIN_CODE = randomCode;
 
@@ -204,7 +204,6 @@ public class DatabaseImaginaries {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String idChosen = (String) dataSnapshot.getValue();
 
-                Toast.makeText(context,userUid+" = "+ idChosen, Toast.LENGTH_SHORT).show();
 
                 if (userUid.equals(idChosen)){
                     textViewSelectedStudent.setText("Fuiste Elegido");

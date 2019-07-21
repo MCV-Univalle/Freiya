@@ -7,27 +7,27 @@
     android:background="@drawable/login"
     tools:context=".PackageProfiles.Login.ActivityLogin">
 
+
     <com.facebook.login.widget.LoginButton
         android:id="@+id/loginButtonFacebook"
         android:layout_width="200dp"
-        android:layout_height="32dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Continua"
         android:textColor="#FCFCFC"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/signInGoogleButton" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="264dp"
         android:layout_height="47dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/roundedbutton"
         android:backgroundTint="#FCFCFC"
@@ -50,10 +50,22 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintVertical_bias="0.03" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signInGoogleButton"
+        android:layout_width="206dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.gms.common.SignInButton>
 
 
 </android.support.constraint.ConstraintLayout>

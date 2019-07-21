@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.example.user.talleristamod.PackageGameRaceQr.Questions.ActivityCreateQuestion;
 import com.example.user.talleristamod.PackageGameRaceQr.Questions.ObjectQuestion;
-import com.example.user.talleristamod.PackageProfiles.ActivityLeaderBoard;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DataSnapshot;

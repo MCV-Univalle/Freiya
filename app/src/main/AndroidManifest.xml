@@ -38,7 +38,7 @@
         <activity android:name=".PackageProfiles.Login.ActivityLogin" />
         <activity android:name=".PackageProfiles.ProfileTallerista.ActivityCreateQr" />
         <activity android:name=".PackageGameRaceQr.ActivitySelectRaceQr" />
-        <activity android:name=".PackageProfiles.ActivityLeaderBoard" />
+        <activity android:name=".PackageGameRaceQr.ActivityLeaderBoard" />
         <activity android:name=".PackageGameRaceQr.BarcodeCaptureActivity" />
         <activity android:name=".PackageGameRaceQr.ActivityFollowCodeQr" />
         <activity android:name=".PackageGameRaceQr.Questions.ActivityCreateQuestion" />

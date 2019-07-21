@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.user.talleristamod.PackageGameChallenge.DatabaseChallenge;
 import com.example.user.talleristamod.PackageGameChallenge.ObjectActivityChallenge;
+import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 
@@ -88,5 +89,7 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
             return false;
         }
     }
+
+
 
 }

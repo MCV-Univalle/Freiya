@@ -1,13 +1,9 @@
 package com.example.user.talleristamod.PackageGameRaceQr;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.view.View;
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
-import com.example.user.talleristamod.PackageProfiles.ActivityLeaderBoard;
 import com.example.user.talleristamod.QrRaceHolder;
-import com.example.user.talleristamod.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 
