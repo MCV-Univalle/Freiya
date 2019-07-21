@@ -28,7 +28,6 @@ public class AdaptadorFirebaseChallenges extends FirebaseRecyclerAdapter<ObjectA
         dataBaseSets = new DatabaseChallenge(context);
 
 
-
         viewHolder.nombre.setText(model.getChallengeName());
         viewHolder.cardView.setOnClickListener(new View.OnClickListener()
         {

@@ -24,10 +24,7 @@ public class ActivitySelectChallenge extends AppCompatActivity {
         setContentView(R.layout.activity_select_challenge);
 
         recyclerViewChallenges = findViewById(R.id.recyclerChallenges);
-        title = (TextView) findViewById(R.id.textViewTitleChallenges);
-        //Cambiar fuente
-        Typeface face=Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
-        title.setTypeface(face);
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference referencia = database.getReference("Activity/ActivityChallenge");

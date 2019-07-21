@@ -24,9 +24,6 @@ public class ActivitySelectImg extends AppCompatActivity {
 
         recyclerViewImg = findViewById(R.id.recyclerImg);
 
-        title = (TextView) findViewById(R.id.textViewTitleImg);
-        Typeface face=Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
-        title.setTypeface(face);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference referencia = database.getReference("Activity/ActivityImaginaries");
