@@ -1,87 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
     tools:context=".PackageProfiles.ActivityDescriptionActivities">
 
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo"
+        android:weightSum="10">
+
     <!-- Toolbar -->
-    <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/toolbar"
-        android:layout_width="407dp"
-        android:layout_height="177dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/fondotoolbar"
-        android:elevation="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        tools:ignore="MissingConstraints" />
+        <!-- Toolbar -->
+        <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="177dp"
+            android:background="@drawable/fondotoolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="404dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <android.support.design.widget.TabItem
+        <LinearLayout
+            android:id="@+id/layoutAtras"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descripcion" />
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="32dp"
+                android:backgroundTint="@color/black"
+                android:src="@drawable/iconoback" />
+        </LinearLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="404dp"
             android:layout_height="wrap_content"
-            android:text="Instrucciones" />
+            android:layout_below="@+id/toolbar"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:tabIndicatorColor="#4CAF50">
 
-    </android.support.design.widget.TabLayout>
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripcion" />
 
-    <TextView
-        android:id="@+id/textViewElementos"
-        android:layout_width="346dp"
-        android:layout_height="201dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="1) Ubica los codigos Qr generados aqui en el salon  de clases \n 2) Cada Qr retornara una pregunta \n 3) Si se responde acertadamente se podra avanzar al siguiente Qr hasta llegar a la meta"
-        android:textSize="14sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreateRace"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instrucciones" />
 
-    <TextView
-        android:id="@+id/textViewDescripcion"
-        android:layout_width="346dp"
-        android:layout_height="194dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:text="Crea un carrera con codigos Qr mientras tus alumnos aprenden y se divierten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        </android.support.design.widget.TabLayout>
 
-    <Button
-        android:id="@+id/buttonCreateRace"
-        android:layout_width="158dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/roundedbutton"
-        android:text="CREAR"
-        android:textColor="@color/buttonTextColor"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion" />
+        <TextView
+            android:id="@+id/textViewElementos"
+            android:layout_width="wrap_content"
+            android:layout_height="211dp"
+            android:layout_below="@+id/tabLayout"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="44dp"
+            android:text="1) Ubica los codigos Qr generados aqui en el salon  de clases \n 2) Cada Qr retornara una pregunta \n 3) Si se responde acertadamente se podra avanzar al siguiente Qr hasta llegar a la meta"
+            android:textSize="15sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCreateRace"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.469"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="176dp"
+            android:layout_alignTop="@+id/tabLayout"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="79dp"
+            android:layout_marginEnd="48dp"
+            android:text="Consiste en  una carrera de preguntas , en la cual los Talleristas pueden crear un conjunto de preguntas y los códigos QR asociados.   Es decir, cuando los adolescentes acceden a esta carrera, deben encontrar y escanear los códigos para responder a las preguntas."
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+        <Button
+            android:id="@+id/buttonCreateRace"
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewDescripcion"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="128dp"
+            android:background="@drawable/roundedbutton"
+            android:backgroundTint="#19ACC7"
+            android:text="CREAR"
+            android:textColor="@color/buttonTextColor"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescripcion" />
+
+    </RelativeLayout>
+</ScrollView>

@@ -18,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ActivitySelectRaceQr extends AppCompatActivity {
     RecyclerView recyclerView;
-    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +25,10 @@ public class ActivitySelectRaceQr extends AppCompatActivity {
         setContentView(R.layout.activity_select_game);
 
         recyclerView = findViewById(R.id.recycler);
-        title = (TextView) findViewById(R.id.textViewTitleActividades);
+
         //Cambiar fuente
         Typeface face=Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
-        title.setTypeface(face);
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference referencia = database.getReference("Activity/ActivityQrRace");

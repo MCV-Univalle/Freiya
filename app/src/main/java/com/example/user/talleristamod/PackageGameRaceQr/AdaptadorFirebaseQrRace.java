@@ -35,15 +35,15 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
         dataBaseSets = new DatabaseRaceQr(context);
 
         if (model.getStateA().equals("Enabled")) {
-            viewHolder.imagen.setImageResource(R.drawable.warning);
-            viewHolder.unirse.setText("EN USO");
-            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#A4FF5722"));
+            //viewHolder.imagen.setImageResource(R.drawable.warning);
+            viewHolder.unirse.setText("COPIADA");
+
         }
 
         if (model.getStateA().equals("Disable")) {
-            viewHolder.imagen.setImageResource(R.drawable.good);
-            viewHolder.unirse.setText("LIBRE");
-            viewHolder.cardView.setCardBackgroundColor(Color.parseColor("#a4c639"));
+            //viewHolder.imagen.setImageResource(R.drawable.good);
+            viewHolder.unirse.setText("USAR");
+
         }
 
         viewHolder.nombre.setText(model.getNombre());

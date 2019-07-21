@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:animationCache="false"
-    android:background="@color/authui_colorPrimary"
+    android:background="#00BCD4"
     android:elevation="40dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 

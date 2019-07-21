@@ -7,7 +7,7 @@
     android:elevation="10dp"
     android:orientation="horizontal"
     android:padding="2dp"
-    app:cardBackgroundColor="#A4FF5722"
+    app:cardBackgroundColor="#FAFAFA"
     app:cardCornerRadius="10dp"
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
@@ -23,10 +23,10 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:src="@drawable/warning" />
+            android:src="@drawable/info" />
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="186dp"
             android:layout_height="60dp"
             android:background="#00D11515"
             android:gravity="center_horizontal"
@@ -46,7 +46,7 @@
                 android:id="@+id/unirseHolder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ACTIVAR"
+                android:text="COPIAR"
                 android:textStyle="bold" />
 
         </LinearLayout>
