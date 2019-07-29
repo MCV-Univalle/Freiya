@@ -24,6 +24,7 @@ import com.example.user.talleristamod.PackageGameRaceQr.ActivitySelectRaceQr;
 import com.example.user.talleristamod.PackageGameRaceQr.DatabaseRaceQr;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.user.talleristamod.GlobalVariables.GlobalVariables.USER_TYPE;
 
@@ -43,10 +44,7 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
         bCreateReto = findViewById(R.id.buttonCreateRetos);
         linearLayoutBack = findViewById(R.id.layoutAtrasT);
         linearLayoutProfile = findViewById(R.id.layoutProfileT);
-        //linearLayoutBack = findViewById(R.id.layoutAtrasT);
         textButtons ();
-
-
 
         bCreateImg.setOnClickListener(this);
         linearLayoutProfile.setOnClickListener(this);
@@ -57,6 +55,12 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
     }
 
     public void textButtons (){
+
+        if(USER_TYPE.equals("Estudiante")){
+            bCreateImg.setText("Unirse");
+            bCreateReto.setText("Unirse");
+            bCreateRace.setText("Unirse");
+        }
 
         if(USER_TYPE.equals("Tallerista")){
 
@@ -91,9 +95,6 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                         startActivity(intentR);
 
                     }
-
-
-
                 }
 
                 if(USER_TYPE.equals("Estudiante")){

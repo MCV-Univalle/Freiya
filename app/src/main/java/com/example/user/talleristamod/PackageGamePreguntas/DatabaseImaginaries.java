@@ -1,11 +1,13 @@
 package com.example.user.talleristamod.PackageGamePreguntas;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.nfc.NfcAdapter;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
@@ -42,19 +44,39 @@ public class DatabaseImaginaries {
 
     public void signalFinishActivity (){
 
-        DatabaseReference databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/stateA");
+        final DatabaseReference databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/");
 
         databaseChosen.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String stateActivity = (String) dataSnapshot.getValue();
+                ArrayList <String> listQuestion = new ArrayList<>();
+                String stateActivity = "";
 
-                if (stateActivity.equals("Disable")){
-                    Intent intent = new Intent(context, ActivityActivitiesFreiya.class);
-                    Toast.makeText(context, "Actividad Deshabilitada", Toast.LENGTH_SHORT).show();
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
+                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
+                    String question = objectQuestionsSnapShot.getKey();
+                    listQuestion.add(question);
+
+                    if (question.equals(GlobalVariables.ID_ACTIVITY)) {
+                        stateActivity = (String) dataSnapshot.child(GlobalVariables.ID_ACTIVITY).child("stateA").getValue();
+                        break;
+                    }
                 }
+
+                if (!listQuestion.contains(GlobalVariables.ID_ACTIVITY)) {
+                    Toast.makeText(context, "Actividad Deshabilitada", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, ActivityActivitiesFreiya.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    context.startActivity(intent);
+                    databaseChosen.removeEventListener(this);
+
+                } else if (stateActivity.equals("Disable")){
+                        Intent intent = new Intent(context, ActivityActivitiesFreiya.class);
+                        Toast.makeText(context, "Actividad Deshabilitada", Toast.LENGTH_SHORT).show();
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        context.startActivity(intent);
+                        databaseChosen.removeEventListener(this);
+                }
+
             }
 
             @Override
@@ -62,6 +84,7 @@ public class DatabaseImaginaries {
 
             }
         });
+
     }
 
 
@@ -98,7 +121,7 @@ public class DatabaseImaginaries {
 
     public void showActivityImaginaries(final String selectedActivity){
 
-        DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries");
+        final DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries");
 
         databaseReferenceRace.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -125,6 +148,7 @@ public class DatabaseImaginaries {
 
                         Intent intent = new Intent(context, ActivityShowImaginarie.class);
                         context.startActivity(intent);
+                        databaseReferenceRace.removeEventListener(this);
                         break;
                     }
                 }
@@ -153,7 +177,7 @@ public class DatabaseImaginaries {
 
     public void sendSignal(final TextView textSelectedStudent){
 
-        DatabaseReference databaseQuestion;
+        final DatabaseReference databaseQuestion;
         databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
 
         databaseQuestion.addValueEventListener(new ValueEventListener() {
@@ -176,12 +200,15 @@ public class DatabaseImaginaries {
 
                 } else{
 
-                int numero = (int) (Math.random() * listNameParticipants.size()) + 1;
-                textSelectedStudent.setText(listNameParticipants.get(numero-1));
+                    int numero = (int) (Math.random() * listNameParticipants.size());
 
-                DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
-                databaseCreateImg.child("elegido").setValue("");
-                databaseCreateImg.child("elegido").setValue(listIdParticipants.get(numero-1));
+                    textSelectedStudent.setText(listNameParticipants.get(numero));
+
+                    DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
+                    databaseCreateImg.child("temporizador").setValue(4);
+                    databaseCreateImg.child("elegido").setValue("");
+                    databaseCreateImg.child("elegido").setValue(listIdParticipants.get(numero));
+                    databaseQuestion.removeEventListener(this);
                 }
             }
 
@@ -191,29 +218,92 @@ public class DatabaseImaginaries {
         });
     }
 
+    public void sendSignalPlay(final TextView textSelectedStudent){
+
+        final DatabaseReference databaseQuestion;
+        databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
+
+        databaseQuestion.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<String> listNameParticipants = new ArrayList<>();
+                ArrayList<String> listIdParticipants = new ArrayList<>();
+                listNameParticipants.clear();
+                listIdParticipants.clear();
+
+                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
+                    String participantName = (String) objectQuestionsSnapShot.getValue();
+                    String participantId = (String) objectQuestionsSnapShot.getKey();
+                    listNameParticipants.add(participantName);
+                    listIdParticipants.add(participantId);
+                }
+
+                if(listIdParticipants.isEmpty()){
+                    Toast.makeText(context, "No se han unido estudiantes", Toast.LENGTH_SHORT).show();
+                    databaseQuestion.removeEventListener(this);
+                } else{
+                    int jumpsNumber = (int)(Math.random() * listIdParticipants.size())+1;
+
+                    for (int i = 0; i < jumpsNumber ; i++ ){
+                        int selected = (int)(Math.random() * listIdParticipants.size());
+                        int sleepNumber = obtainTemporizer(Math.random());
+
+                        DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
+                        databaseCreateImg.child("temporizador").setValue(sleepNumber);
+                        databaseCreateImg.child("elegido").setValue("");
+                        databaseCreateImg.child("elegido").setValue(listIdParticipants.get(selected));
+                        textSelectedStudent.setText(listNameParticipants.get(selected));
+                        try {
+                            Thread.sleep(sleepNumber*1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    databaseQuestion.removeEventListener(this);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    public int obtainTemporizer (double number){
+        if(number < 0.3)// el 30% de las veces
+            return 1;
+        else if(number < 0.8)// el 50% de las veces
+            return 2;
+        else// el 20% restante
+            return 3;
+    }
+
     public void receptorSignal(final TextView textViewSelectedStudent){
 
         FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
         final String userUid = user.getUid();
 
-        DatabaseReference databaseChosen;
-        databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+ GlobalVariables.ID_ACTIVITY+"/elegido");
+        final DatabaseReference databaseChosen;
+        databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
 
         databaseChosen.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String idChosen = (String) dataSnapshot.getValue();
-
+                int temp = 0;
+                String idChosen = (String) dataSnapshot.child("elegido").getValue();
+                if (dataSnapshot.child("temporizador").exists()){
+                    temp = Integer.parseInt(dataSnapshot.child("temporizador").getValue().toString());
+                }
 
                 if (userUid.equals(idChosen)){
                     textViewSelectedStudent.setText("Fuiste Elegido");
 
                     Vibrator vibrator = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
-                    vibrator.vibrate(5000);
+                    vibrator.vibrate(temp*1000);
 
                     Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
                     final MediaPlayer mp = MediaPlayer.create(context, notification);
-
 
                     mp.start();
 
@@ -222,7 +312,7 @@ public class DatabaseImaginaries {
                         public void run() {
                             mp.stop();
                         }
-                    },7000);
+                    },temp*1000);
 
                 } else textViewSelectedStudent.setText("Espera a ser selegido");
             }
@@ -232,7 +322,6 @@ public class DatabaseImaginaries {
 
             }
         });
-
     }
 
     public void selectIndividualStudent(String idStudent){
