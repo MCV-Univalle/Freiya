@@ -44,6 +44,7 @@ public class ActivityCreateImag extends AppCompatActivity implements View.OnClic
                 objectActivityImaginaries.setJoinCode("none");
                 objectActivityImaginaries.setStateA("Disable");
                 objectActivityImaginaries.setCopyA(false);
+                objectActivityImaginaries.setTemporizador(5);
 
 
                 new AlertDialog.Builder(this)

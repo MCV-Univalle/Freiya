@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ActivityShowImaginarie extends AppCompatActivity implements View.OnClickListener{
 
-    Button buttonSendSignal, buttonFinishImg;
+    Button buttonSendSignal, buttonFinishImg, buttonSignalPlay;
     TextView textSelectedStudent, textCodeA;
     DatabaseImaginaries dataBaseSets;
     RecyclerView recyclerViewStudents;
@@ -37,9 +37,11 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
 
         buttonSendSignal = (Button) findViewById(R.id.buttonSendSignal);
         buttonFinishImg = (Button) findViewById(R.id.buttonFinishImg);
+        buttonSignalPlay = (Button) findViewById(R.id.buttonTing);
 
         buttonSendSignal.setOnClickListener(this);
         buttonFinishImg.setOnClickListener(this);
+        buttonSignalPlay.setOnClickListener(this);
         dataBaseSets = new DatabaseImaginaries(this);
         showStudents();
         }
@@ -60,6 +62,9 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
             case R.id.buttonFinishImg:
                 finishChallenge();
                 break;
+            case R.id.buttonTing:
+                dataBaseSets.sendSignalPlay(textSelectedStudent);
+                break;
 
         }
     }
@@ -78,7 +83,11 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
 
                         if (GlobalVariables.IS_COPY.equals("true")) {
                             databaseStateAImg.removeValue();
-                        } else databaseStateAImg.child("stateA").setValue("Disable");
+                        } else {
+                            databaseStateAImg.child("stateA").setValue("Disable");
+                            databaseStateAImg.child("elegido").setValue("");
+                            databaseStateAImg.child("joinCode").setValue("D4544as56");
+                        }
 
                         Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);

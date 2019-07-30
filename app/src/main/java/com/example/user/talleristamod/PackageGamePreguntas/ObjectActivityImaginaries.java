@@ -8,6 +8,7 @@ public class ObjectActivityImaginaries {
     private String joinCode;
     private String stateA;
     private boolean copyA;
+    private int temporizador;
 
     public ObjectActivityImaginaries() {
     }
@@ -76,5 +77,11 @@ public class ObjectActivityImaginaries {
         this.copyA = copyA;
     }
 
+    public int getTemporizador() {
+        return temporizador;
+    }
 
+    public void setTemporizador(int temporizador) {
+        this.temporizador = temporizador;
+    }
 }
