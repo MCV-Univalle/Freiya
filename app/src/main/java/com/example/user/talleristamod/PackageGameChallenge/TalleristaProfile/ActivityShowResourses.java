@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.example.user.talleristamod.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
@@ -26,6 +28,7 @@ public class ActivityShowResourses extends AppCompatActivity {
     ImageView imageView;
     ProgressDialog progressDialog;
     StorageReference reference, ref;
+    String type;
 
 
     @Override
@@ -37,7 +40,23 @@ public class ActivityShowResourses extends AppCompatActivity {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         reference = storage.getReferenceFromUrl("gs://freiyaproject-65b0b.appspot.com");
-        loadImageFromStorage();
+
+        reference.child(GlobalVariables.IDRESOURCE).getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+            @Override
+            public void onSuccess(StorageMetadata storageMetadata)
+            {
+               Toast.makeText(getApplicationContext(), "" + storageMetadata.getContentType(), Toast.LENGTH_LONG).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+
+            }
+        });
+
+
+       // loadImageFromStorage();
 
     }
 
