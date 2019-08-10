@@ -21,7 +21,6 @@
         android:backgroundTintMode="screen"
         android:elevation="13dp"
         android:text="Tallerista"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
