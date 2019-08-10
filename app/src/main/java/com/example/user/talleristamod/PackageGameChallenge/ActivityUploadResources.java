@@ -1,9 +1,12 @@
 package com.example.user.talleristamod.PackageGameChallenge;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,13 +26,16 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
+
 public class ActivityUploadResources extends AppCompatActivity {
 
-    private Button BtnUploadImage, BtnUploadVideo, BtnUploadAudio;
+    private Button BtnUploadImage, BtnUploadVideo, BtnUploadAudio, BtnUploadCameraImage;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 0;
     private final int PICK_VIDEO_REQUEST = 71;
     private final int PICK_AUDIO_REQUEST = 2;
+    private static final int CAMERA_REQUEST_CODE = 1;
 
     //Crear referencia a firebase storage
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -42,9 +48,24 @@ public class ActivityUploadResources extends AppCompatActivity {
         setContentView(R.layout.activity_upload_resources);
 
         //Initializar Variables
+        BtnUploadCameraImage = (Button) findViewById(R.id.buttonUploadCameraImage);
         BtnUploadImage = (Button) findViewById(R.id.buttonUploadImage);
         BtnUploadVideo = (Button) findViewById(R.id.buttonUploadVideo);
         BtnUploadAudio = (Button) findViewById(R.id.buttonUploadAudio);
+
+        BtnUploadCameraImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+
+            {
+
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
+                {
+                    startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
+                }
+            }
+        });
 
         BtnUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +110,11 @@ public class ActivityUploadResources extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
-            if (requestCode == PICK_IMAGE_REQUEST) {
+            if (requestCode == CAMERA_REQUEST_CODE) {
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                filePath = getImageUri(getApplicationContext(), photo);
+                upload();
+            } else if (requestCode == PICK_IMAGE_REQUEST) {
                 filePath = data.getData();
                 upload();
             } else if (requestCode == PICK_VIDEO_REQUEST) {
@@ -102,9 +127,19 @@ public class ActivityUploadResources extends AppCompatActivity {
             }
         }
     }
+    public Uri getImageUri(Context inContext, Bitmap inImage)
+    {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
 
-    private void upload() {
-        if (filePath != null) {
+
+    private void upload()
+    {
+        if (filePath != null)
+        {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Subiendo...");
             progressDialog.show();
