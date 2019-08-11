@@ -51,6 +51,7 @@ public class ActivityUploadResources extends AppCompatActivity {
         BtnUploadCameraImage = (Button) findViewById(R.id.buttonUploadCameraImage);
         BtnUploadImage = (Button) findViewById(R.id.buttonUploadImage);
         BtnUploadVideo = (Button) findViewById(R.id.buttonUploadVideo);
+        BtnUploadVideo.setEnabled(false);
         BtnUploadAudio = (Button) findViewById(R.id.buttonUploadAudio);
 
         BtnUploadCameraImage.setOnClickListener(new View.OnClickListener() {

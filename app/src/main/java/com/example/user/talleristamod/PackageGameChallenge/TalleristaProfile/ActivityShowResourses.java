@@ -2,6 +2,7 @@ package com.example.user.talleristamod.PackageGameChallenge.TalleristaProfile;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -9,11 +10,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageGameRaceQr.ActivityCreateRace;
 import com.example.user.talleristamod.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,12 +30,12 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.net.URL;
 
-public class ActivityShowResourses extends AppCompatActivity implements MediaPlayer.OnPreparedListener{
+public class ActivityShowResourses extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener{
 
-    ImageView imageView;
+    ImageView imageView, imageViewAudio, imageViewStop;
     ProgressDialog progressDialog;
     StorageReference reference, ref;
-    private MediaPlayer mMediaplayer;
+    private MediaPlayer player;
 
 
     @Override
@@ -40,9 +43,16 @@ public class ActivityShowResourses extends AppCompatActivity implements MediaPla
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resourses);
         imageView = findViewById(R.id.imageViewResourse);
+        imageView.setOnClickListener(this);
+        imageViewAudio = findViewById(R.id.imageViewAudio);
+        imageViewAudio.setOnClickListener(this);
+        imageViewStop = findViewById(R.id.imageViewStop);
+        imageViewStop.setVisibility(View.INVISIBLE);
+        imageViewAudio.setVisibility(View.INVISIBLE);
+        imageViewStop.setOnClickListener(this);
         progressDialog= new ProgressDialog(this);
-        mMediaplayer = new MediaPlayer();
-        mMediaplayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        player = new MediaPlayer();
+        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -53,14 +63,19 @@ public class ActivityShowResourses extends AppCompatActivity implements MediaPla
             @Override
             public void onSuccess(StorageMetadata storageMetadata)
             {
-               if(storageMetadata.getContentType().equals("image/jpeg"))
+               if(storageMetadata.getContentType().substring(0,5).equals("image"))
                {
+                   imageView.setVisibility(View.VISIBLE);
                    loadImageFromStorage();
 
                }
-               else if (storageMetadata.getContentType().equals("audio/ogg"))
+               else if (storageMetadata.getContentType().substring(0,5).equals("audio"))
                {
-                   loadAudioFromFirebase(storageMetadata.getPath());
+                   Toast.makeText(getApplicationContext(), "reproduciendo...", Toast.LENGTH_LONG).show();
+                   imageView.setVisibility(View.INVISIBLE);
+                   imageViewStop.setVisibility(View.VISIBLE);
+                   imageViewAudio.setVisibility(View.INVISIBLE);
+                   playAudioFromFirebase(storageMetadata.getPath());
                }
 
             }
@@ -103,34 +118,35 @@ public class ActivityShowResourses extends AppCompatActivity implements MediaPla
 
     }
 
-    private void loadAudioFromFirebase(String path)
-    {
+    private void playAudioFromFirebase(final String path) {
+
         // Create a storage reference from our app
-        StorageReference storageRef = FirebaseStorage.getInstance().getReference().child(path);
-        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                try {
-                    // Download url of file
-                    final String url = uri.toString();
-                    mMediaplayer.setDataSource(url);
-                    // wait for media player to get prepare
-                    mMediaplayer.setOnPreparedListener(ActivityShowResourses.this);
-                    mMediaplayer.prepareAsync();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            StorageReference storageRef = FirebaseStorage.getInstance().getReference().child(path);
+            storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    try {
+                        // Download url of file
+                        final String url = uri.toString();
+                        player.setDataSource(url);
+                        // wait for media player to get prepare
+                        player.setOnPreparedListener(ActivityShowResourses.this);
+                        player.prepareAsync();
 
-            }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.i("TAG", e.getMessage());
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                });
 
-    }
+                }
+            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.i("TAG", e.getMessage());
+                        }
+                    });
+
+        }
 
     @Override
     public void onPrepared(MediaPlayer mp)
@@ -138,12 +154,38 @@ public class ActivityShowResourses extends AppCompatActivity implements MediaPla
         mp.start();
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        player.stop();
+        imageView.setVisibility(View.INVISIBLE);
+        imageViewStop.setVisibility(View.INVISIBLE);
+        imageViewAudio.setVisibility(View.INVISIBLE);
+    }
 
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.imageViewAudio:
+                imageView.setVisibility(View.INVISIBLE);
+                imageViewAudio.setVisibility(View.INVISIBLE);
+                imageViewStop.setVisibility(View.VISIBLE);
+                player.start();
 
+                break;
 
+            case R.id.imageViewStop:
+                imageView.setVisibility(View.INVISIBLE);
+                imageViewStop.setVisibility(View.INVISIBLE);
+                imageViewAudio.setVisibility(View.VISIBLE);
+                player.pause();
+                break;
 
-
-
+        }
+    }
 }
 
 
