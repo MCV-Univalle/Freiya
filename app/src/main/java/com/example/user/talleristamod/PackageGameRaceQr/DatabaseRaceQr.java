@@ -64,7 +64,7 @@ public class DatabaseRaceQr {
         DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace");
         String id = databaseCreateImg.push().getKey();
         databaseCreateImg.child(id).setValue(objectActivityQrRace);
-        databaseCreateImg.child(id).child("Copy").setValue(true);
+        databaseCreateImg.child(id).child("copy").setValue("true");
         databaseCreateImg.child(id).child("joinCode").setValue(randomCode);
 
         GlobalVariables.ID_ACTIVITY = id;
@@ -100,7 +100,7 @@ public class DatabaseRaceQr {
                 String id = databaseQuestion.push().getKey();
                 GlobalVariables.ID_ACTIVITY = id;
 
-                ObjectActivityQrRace objectActivityQrRace = new ObjectActivityQrRace(raceName, idQuestions, "Disable", "none" );
+                ObjectActivityQrRace objectActivityQrRace = new ObjectActivityQrRace(raceName, idQuestions, "Disable", "dasfasfasfasg1565" , FirebaseAuth.getInstance().getCurrentUser().getUid(), "false");
                 databaseQuestion.child(id).setValue(objectActivityQrRace);
             }
 

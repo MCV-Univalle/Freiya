@@ -15,6 +15,8 @@ public class ObjectActivityQrRace {
     public List<String> idQuestions;
     private String joinCode;
     public String stateA;
+    public String creator;
+    public String copy;
 
     public ObjectActivityQrRace() {
     }
@@ -26,11 +28,13 @@ public class ObjectActivityQrRace {
         this.joinCode = joinCode;
     }
 
-    public ObjectActivityQrRace(String nombre, List<String> idQuestions, String stateA, String joinCode) {
+    public ObjectActivityQrRace(String nombre, List<String> idQuestions, String stateA, String joinCode, String creator, String copy) {
         this.nombre = nombre;
         this.idQuestions = idQuestions;
         this.stateA = stateA;
         this.joinCode = joinCode;
+        this.creator = creator;
+        this.copy = copy;
     }
 
     public String getId() {
@@ -71,5 +75,21 @@ public class ObjectActivityQrRace {
 
     public void setJoinCode(String joinCode) {
         this.joinCode = joinCode;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public String getCopy() {
+        return copy;
+    }
+
+    public void setCopy(String copy) {
+        this.copy = copy;
     }
 }
