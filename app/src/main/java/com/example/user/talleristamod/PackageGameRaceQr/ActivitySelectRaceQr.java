@@ -48,7 +48,6 @@ public class ActivitySelectRaceQr extends AppCompatActivity {
                     case 0:
                         filter1 =  "creator";
                         filter2 =  FirebaseAuth.getInstance().getCurrentUser().getUid();
-
                         SetAdapterFire(filter1, filter2);
                         break;
                     case 1:

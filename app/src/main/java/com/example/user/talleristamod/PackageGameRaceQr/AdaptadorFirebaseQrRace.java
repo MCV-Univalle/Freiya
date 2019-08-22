@@ -37,7 +37,6 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
             public void onClick(View view) {
                 selectedActivity = model.getNombre();
 
-
                 if(GlobalVariables.ACTIVITY_FUNCTION == "Activate"){
 
                     if (model.getStateA().equals("Enabled")){
@@ -55,7 +54,6 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
         });
     }
 
-    public void updateList (){  }
 }
 
 

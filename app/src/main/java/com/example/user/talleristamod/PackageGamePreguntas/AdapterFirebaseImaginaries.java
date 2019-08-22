@@ -16,45 +16,35 @@ public class AdapterFirebaseImaginaries extends FirebaseRecyclerAdapter<ObjectAc
     String selectedActivity, selectedActivityId;
 
 
-    public AdapterFirebaseImaginaries(Class<ObjectActivityImaginaries> modelClass, int modelLayout, Class<QrRaceHolder> viewHolderClass, DatabaseReference ref, Context c) {
-
-
-
-        super(modelClass, modelLayout, viewHolderClass, ref);
+    public AdapterFirebaseImaginaries(Class<ObjectActivityImaginaries> modelClass, int modelLayout, Class<QrRaceHolder> viewHolderClass, DatabaseReference ref, Context c, String Filter1,String Filter2) {
+        super(modelClass, modelLayout, viewHolderClass, ref.orderByChild(Filter1).equalTo(Filter2));
         context = c;
     }
 
 
     @Override
     protected void populateViewHolder(QrRaceHolder viewHolder, final ObjectActivityImaginaries model, int position) {
-
         dataBaseSets = new DatabaseImaginaries(context);
 
-        if (model.isCopyA()) {
-            viewHolder.cardView.setVisibility(View.INVISIBLE);
-        } else {
-            viewHolder.nombre.setText(model.getNombre());
-            viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        viewHolder.nombre.setText(model.getNombre());
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedActivity = model.getNombre();
 
-                    selectedActivity = model.getNombre();
-                    selectedActivityId = model.getId();
+                selectedActivityId = model.getId();
+                if (GlobalVariables.ACTIVITY_FUNCTION == "Activate") {
 
-                    if (GlobalVariables.ACTIVITY_FUNCTION == "Activate") {
-
-                        if (model.getStateA().equals("Enabled")) {
-                            GlobalVariables.IS_COPY = "true";
-                            dataBaseSets.createImaginaresCopy(model);
-                        } else {
-                            GlobalVariables.IS_COPY = "false";
-                            dataBaseSets.showActivityImaginaries(selectedActivity);
+                    if (model.getStateA().equals("Enabled")) {
+                        GlobalVariables.IS_COPY = "true";
+                        dataBaseSets.createImaginaresCopy(model);
+                    } else {
+                        GlobalVariables.IS_COPY = "false";
+                        dataBaseSets.showActivityImaginaries(selectedActivity);
                         }
                     }
 
                 }
             });
-        }
-
     }
 }

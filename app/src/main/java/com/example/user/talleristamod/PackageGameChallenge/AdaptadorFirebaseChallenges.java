@@ -17,8 +17,8 @@ public class AdaptadorFirebaseChallenges extends FirebaseRecyclerAdapter<ObjectA
     String selectedChallenge;
 
 
-    public AdaptadorFirebaseChallenges(Class<ObjectActivityChallenge> modelClass, int modelLayout, Class<QrRaceHolder> viewHolderClass, DatabaseReference ref, Context c) {
-        super(modelClass, modelLayout, viewHolderClass, ref);
+    public AdaptadorFirebaseChallenges(Class<ObjectActivityChallenge> modelClass, int modelLayout, Class<QrRaceHolder> viewHolderClass, DatabaseReference ref, Context c, String Filter1,String Filter2) {
+        super(modelClass, modelLayout, viewHolderClass, ref.orderByChild(Filter1).equalTo(Filter2));
         context = c;
     }
 

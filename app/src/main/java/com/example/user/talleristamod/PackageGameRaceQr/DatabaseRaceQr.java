@@ -56,7 +56,7 @@ public class DatabaseRaceQr {
     }
 
     public void createQrRaceCopy(ObjectActivityQrRace objectActivityQrRace) {
-
+        objectActivityQrRace.setCreator("Copy");
         SecureRandom random = new SecureRandom();
         String randomCode = new BigInteger(20, random).toString(32).toUpperCase();
         GlobalVariables.JOIN_CODE = randomCode;
