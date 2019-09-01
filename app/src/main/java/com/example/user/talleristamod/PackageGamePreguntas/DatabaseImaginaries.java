@@ -89,7 +89,8 @@ public class DatabaseImaginaries {
 
 
     public void createImaginaresCopy(ObjectActivityImaginaries objectActivityImaginaries) {
-        objectActivityImaginaries.setCopyA(true);
+        objectActivityImaginaries.setCopyA("true");
+        objectActivityImaginaries.setCreator("Copy");
 
         SecureRandom random = new SecureRandom();
         String randomCode = new BigInteger(20, random).toString(32).toUpperCase();

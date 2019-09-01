@@ -15,6 +15,7 @@ import com.example.user.talleristamod.PackageGameChallenge.ObjectActivityChallen
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ActivityCreateChallenge extends AppCompatActivity implements View.OnClickListener
 {
@@ -55,7 +56,7 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
                             .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    ObjectActivityChallenge objectActivityChallenge = new ObjectActivityChallenge(challengeName, challengeDescription, "none", "Disable");
+                                    ObjectActivityChallenge objectActivityChallenge = new ObjectActivityChallenge(challengeName, challengeDescription, "none", "Disable", FirebaseAuth.getInstance().getCurrentUser().getUid(), "false");
                                     DatabaseChallenge dataBaseSets = new DatabaseChallenge(getApplicationContext());
                                     dataBaseSets.createChallenge(objectActivityChallenge);
 

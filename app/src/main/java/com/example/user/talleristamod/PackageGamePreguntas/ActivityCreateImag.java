@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
 import com.example.user.talleristamod.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ActivityCreateImag extends AppCompatActivity implements View.OnClickListener{
 
@@ -43,7 +44,8 @@ public class ActivityCreateImag extends AppCompatActivity implements View.OnClic
                 objectActivityImaginaries.setPregunta(editTextImgQuestion.getText().toString());
                 objectActivityImaginaries.setJoinCode("none");
                 objectActivityImaginaries.setStateA("Disable");
-                objectActivityImaginaries.setCopyA(false);
+                objectActivityImaginaries.setCopyA("false");
+                objectActivityImaginaries.setCreator(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 objectActivityImaginaries.setTemporizador(5);
 
 

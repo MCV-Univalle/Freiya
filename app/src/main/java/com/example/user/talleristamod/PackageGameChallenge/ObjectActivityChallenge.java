@@ -5,7 +5,8 @@ public class ObjectActivityChallenge {
 
     public String challengeName, challengeDescription, challengeId;
     private String joinCode;
-    private String stateA;
+    private String stateA, creator;
+    private String copyA;
 
     public ObjectActivityChallenge() {}
 
@@ -17,12 +18,13 @@ public class ObjectActivityChallenge {
         this.stateA = stateA;
     }
 
-    public ObjectActivityChallenge(String challengeName, String challengeDescription, String joinCode,String stateA) {
+    public ObjectActivityChallenge(String challengeName, String challengeDescription, String joinCode,String stateA, String creator, String copyA) {
         this.challengeName = challengeName;
         this.challengeDescription = challengeDescription;
         this.joinCode = joinCode;
         this.stateA = stateA;
-
+        this.copyA = copyA;
+        this.creator = creator;
     }
 
     public String getChallengeName() {
@@ -65,4 +67,19 @@ public class ObjectActivityChallenge {
         this.stateA = stateA;
     }
 
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public String getCopyA() {
+        return copyA;
+    }
+
+    public void setCopyA(String copyA) {
+        this.copyA = copyA;
+    }
 }
