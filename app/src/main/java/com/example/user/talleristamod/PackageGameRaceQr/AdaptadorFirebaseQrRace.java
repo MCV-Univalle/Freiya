@@ -1,11 +1,17 @@
 package com.example.user.talleristamod.PackageGameRaceQr;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.QrRaceHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.logging.Filter;
 
 /*
     Representa el punto de unión entre firebase y el elemento lista.
@@ -27,7 +33,7 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
     }
 
     @Override
-    protected void populateViewHolder(final QrRaceHolder viewHolder, final ObjectActivityQrRace model, int position) {
+    protected void populateViewHolder(final QrRaceHolder viewHolder, final ObjectActivityQrRace model, final int position) {
         dataBaseSets = new DatabaseRaceQr(context);
 
         viewHolder.nombre.setText(model.getNombre());
@@ -42,6 +48,7 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
                     if (model.getStateA().equals("Enabled")){
                         GlobalVariables.IS_COPY = "true";
                         dataBaseSets.createQrRaceCopy(model);
+
                     }
                     else{
                         GlobalVariables.IS_COPY = "false";
@@ -50,6 +57,14 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
                 }
 
 
+            }
+        });
+
+        viewHolder.imagenDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedActivity = model.getNombre();
+                dataBaseSets.obtainDetailsQrRace(selectedActivity);
             }
         });
     }

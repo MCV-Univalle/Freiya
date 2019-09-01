@@ -3,6 +3,7 @@ package com.example.user.talleristamod.PackageProfiles;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import static com.example.user.talleristamod.GlobalVariables.GlobalVariables.USE
 public class ActivityActivitiesFreiya extends AppCompatActivity implements View.OnClickListener {
     Button bCreateRace, bCreateReto, bCreateImg;
     LinearLayout linearLayoutBack, linearLayoutProfile;
+
 
 
 

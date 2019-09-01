@@ -162,6 +162,8 @@ public class DatabaseRaceQr {
                     race.setId(objectQuestionsSnapShot.getKey());
                     String idRace = race.getId();
 
+
+
                     if (race.getNombre().equals(selectedActivity))
                     {
                         SecureRandom random = new SecureRandom();
@@ -286,6 +288,48 @@ public class DatabaseRaceQr {
 
                 if (!listRaceQr.contains(selectedActivityCode)) Toast.makeText(context, "Error al digitar el codigo de ingreso", Toast.LENGTH_SHORT).show();
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void obtainDetailsQrRace(final String selectedActivity)
+    {
+        final DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace");
+
+        databaseReferenceRace.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren())
+                {
+                    ObjectActivityQrRace race = objectQuestionsSnapShot.getValue(ObjectActivityQrRace.class);
+                    race.setId(objectQuestionsSnapShot.getKey());
+                    String idRace = race.getId();
+
+                    if (race.getNombre().equals(selectedActivity))
+                    {
+                        GlobalVariables.ID_ACTIVITY = idRace;
+
+                        ArrayList<String> questions = (ArrayList<String>) race.getIdQuestions();
+                        String name = race.getNombre();
+
+                        //DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY+"/joinCode");
+
+
+
+                        Intent intent2 = new Intent(context, ActivityShowRaceQrDetails.class);
+                        intent2.putStringArrayListExtra("idQuestion", questions);
+                        intent2.putExtra("nameRace", name);
+                        context.startActivity(intent2);
+                    }
+
+                }
+
+            }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

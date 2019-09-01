@@ -13,19 +13,26 @@
     android:elevation="40dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/layoutAtrasT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_gravity="center"
             android:backgroundTint="@color/black"
             android:src="@drawable/iconoback" />
     </LinearLayout>
@@ -34,13 +41,15 @@
         android:id="@+id/layoutHomeT"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="160dp"
         android:gravity="start"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="5dp">
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="40dp"
@@ -62,13 +71,15 @@
         android:id="@+id/layoutProfileT"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="10dp"
         android:gravity="left"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/layoutHomeT"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/perfilToolbar"
@@ -86,5 +97,6 @@
             android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
     </LinearLayout>
 
+</android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.Toolbar>
