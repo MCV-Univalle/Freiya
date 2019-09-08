@@ -51,8 +51,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="43dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#00BCD4"
+        android:backgroundTint="#8AA9AF"
         android:drawableLeft="@drawable/videofile"
+        android:enabled="false"
         android:text="Enviar Video"
         android:textColor="@color/buttonTextColor" />
 
