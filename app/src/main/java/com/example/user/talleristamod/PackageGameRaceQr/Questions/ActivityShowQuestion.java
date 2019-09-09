@@ -12,13 +12,14 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameRaceQr.ActivityFollowCodeQr;
 import com.example.user.talleristamod.PackageGameRaceQr.DatabaseRaceQr;
+import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.ObjectLeaderBoardRaceQr;
 import com.example.user.talleristamod.R;
 import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -109,17 +110,21 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
         respuestaCorrecta = questions.get(GlobalVariables.POINTS_EARNED).respuestas.get(0);
 
         if ((respuestaCorrecta == texto))
-        {    GlobalVariables.POINTS_EARNED = GlobalVariables.POINTS_EARNED + 1;
+        {
+            GlobalVariables.RACEQR_ERRORS.add(GlobalVariables.RACEQR_ERRORS_COUNTER);
+            GlobalVariables.RACEQR_ERRORS_COUNTER = 0;
+            GlobalVariables.POINTS_EARNED = GlobalVariables.POINTS_EARNED + 1;
             if ( GlobalVariables.POINTS_EARNED == questions.size())
             {   GlobalVariables.POINTS_EARNED++;
                 ventanaEmergenteFinal();
             }
             else {
+
                 ventanaEmergente("Respuesta Correcta!", ("Ve a scannear el Codigo Qr" + GlobalVariables.QRVISIT.get(GlobalVariables.POINTS_EARNED)));
             }
         } else {
-            ventanaEmergente("Respuesta Incorrecta", ("Vuelve a scannear el Codigo Qr" + GlobalVariables.QRVISIT.get(GlobalVariables.POINTS_EARNED)));
-
+            GlobalVariables.RACEQR_ERRORS_COUNTER++;
+            ventanaEmergente("Respuesta Incorrecta", (GlobalVariables.RACEQR_ERRORS_COUNTER+ " Vuelve a scannear el Codigo Qr" + GlobalVariables.QRVISIT.get(GlobalVariables.POINTS_EARNED)));
         }
     }
 
@@ -144,14 +149,18 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
 
     public void ventanaEmergenteFinal()
     {
+        String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
-        FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
-        String userUid = user.getUid();
-        String userName = user.getDisplayName();
-        GlobalVariables.POINTS_EARNED = 0;
 
         DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY+"/LeaderBoard");
-        databaseReferenceRace.push().setValue(userName);
+
+        ObjectLeaderBoardRaceQr objectLeaderBoardRaceQr = new ObjectLeaderBoardRaceQr(userName, GlobalVariables.RACEQR_ERRORS);
+        String key = databaseReferenceRace.push().getKey();
+        databaseReferenceRace.child(key).setValue(objectLeaderBoardRaceQr);
+
+        GlobalVariables.POINTS_EARNED = 0;
+        GlobalVariables.RACEQR_ERRORS.clear();
+        GlobalVariables.RACEQR_ERRORS_COUNTER = 0;
 
 
         DatabaseRaceQr dataBaseSets = new DatabaseRaceQr(this);

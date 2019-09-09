@@ -2,6 +2,7 @@ package com.example.user.talleristamod.PackageGameRaceQr;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,11 +14,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.ObjectLeaderBoardRaceQr;
+import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.ObjectPersistenceRaceQr;
 import com.example.user.talleristamod.PackageProfiles.DatabaseProfiles;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityLeaderBoard extends AppCompatActivity implements View.OnClickListener {
 
@@ -109,15 +118,47 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
 
                         Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
 
-                        DatabaseReference databaseStateAQr = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY);
+                        final DatabaseReference databaseStateAQr = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY);
+                        databaseStateAQr.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                String name = (String) dataSnapshot.child("nombre").getValue();
+                                List<String> listquestions = (List<String>) dataSnapshot.child("idQuestions").getValue();
+                                ArrayList<ObjectLeaderBoardRaceQr> listObjectLeaderBoard = new ArrayList<>();
 
-                        if (GlobalVariables.IS_COPY.equals("true")) {
-                            databaseStateAQr.removeValue();
-                        } else databaseStateAQr.child("stateA").setValue("Disable");
+                                DataSnapshot dataSnapshot1 = dataSnapshot.child("LeaderBoard");
+                                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot1.getChildren())
+                                {
+                                    Toast.makeText(getApplicationContext(), objectQuestionsSnapShot.getKey()+"",Toast.LENGTH_SHORT).show();
+                                    ObjectLeaderBoardRaceQr objectLeaderBoardRaceQr = objectQuestionsSnapShot.getValue(ObjectLeaderBoardRaceQr.class);
+                                    listObjectLeaderBoard.add(objectLeaderBoardRaceQr);
 
-                        Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
+                                }
+
+                                DatabaseReference database = FirebaseDatabase.getInstance().getReference("ActivityPersistence/ActivityQrRace/");
+                                String key = database.push().getKey();
+                                ObjectPersistenceRaceQr objectPersistenceRaceQr = new ObjectPersistenceRaceQr(name,"hoy", listObjectLeaderBoard, listquestions);
+                                database.child(key).setValue(objectPersistenceRaceQr);
+
+                                if (GlobalVariables.IS_COPY.equals("true")) {
+                                    databaseStateAQr.removeValue();
+                                } else databaseStateAQr.child("stateA").setValue("Disable");
+
+                                Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+
+                                databaseStateAQr.removeEventListener(this);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+
 
                     }
                 })

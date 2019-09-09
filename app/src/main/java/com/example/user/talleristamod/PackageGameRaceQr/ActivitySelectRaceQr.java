@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 
+import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.AdaptadorFirebasePersistenceQrRace;
+import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.ObjectPersistenceRaceQr;
 import com.example.user.talleristamod.QrRaceHolder;
 import com.example.user.talleristamod.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,16 +77,33 @@ public class ActivitySelectRaceQr extends AppCompatActivity {
 
     }
 
-    public void SetAdapterFire (String filter1, String filter2){
+    public void SetAdapterFire (String filter1, String filter2) {
+
+
+        if (GlobalVariables.ACTIVITY_FUNCTION.equals("Activate")) {
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference referencia = database.getReference("Activity/ActivityQrRace");
 
-        AdaptadorFirebaseQrRace adaptadorFirebaseQrRace = new AdaptadorFirebaseQrRace(ObjectActivityQrRace.class,R.layout.adapter_recycler_view
-                , QrRaceHolder.class,referencia,this, filter1, filter2);
+        AdaptadorFirebaseQrRace adaptadorFirebaseQrRace = new AdaptadorFirebaseQrRace(ObjectActivityQrRace.class, R.layout.adapter_recycler_view
+                , QrRaceHolder.class, referencia, this, filter1, filter2);
 
         recyclerView.setAdapter(adaptadorFirebaseQrRace);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,1, LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false));
+    } else
+        if (GlobalVariables.ACTIVITY_FUNCTION.equals("Persistence")){
+
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("ActivityPersistence/ActivityQrRace/");
+            AdaptadorFirebasePersistenceQrRace adaptadorFirebaseQrRace = new AdaptadorFirebasePersistenceQrRace(ObjectPersistenceRaceQr.class, R.layout.adapter_recycler_view
+                    , QrRaceHolder.class, reference, this);
+
+            recyclerView.setAdapter(adaptadorFirebaseQrRace);
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false));
+
+        }
     }
+
+
 
     }
 

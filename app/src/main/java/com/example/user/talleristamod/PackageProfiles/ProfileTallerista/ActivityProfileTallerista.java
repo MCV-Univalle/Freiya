@@ -13,7 +13,7 @@ import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalM
 import com.example.user.talleristamod.R;
 
 public class ActivityProfileTallerista extends AppCompatActivity implements View.OnClickListener {
-    CardView cardViewSettings, cardViewActivities, cardViewActivateActivities;
+    CardView cardViewSettings, cardViewActivities, cardViewActivateActivities, cardViewPersistenceActivities;
 
 
     @Override
@@ -25,10 +25,13 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
         cardViewSettings = findViewById(R.id.cdSettings);
         cardViewActivities = findViewById(R.id.cdActivities);
         cardViewActivateActivities = findViewById(R.id.cdAtivateActivities);
+        cardViewPersistenceActivities = findViewById(R.id.cdPersistenceActivities);
 
         cardViewSettings.setOnClickListener(this);
         cardViewActivities.setOnClickListener(this);
         cardViewActivateActivities.setOnClickListener(this);
+        cardViewPersistenceActivities.setOnClickListener(this);
+
     }
 
     @Override
@@ -53,6 +56,13 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
                Intent intentC = new Intent(this, ActivityActivitiesFreiya.class);
                startActivity(intentC);
                GlobalVariables.ACTIVITY_FUNCTION = "Activate";
+               break;
+
+           case R.id.cdPersistenceActivities:
+
+               Intent intentB = new Intent(this, ActivityActivitiesFreiya.class);
+               startActivity(intentB);
+               GlobalVariables.ACTIVITY_FUNCTION = "Persistence";
                break;
        }
     }

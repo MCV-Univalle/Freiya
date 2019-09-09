@@ -36,6 +36,8 @@ public class AdaptadorFirebaseQrRace extends FirebaseRecyclerAdapter<ObjectActiv
     protected void populateViewHolder(final QrRaceHolder viewHolder, final ObjectActivityQrRace model, final int position) {
         dataBaseSets = new DatabaseRaceQr(context);
 
+        //getRef(position).getKey();
+
         viewHolder.nombre.setText(model.getNombre());
         viewHolder.cardView.setOnClickListener(new View.OnClickListener()
         {
