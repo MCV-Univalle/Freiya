@@ -35,7 +35,7 @@ public class DatabaseProfiles {
                 ArrayList<String> objectActivitys = new ArrayList<>();
                 objectActivitys.clear();
                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
-                    String estudianteId = (String) objectQuestionsSnapShot.getValue();
+                    String estudianteId = (String) objectQuestionsSnapShot.child("name").getValue();
                     objectActivitys.add(estudianteId);
                 }
 

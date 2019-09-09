@@ -2,8 +2,6 @@ package com.example.user.talleristamod.PackageProfiles;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameChallenge.DatabaseChallenge;
@@ -23,9 +19,7 @@ import com.example.user.talleristamod.PackageGamePreguntas.ActivitySelectImg;
 import com.example.user.talleristamod.PackageGamePreguntas.DatabaseImaginaries;
 import com.example.user.talleristamod.PackageGameRaceQr.ActivitySelectRaceQr;
 import com.example.user.talleristamod.PackageGameRaceQr.DatabaseRaceQr;
-import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
-import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.user.talleristamod.GlobalVariables.GlobalVariables.USER_TYPE;
 
@@ -66,12 +60,18 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
 
         if(USER_TYPE.equals("Tallerista")){
 
-            if( GlobalVariables.ACTIVITY_FUNCTION == "Create"){
+            if(GlobalVariables.ACTIVITY_FUNCTION.equals("Create")){
                 bCreateImg.setText("Crear");
                 bCreateReto.setText("Crear");
                 bCreateRace.setText("Crear");
             }
-            if( GlobalVariables.ACTIVITY_FUNCTION == "Activate"){
+            if(GlobalVariables.ACTIVITY_FUNCTION.equals("Activate")){
+                bCreateImg.setText("Activar");
+                bCreateReto.setText("Activar");
+                bCreateRace.setText("Activar");
+            }
+
+            if(GlobalVariables.ACTIVITY_FUNCTION.equals("Persistence")){
                 bCreateImg.setText("Ver");
                 bCreateReto.setText("Ver");
                 bCreateRace.setText("Ver");
@@ -88,14 +88,18 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
 
                 if(USER_TYPE.equals("Tallerista")){
 
-                    if( GlobalVariables.ACTIVITY_FUNCTION == "Create"){
+                    if(GlobalVariables.ACTIVITY_FUNCTION.equals("Create")){
                         Intent intent = new Intent(this, ActivityDescriptionActivities.class);
                         startActivity(intent);
                     }
-                    if( GlobalVariables.ACTIVITY_FUNCTION == "Activate"){
+                    if(GlobalVariables.ACTIVITY_FUNCTION.equals("Activate")){
                         Intent intentR = new Intent(this, ActivitySelectRaceQr.class);
                         startActivity(intentR);
+                    }
 
+                    if(GlobalVariables.ACTIVITY_FUNCTION.equals("Persistence")){
+                        Intent intentR = new Intent(this, ActivitySelectRaceQr.class);
+                        startActivity(intentR);
                     }
                 }
 

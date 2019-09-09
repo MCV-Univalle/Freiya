@@ -31,7 +31,6 @@ class ActivityFollowCodeQr : AppCompatActivity() {
         if (parametros != null) {
             idQuestion = parametros.getStringArrayList("idQuestion")
             classActivityId = parametros.getInt("activityClassId")
-
         }
 
         mResultTextView = findViewById(R.id.result_textview)
