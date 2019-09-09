@@ -1,92 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
     tools:context=".PackageGameChallenge.TalleristaProfile.ActivityCreateChallenge">
-    <include
-        android:id="@+id/toolbar_top_level"
-        layout="@layout/toolbar"/>
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:text="2. Escribe el reto que deseas crear:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextChallengeName" />
+        android:background="@drawable/fondo"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editTextChallengeDescription"
-        android:layout_width="266dp"
-        android:layout_height="204dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/roundededittext"
-        android:ems="10"
-        android:gravity="start"
-        android:hint="Escribe el reto aqui:"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreateChallenge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.092" />
+        <include
+            android:id="@+id/toolbar_top_level"
+            layout="@layout/toolbar" />
 
-    <Button
-        android:id="@+id/buttonCreateChallenge"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="153dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="64dp"
-        android:background="@drawable/roundedbutton"
-        android:backgroundTint="#00BCD4"
-        android:text="Crear Reto"
-        android:textColor="#FDFDFD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="8dp"
+            android:text="1.Escribe el nombre del reto:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_top_level" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
-        android:text="1.Escribe el nombre del reto:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_top_level" />
+        <EditText
+            android:id="@+id/editTextChallengeName"
+            android:layout_width="265dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/roundededittext"
+            android:ems="10"
+            android:hint="Nombre Reto:"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <EditText
-        android:id="@+id/editTextChallengeName"
-        android:layout_width="265dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/roundededittext"
-        android:ems="10"
-        android:hint="Nombre Reto:"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="2. Escribe el reto que deseas crear:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextChallengeName" />
+
+        <EditText
+            android:id="@+id/editTextChallengeDescription"
+            android:layout_width="266dp"
+            android:layout_height="204dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/roundededittext"
+            android:ems="10"
+            android:gravity="start"
+            android:hint="Escribe el reto aqui:"
+            android:inputType="textMultiLine"
+            app:layout_constraintBottom_toTopOf="@+id/buttonCreateChallenge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.092" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="3. Selecciona el tipo de solución del reto:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextChallengeName" />
+
+        <RadioButton
+            android:id="@+id/radioButtonAudio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Audio" />
+
+        <RadioButton
+            android:id="@+id/radioButtonImagen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Imagen" />
+
+        <Button
+            android:id="@+id/buttonCreateChallenge"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="153dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/roundedbutton"
+            android:backgroundTint="#00BCD4"
+            android:text="Crear Reto"
+            android:textColor="#FDFDFD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+</ScrollView>

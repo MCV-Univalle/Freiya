@@ -16,7 +16,6 @@ public class GlobalVariables {
     public static String IS_COPY="";
     public static ArrayList<Integer> RACEQR_ERRORS = new ArrayList<>();
     public static Integer RACEQR_ERRORS_COUNTER = 0;
-
-
+    public static String TIPE_SOLUTION = "";
 
 }

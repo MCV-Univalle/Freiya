@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameChallenge.DatabaseChallenge;
 import com.example.user.talleristamod.PackageGameChallenge.ObjectActivityChallenge;
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
@@ -21,6 +23,7 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
 {
 
     private EditText editTextChallengeName, editTextChallengeDescription;
+    private RadioButton rbAudio, rbImagen;
     private Button buttonCreateChallenge;
 
     @Override
@@ -35,6 +38,8 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
         editTextChallengeName = (EditText) findViewById(R.id.editTextChallengeName);
         editTextChallengeDescription = (EditText) findViewById(R.id.editTextChallengeDescription);
         buttonCreateChallenge = (Button) findViewById(R.id.buttonCreateChallenge);
+        rbAudio = (RadioButton) findViewById(R.id.radioButtonAudio);
+        rbImagen = (RadioButton) findViewById(R.id.radioButtonImagen);
         buttonCreateChallenge.setOnClickListener(this);
 
     }
@@ -43,11 +48,19 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-                case R.id.buttonCreateChallenge:
+            case R.id.buttonCreateChallenge:
 
-                    if (validations()) {
-                        final String challengeName = editTextChallengeName.getText().toString();
-                        final String challengeDescription = editTextChallengeDescription.getText().toString();
+                if (validations()) {
+                    final String challengeName = editTextChallengeName.getText().toString();
+                    final String challengeDescription = editTextChallengeDescription.getText().toString();
+                    if (rbAudio.isChecked()) {
+                        GlobalVariables.TIPE_SOLUTION= "AUDIO";
+                    }
+                    else if(rbImagen.isChecked())
+                    {
+
+                        GlobalVariables.TIPE_SOLUTION= "IMAGEN";
+                    }
 
 
                     new AlertDialog.Builder(this)
@@ -60,7 +73,7 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
                                     DatabaseChallenge dataBaseSets = new DatabaseChallenge(getApplicationContext());
                                     dataBaseSets.createChallenge(objectActivityChallenge);
 
-                                    Toast.makeText(getApplicationContext(), "Has creado el desafio "+challengeName, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Has creado el desafio " + challengeName, Toast.LENGTH_LONG).show();
 
                                     Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -74,11 +87,11 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
                                     dialog.cancel();
                                 }
                             }).show();
-            }
+                }
 
-                    break;
-            }
+                break;
 
+        }
     }
 
     private boolean validations() {
