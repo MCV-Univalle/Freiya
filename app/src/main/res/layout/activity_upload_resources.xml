@@ -41,32 +41,15 @@
         android:textColor="@color/buttonTextColor" />
 
     <Button
-        android:id="@+id/buttonUploadVideo"
-        android:layout_width="320dp"
-        android:layout_height="75dp"
+        android:id="@+id/buttonUploadAudio"
+        android:layout_width="306dp"
+        android:layout_height="64dp"
         android:layout_below="@+id/buttonUploadImage"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="43dp"
-        android:background="@drawable/roundedbutton"
-        android:backgroundTint="#8AA9AF"
-        android:drawableLeft="@drawable/videofile"
-        android:enabled="false"
-        android:text="Enviar Video"
-        android:textColor="@color/buttonTextColor" />
-
-    <Button
-        android:id="@+id/buttonUploadAudio"
-        android:layout_width="320dp"
-        android:layout_height="75dp"
-        android:layout_below="@+id/buttonUploadVideo"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="43dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="45dp"
         android:background="@drawable/roundedbutton"
         android:backgroundTint="#00BCD4"
         android:drawableLeft="@drawable/microphone"

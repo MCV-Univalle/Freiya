@@ -14,6 +14,6 @@ public class GlobalVariables {
     public static String IDRESOURCE = "";
     public static String JOIN_CODE;
     public static String IS_COPY="";
-
+    public static String TIPE_SOLUTION = "";
 
 }

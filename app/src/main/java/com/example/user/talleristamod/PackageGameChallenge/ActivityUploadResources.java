@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -30,7 +31,7 @@ import java.io.ByteArrayOutputStream;
 
 public class ActivityUploadResources extends AppCompatActivity {
 
-    private Button BtnUploadImage, BtnUploadVideo, BtnUploadAudio, BtnUploadCameraImage;
+    private Button BtnUploadImage, BtnUploadAudio, BtnUploadCameraImage;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 0;
     private final int PICK_VIDEO_REQUEST = 71;
@@ -50,59 +51,51 @@ public class ActivityUploadResources extends AppCompatActivity {
         //Initializar Variables
         BtnUploadCameraImage = (Button) findViewById(R.id.buttonUploadCameraImage);
         BtnUploadImage = (Button) findViewById(R.id.buttonUploadImage);
-        BtnUploadVideo = (Button) findViewById(R.id.buttonUploadVideo);
-        BtnUploadVideo.setEnabled(false);
         BtnUploadAudio = (Button) findViewById(R.id.buttonUploadAudio);
 
-        BtnUploadCameraImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
+        if(GlobalVariables.TIPE_SOLUTION.equalsIgnoreCase("AUDIO"))
+        {
+            BtnUploadCameraImage.setTextColor(Color.parseColor("#757575"));
+            BtnUploadImage.setTextColor(Color.parseColor("#757575"));
 
+            BtnUploadAudio.setOnClickListener(new View.OnClickListener()
             {
-
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null)
+                @Override
+                public void onClick(View v)
                 {
-                    startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
+                    Intent intent = new Intent();
+                    intent.setType("audio/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Selecciona un Audio"), PICK_AUDIO_REQUEST);
                 }
-            }
-        });
+            });
+        }
+        else {
+            BtnUploadAudio.setTextColor(Color.parseColor("#757575"));
+            BtnUploadCameraImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        BtnUploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                //Toast.makeText(getApplicationContext(), " = " + GlobalVariables.SELECTED_CHALLENGE, Toast.LENGTH_SHORT).show();
-                startActivityForResult(Intent.createChooser(intent, "Selecciona una Imagen"), PICK_IMAGE_REQUEST);
-            }
-        });
+                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
+                    }
+                }
+            });
 
-        BtnUploadAudio.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent();
-                intent.setType("audio/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Selecciona un Audio"), PICK_AUDIO_REQUEST);
-            }
-        });
+            BtnUploadImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    //Toast.makeText(getApplicationContext(), " = " + GlobalVariables.SELECTED_CHALLENGE, Toast.LENGTH_SHORT).show();
+                    startActivityForResult(Intent.createChooser(intent, "Selecciona una Imagen"), PICK_IMAGE_REQUEST);
+                }
+            });
 
-        BtnUploadVideo.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent();
-                intent.setType("video/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Selecciona un video"), PICK_VIDEO_REQUEST);
-            }
-        });
+        }
+
 
     }
 

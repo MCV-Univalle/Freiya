@@ -2,33 +2,27 @@ package com.example.user.talleristamod.PackageGameChallenge.TalleristaProfile;
 
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
-import com.example.user.talleristamod.PackageGameRaceQr.ActivityCreateRace;
 import com.example.user.talleristamod.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-
 import java.io.IOException;
-import java.net.URL;
 
 public class ActivityShowResourses extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnPreparedListener{
 
