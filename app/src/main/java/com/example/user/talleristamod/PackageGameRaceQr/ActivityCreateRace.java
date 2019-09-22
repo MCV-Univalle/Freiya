@@ -152,7 +152,8 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         switch (v.getId())
         {
             //Botones TalleristaActivityLab -----------------------------------------
