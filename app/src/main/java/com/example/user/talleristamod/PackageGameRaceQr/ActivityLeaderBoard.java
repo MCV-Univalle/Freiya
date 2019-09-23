@@ -129,7 +129,7 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                                 DataSnapshot dataSnapshot1 = dataSnapshot.child("LeaderBoard");
                                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot1.getChildren())
                                 {
-                                    Toast.makeText(getApplicationContext(), objectQuestionsSnapShot.getKey()+"",Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getApplicationContext(), objectQuestionsSnapShot.getKey()+"",Toast.LENGTH_SHORT).show();
                                     ObjectLeaderBoardRaceQr objectLeaderBoardRaceQr = objectQuestionsSnapShot.getValue(ObjectLeaderBoardRaceQr.class);
                                     listObjectLeaderBoard.add(objectLeaderBoardRaceQr);
 

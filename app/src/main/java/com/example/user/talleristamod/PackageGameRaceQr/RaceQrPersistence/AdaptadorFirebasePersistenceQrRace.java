@@ -45,7 +45,16 @@ public class AdaptadorFirebasePersistenceQrRace extends FirebaseRecyclerAdapter<
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int questionsSize = model.idQuestions.size();
+
+                final ArrayList<String> leaderBoard = new ArrayList<>();
+                for (int i = 0; i < model.getObjectPersistenceRaceQrs().size(); i++)
+                    {
+                        leaderBoard.add(model.getObjectPersistenceRaceQrs().get(i).getName());
+                        /*for (int j = 0; j < model.getObjectPersistenceRaceQrs().get(i).getAnswIncorrect().size(); j++)
+                        {
+
+                        }*/
+                    }
 
                 final DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Question");
                 databaseQuestion.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -68,6 +77,7 @@ public class AdaptadorFirebasePersistenceQrRace extends FirebaseRecyclerAdapter<
 
                         Intent intent = new Intent(context, ActivityDetailsPersistenceRace.class);
                         intent.putStringArrayListExtra("questions", questionsQ);
+                        intent.putStringArrayListExtra("leaderboard", leaderBoard);
                         intent.putExtra("name",model.getNombre());
                         intent.putExtra("date",model.getFecha());
                         intent.putExtra("key",getRef(position).getKey());
