@@ -31,6 +31,28 @@ public class DatabaseRaceQr {
         this.context = context;
     }
 
+
+    /*public void addStudentPoints (final int recivedPoints){
+        final FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
+        final DatabaseReference databaseEstudiantePoints = FirebaseDatabase.getInstance().getReference("Estudiante/"+user+"/Puntaje");
+
+
+        databaseEstudiantePoints.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                 int totalPoints = (int) dataSnapshot.getValue();
+                totalPoints += recivedPoints;
+                databaseEstudiantePoints.setValue(totalPoints);
+                databaseEstudiantePoints.removeEventListener(this);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }*/
+
     public void signalFinishActivity (){
 
         DatabaseReference databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY+"/stateA");

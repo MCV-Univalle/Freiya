@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameRaceQr.ActivityFollowCodeQr;
 import com.example.user.talleristamod.PackageGameRaceQr.DatabaseRaceQr;
+import com.example.user.talleristamod.PackageGameRaceQr.RaceQrEconomy.ActivityQrRaceEarnedPoints;
 import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.ObjectLeaderBoardRaceQr;
 import com.example.user.talleristamod.R;
 import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
@@ -163,10 +164,13 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
         GlobalVariables.RACEQR_ERRORS_COUNTER = 0;
 
 
-        DatabaseRaceQr dataBaseSets = new DatabaseRaceQr(this);
-        dataBaseSets.oila();
+        /*DatabaseRaceQr dataBaseSets = new DatabaseRaceQr(this);
+        dataBaseSets.oila();*/
 
-        new AlertDialog.Builder(this)
+        Intent intent = new Intent(getApplicationContext(), ActivityQrRaceEarnedPoints.class);
+        startActivity(intent);
+
+        /*new AlertDialog.Builder(this)
                 .setTitle("Respuesta Correcta!")
                 .setMessage("Felicitaciones, Llegaste al final!")
                 .setIcon(R.drawable.robotcontinuar)
@@ -177,7 +181,7 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
                         startActivity(intent);
                         finish();
                     }
-                }).show();
+                }).show();*/
     }
 
 
