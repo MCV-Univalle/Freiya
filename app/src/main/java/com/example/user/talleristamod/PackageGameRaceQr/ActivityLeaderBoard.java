@@ -1,5 +1,4 @@
 package com.example.user.talleristamod.PackageGameRaceQr;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -42,14 +41,14 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
 
-        textViewJoinCode = (TextView) findViewById(R.id.textViewJoinCodeQr);
-        tvTitleParticipantes = (TextView) findViewById(R.id.textViewPlayers);
-        tvTitleLeader = (TextView) findViewById(R.id.textViewPlayers2);
+        textViewJoinCode = findViewById(R.id.textViewJoinCodeQr);
+        tvTitleParticipantes = findViewById(R.id.textViewPlayers);
+        tvTitleLeader = findViewById(R.id.textViewPlayers2);
         textViewJoinCode.setText(GlobalVariables.JOIN_CODE);
         tablayout = findViewById(R.id.tabLayout);
-        listViewLeaderBoard = (ListView) findViewById(R.id.listViewBoardRace);
-        listViewPlayers = (ListView) findViewById(R.id.listViewPlayersRace);
-        buttonFinishQr = (Button) findViewById(R.id.buttonFinishQr);
+        listViewLeaderBoard = findViewById(R.id.listViewBoardRace);
+        listViewPlayers = findViewById(R.id.listViewPlayersRace);
+        buttonFinishQr = findViewById(R.id.buttonFinishQr);
         buttonFinishQr.setOnClickListener(this);
 
         dataBaseSets = new DatabaseProfiles(this);
@@ -123,8 +122,8 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 String name = (String) dataSnapshot.child("nombre").getValue();
-                                List<String> listquestions = (List<String>) dataSnapshot.child("idQuestions").getValue();
-                                ArrayList<ObjectLeaderBoardRaceQr> listObjectLeaderBoard = new ArrayList<>();
+                                List<String> listquestions = (ArrayList<String>) dataSnapshot.child("idQuestions").getValue();
+                                List<ObjectLeaderBoardRaceQr> listObjectLeaderBoard = new ArrayList<>();
 
                                 DataSnapshot dataSnapshot1 = dataSnapshot.child("LeaderBoard");
                                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot1.getChildren())

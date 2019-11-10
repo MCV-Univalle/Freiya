@@ -166,8 +166,6 @@ public class DatabaseRaceQr {
         intent.putStringArrayListExtra("idQuestion", idQuestion);
         intent.putExtra("activityClassId", 1);
         context.startActivity(intent);
-
-
     }
 
     public void obtenerIdQrRace(final String selectedActivity)
