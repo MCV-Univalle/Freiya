@@ -8,13 +8,13 @@ import java.util.List;
 
 public class ObjectPersistenceRaceQr {
     String nombre, fecha;
-    ArrayList<ObjectLeaderBoardRaceQr> objectPersistenceRaceQrs;
+    List<ObjectLeaderBoardRaceQr> objectPersistenceRaceQrs;
     List<String> idQuestions;
 
     public ObjectPersistenceRaceQr() {
     }
 
-    public ObjectPersistenceRaceQr(String nombre, String fecha, ArrayList<ObjectLeaderBoardRaceQr> objectPersistenceRaceQrs, List<String> idQuestions) {
+    public ObjectPersistenceRaceQr(String nombre, String fecha, List<ObjectLeaderBoardRaceQr> objectPersistenceRaceQrs, List<String> idQuestions) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.objectPersistenceRaceQrs = objectPersistenceRaceQrs;
@@ -45,7 +45,7 @@ public class ObjectPersistenceRaceQr {
         this.fecha = fecha;
     }
 
-    public ArrayList<ObjectLeaderBoardRaceQr> getObjectPersistenceRaceQrs() {
+    public List<ObjectLeaderBoardRaceQr> getObjectPersistenceRaceQrs() {
         return objectPersistenceRaceQrs;
     }
 
