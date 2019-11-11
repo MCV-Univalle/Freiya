@@ -41,6 +41,7 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
     private TextView textViewTitle, textViewSteps;
     private ArrayList<String> selected;
     TabLayout tabLayoutStepIP;
+    DatabaseGameCuatro databaseGameCuatro;
     DatabaseRaceQr dataBaseSets;
 
     @Override
@@ -49,7 +50,7 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_inter_play);
         InitialConfig();
-        databaseQuestion = FirebaseDatabase.getInstance().getReference("Question");
+        databaseQuestion = FirebaseDatabase.getInstance().getReference("QuestionGameCuatro");
     }
 
     private void InitialConfig()
@@ -133,14 +134,16 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<String> objectQuestions = new ArrayList<>();
                 objectQuestions.clear();
-                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
-                    ObjectQuestion question = objectQuestionsSnapShot.getValue(ObjectQuestion.class);
+                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren())
+                {
+                    ObjectQuestionInterPlay question = objectQuestionsSnapShot.getValue(ObjectQuestionInterPlay.class);
 
                     objectQuestions.add(question.pregunta);
 
                 }
 
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(ActivityCreateInterPlay.this, R.layout.adapter_list_view_rows, R.id.checkListViewAdapter, objectQuestions);
+                ArrayAdapter<String> arrayAdapter;
+                arrayAdapter = new ArrayAdapter<>(ActivityCreateInterPlay.this, R.layout.adapter_list_view_rows, R.id.checkListViewAdapter, objectQuestions);
 
                 listViewQuestionsIP.setAdapter(arrayAdapter);
             }
@@ -163,7 +166,7 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
                 .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dataBaseSets.ObtainRace(selected, name);
+                        databaseGameCuatro.CreateGameInterPlay(selected, name);
                         Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
@@ -180,13 +183,16 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
 
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         switch (v.getId())
         {
-            case R.id.buttonAddQuestionLab:
+            case R.id.buttonAddQuestionIP:
+                Intent intent = new Intent(this, ActivityCreateQuestionIP.class);
+                startActivity(intent);
+                break;
 
-
-            case R.id.buttonCreateActivityLab:
+            case R.id.buttonCreateActivityIP:
 
                 if (tabLayoutStepIP.getSelectedTabPosition() != 1)
                 {
@@ -202,6 +208,7 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
 
     public void createActivityInterplay()
     {
+        databaseGameCuatro = new DatabaseGameCuatro(getApplicationContext());
         dataBaseSets = new DatabaseRaceQr(getApplicationContext());
         selected = dataBaseSets.SelectedItems(listViewQuestionsIP);
 
@@ -216,7 +223,7 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
                 }
             } else{
                 tabLayoutStepIP.getTabAt(1).select();
-                Toast.makeText(this,"Debes nombrar la carrera",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Debes nombrar la actividad",Toast.LENGTH_SHORT).show();
             }
         }
         else  {

@@ -18,6 +18,7 @@ public class ObjectActivityQrRace {
     public String creator;
     public String copy;
 
+
     public ObjectActivityQrRace() {
     }
 

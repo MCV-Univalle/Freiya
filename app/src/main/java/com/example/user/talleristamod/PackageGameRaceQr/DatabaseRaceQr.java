@@ -108,6 +108,7 @@ public class DatabaseRaceQr {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
+
                         ObjectQuestion question = issue.getValue(ObjectQuestion.class);
                         question.setId(issue.getKey());
 
