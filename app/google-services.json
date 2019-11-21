@@ -1,39 +1,45 @@
 {
   "project_info": {
-    "project_number": "490450477159",
-    "firebase_url": "https://freiyaproject-65b0b.firebaseio.com",
-    "project_id": "freiyaproject-65b0b",
-    "storage_bucket": "freiyaproject-65b0b.appspot.com"
+    "project_number": "623851621405",
+    "firebase_url": "https://freiya.firebaseio.com",
+    "project_id": "freiya",
+    "storage_bucket": "freiya.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:490450477159:android:fc611f3ccb165a72",
+        "mobilesdk_app_id": "1:623851621405:android:b8093c3ccfd00574fa4af4",
         "android_client_info": {
           "package_name": "com.example.user.talleristamod"
         }
       },
       "oauth_client": [
         {
-          "client_id": "490450477159-rare4ka2ieoug6nuleeiif5cff0d4gcj.apps.googleusercontent.com",
+          "client_id": "623851621405-7opj3rncaph971rd3gfuthk33b3eiknr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.talleristamod",
+            "certificate_hash": "f9537c2d61ecf797cec4cf959a90eac27ef66573"
+          }
+        },
+        {
+          "client_id": "623851621405-jb7rtrbvskdjhoji329rq1l2bajdjmbj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBR9Z41wzLRQ55UgDggysqv0SEbqMhBafw"
+          "current_key": "AIzaSyA2hTaApFOQLQNlbYgmXX-tUIqxEz6ocUg"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "623851621405-jb7rtrbvskdjhoji329rq1l2bajdjmbj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
