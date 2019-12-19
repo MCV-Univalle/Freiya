@@ -193,7 +193,6 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
                 break;
 
             case R.id.buttonCreateActivityIP:
-
                 if (tabLayoutStepIP.getSelectedTabPosition() != 1)
                 {
                     tabLayoutStepIP.getTabAt(tabLayoutStepIP.getSelectedTabPosition() + 1).select();

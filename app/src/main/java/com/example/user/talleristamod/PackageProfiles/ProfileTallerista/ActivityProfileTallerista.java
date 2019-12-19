@@ -5,11 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
-import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
 import com.example.user.talleristamod.R;
 
 public class ActivityProfileTallerista extends AppCompatActivity implements View.OnClickListener {
@@ -22,7 +20,7 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
         setContentView(R.layout.activity_profile_tallerista);
 
 
-        cardViewSettings = findViewById(R.id.cdSettings);
+        cardViewSettings = findViewById(R.id.cdBadges);
         cardViewActivities = findViewById(R.id.cdActivities);
         cardViewActivateActivities = findViewById(R.id.cdAtivateActivities);
         cardViewPersistenceActivities = findViewById(R.id.cdPersistenceActivities);
@@ -39,10 +37,10 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
     {
        switch (view.getId())
        {
-           case R.id.cdSettings:
-               Intent intentA = new Intent(this, ActivitySettingsTallerista.class);
+           case R.id.cdBadges:
+               Intent intentA = new Intent(this, ActivityGiveBadges.class);
                startActivity(intentA);
-               GlobalVariables.ACTIVITY_FUNCTION = "Settings";
+               GlobalVariables.ACTIVITY_FUNCTION = "Badges";
                break;
 
            case R.id.cdActivities:

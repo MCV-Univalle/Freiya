@@ -44,6 +44,7 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
         buttonSignalPlay.setOnClickListener(this);
         dataBaseSets = new DatabaseImaginaries(this);
         showStudents();
+
         }
 
     public void showStudents(){
