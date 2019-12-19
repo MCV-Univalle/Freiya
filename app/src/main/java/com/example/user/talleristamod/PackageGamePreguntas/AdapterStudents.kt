@@ -1,11 +1,18 @@
 package com.example.user.talleristamod.PackageGamePreguntas
 
+import android.content.Intent
+import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import com.example.user.talleristamod.GlobalVariables.GlobalVariables
+import com.example.user.talleristamod.PackageGameRaceQr.ActivityFollowCodeQr
+import com.example.user.talleristamod.PackageGameRaceQr.BarcodeCaptureActivity
+import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivitySelectBadge
 import com.example.user.talleristamod.R
 import java.util.ArrayList
 
@@ -24,22 +31,30 @@ class AdapterStudents (var list: ArrayList<AdapterStudentsClass>): RecyclerView.
         holder.binItems(list[position])
     }
 
-    //var databaseImaginaries: DatabaseImaginaries = DatabaseImaginaries(context)
-
     class ViewHolder(view:View):RecyclerView.ViewHolder(view){
 
         fun binItems(data:AdapterStudentsClass){
-            val name:TextView = itemView.findViewById(R.id.tvStudentNameHolder)
+            if (GlobalVariables.ACTIVITY_FUNCTION === "Badges") {
 
-            name.text = data.name
+                val name:TextView = itemView.findViewById(R.id.tvStudentNameHolder)
+                name.text = data.name
+                val buttton: Button = itemView.findViewById(R.id.buttonSelectStudent)
+                buttton.setOnClickListener(View.OnClickListener {
+                    val intent = Intent(itemView.context, ActivitySelectBadge::class.java)
+                    intent.putExtra("idStudent", data.id)
+                    itemView.context.startActivity(intent)
+                })
 
-            val buttton: Button = itemView.findViewById(R.id.buttonSelectStudent)
+            }else {
 
-            buttton.setOnClickListener(View.OnClickListener {
+                val name:TextView = itemView.findViewById(R.id.tvStudentNameHolder)
+                name.text = data.name
+                val buttton: Button = itemView.findViewById(R.id.buttonSelectStudent)
+                buttton.setOnClickListener(View.OnClickListener {
                 val databaseImaginaries = DatabaseImaginaries(itemView.context)
                 databaseImaginaries.selectIndividualStudent(data.id)
 
-            })
+            })}
         }
     }
 }
