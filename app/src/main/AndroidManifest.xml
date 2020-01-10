@@ -39,7 +39,7 @@
             android:name=".PackageGameChallenge.ActivityReceiveChallenge"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PackageProfiles.ProfileEstudiante.Activity_Profille"
+            android:name=".PackageProfiles.ProfileEstudiante.ActivityPrincipalProfile"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PackageProfiles.ProfileTallerista.ActivitySettingsTallerista"

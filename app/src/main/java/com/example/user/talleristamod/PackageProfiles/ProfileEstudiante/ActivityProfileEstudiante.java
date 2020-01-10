@@ -21,7 +21,7 @@ public class ActivityProfileEstudiante extends AppCompatActivity implements Card
 
     CircleImageView imageViewProfilePhoto;
     TextView textViewNameProfile;
-    CardView cardViewActivities;
+    CardView cardViewActivities, cardViewProfile;
     LinearLayout profile;
 
     @Override
@@ -36,7 +36,10 @@ public class ActivityProfileEstudiante extends AppCompatActivity implements Card
         imageViewProfilePhoto = (CircleImageView) findViewById(R.id.profileEstudianteimage);
         Picasso.with(this).load(uriPhotoUser).resize(50, 50).into(imageViewProfilePhoto);
         cardViewActivities = findViewById(R.id.cdActivities);
+        cardViewProfile = findViewById(R.id.cdProfile);
+        cardViewProfile.setOnClickListener(this);
         cardViewActivities.setOnClickListener(this);
+
 
 
         profile = findViewById(R.id.layoutStudents);
@@ -55,9 +58,14 @@ public class ActivityProfileEstudiante extends AppCompatActivity implements Card
                 break;
 
             case R.id.layoutStudents:
-                Intent intent = new Intent(v.getContext(), Activity_Profille.class);
+                Intent intent = new Intent(v.getContext(), ActivityPrincipalProfile.class);
                 v.getContext().startActivity(intent);
                 break;
+            case R.id.cdProfile:
+                Intent intent2 = new Intent(v.getContext(), ActivityPrincipalProfile.class);
+                v.getContext().startActivity(intent2);
+                break;
+
 
         }
     }

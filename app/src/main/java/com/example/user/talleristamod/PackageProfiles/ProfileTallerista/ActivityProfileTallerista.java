@@ -20,7 +20,7 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
         setContentView(R.layout.activity_profile_tallerista);
 
 
-        cardViewSettings = findViewById(R.id.cdBadges);
+        cardViewSettings = findViewById(R.id.cdProfile);
         cardViewActivities = findViewById(R.id.cdActivities);
         cardViewActivateActivities = findViewById(R.id.cdAtivateActivities);
         cardViewPersistenceActivities = findViewById(R.id.cdPersistenceActivities);
@@ -37,7 +37,7 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
     {
        switch (view.getId())
        {
-           case R.id.cdBadges:
+           case R.id.cdProfile:
                Intent intentA = new Intent(this, ActivityGiveBadges.class);
                startActivity(intentA);
                GlobalVariables.ACTIVITY_FUNCTION = "Badges";
