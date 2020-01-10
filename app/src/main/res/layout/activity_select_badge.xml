@@ -6,19 +6,409 @@
     android:layout_height="match_parent"
     tools:context=".PackageProfiles.ProfileTallerista.ActivitySelectBadge">
 
+
+
     <include
         android:id="@+id/toolbar_top_level"
-        layout="@layout/toolbar"/>
-
-    <Button
-        android:id="@+id/ButtonBadge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esta es una insignia"
-        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline30"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_top_level" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.345" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insignias Positivas"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/guideline31"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline30" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insignias Negativas"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/guideline32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline34" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.605" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.535" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline35"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline33"
+            app:layout_constraintTop_toTopOf="@+id/guideline31">
+
+            <ImageButton
+                android:id="@+id/buttonBadge2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                android:tint="#00FFFFFF"
+                app:srcCompat="@drawable/apps" />
+        </android.support.v7.widget.CardView>
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.305" />
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline35"
+            app:layout_constraintEnd_toStartOf="@+id/guideline33"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline31">
+
+            <ImageButton
+                android:id="@+id/buttonBadge1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:backgroundTint="@color/buttonTextColor"
+
+                app:srcCompat="@drawable/apps" />
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buen Comportamiento"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline35" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trabajo en Equipo"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toTopOf="@+id/guideline35" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.495" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respuesta Correcta"
+        app:layout_constraintBottom_toTopOf="@+id/guideline34"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline36" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Participacion"
+        app:layout_constraintBottom_toTopOf="@+id/guideline34"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toTopOf="@+id/guideline36" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline36"
+            app:layout_constraintEnd_toStartOf="@+id/guideline33"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline19">
+
+            <ImageButton
+                android:id="@+id/buttonBadge3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:backgroundTint="#00FFFFFF"
+                android:scaleType="fitCenter"
+                android:tint="#00FFFFFF"
+                app:srcCompat="@drawable/apps" />
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline36"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline33"
+            app:layout_constraintTop_toTopOf="@+id/guideline19">
+        <ImageButton
+            android:id="@+id/buttonBadge4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:tint="#00FFFFFF"
+            app:srcCompat="@drawable/apps" />
+        </android.support.v7.widget.CardView>
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.755" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.795" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.945" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mal comportamiento"
+        app:layout_constraintBottom_toTopOf="@+id/guideline38"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline37" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respuesta Errada"
+        app:layout_constraintBottom_toTopOf="@+id/guideline38"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toTopOf="@+id/guideline37" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Canson"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline39" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline33"
+        app:layout_constraintTop_toTopOf="@+id/guideline39" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline37"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline33"
+            app:layout_constraintTop_toTopOf="@+id/guideline32">
+        <ImageButton
+            android:id="@+id/buttonBadge6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:tint="#00FFFFFF"
+            app:srcCompat="@drawable/apps" />
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline37"
+            app:layout_constraintEnd_toStartOf="@+id/guideline33"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline32">
+        <ImageButton
+            android:id="@+id/buttonBadge5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:tint="#00FFFFFF"
+            app:srcCompat="@drawable/apps" />
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline39"
+            app:layout_constraintEnd_toStartOf="@+id/guideline33"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline38">
+        <ImageButton
+            android:id="@+id/buttonBadge7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:tint="#00FFFFFF"
+            app:srcCompat="@drawable/apps" />
+        </android.support.v7.widget.CardView>
+
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline39"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline33"
+            app:layout_constraintTop_toTopOf="@+id/guideline38">
+        <ImageButton
+            android:id="@+id/buttonBadge8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            android:tint="#00FFFFFF"
+            app:srcCompat="@drawable/apps" />
+        </android.support.v7.widget.CardView>
 
 
 </android.support.constraint.ConstraintLayout>
