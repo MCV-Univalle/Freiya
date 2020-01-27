@@ -33,7 +33,6 @@ public class ActivityQrRaceEarnedPoints extends AppCompatActivity {
         TextView textViewPoints = findViewById(R.id.TextViewQrPointsEarned);
         Button buttonBack = findViewById(R.id.buttonQrPointsBack);
         textViewPoints.setText(""+recivedPoints);
-        //databaseRaceQr.addStudentPoints(recivedPoints);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +53,7 @@ public class ActivityQrRaceEarnedPoints extends AppCompatActivity {
                 String value = (String) dataSnapshot.getValue();
                 Integer totalPoints = Integer.parseInt(value);
                 totalPoints += recivedPoints;
-                databaseEstudiantePoints.setValue(""+totalPoints);
+                databaseEstudiantePoints.setValue(totalPoints.toString());
                 databaseEstudiantePoints.removeEventListener(this);
             }
 
