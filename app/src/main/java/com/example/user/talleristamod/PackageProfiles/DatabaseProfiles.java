@@ -60,14 +60,36 @@ public class DatabaseProfiles {
                 ArrayList<String> objectActivitys = new ArrayList<>();
                 objectActivitys.clear();
                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
-                    //ObjectActivityQrRace activity = objectQuestionsSnapShot.getValue(ObjectActivityQrRace.class);
                     String estudianteId = (String) objectQuestionsSnapShot.getValue();
-
                     objectActivitys.add(estudianteId);
                 }
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context, R.layout.adapter_list_view_rows, R.id.checkListViewAdapter, objectActivitys);
                 listViewActivity.setAdapter(arrayAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+    }
+
+    public void listPlayersGivePoints () {
+        DatabaseReference databaseQuestion;
+        databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
+
+        databaseQuestion.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ArrayList<String> objectActivitys = new ArrayList<>();
+                objectActivitys.clear();
+                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
+                    //String estudianteId = (String) objectQuestionsSnapShot.getKey();
+                    DatabaseReference databaseStudent = FirebaseDatabase.getInstance().getReference("Estudiante/"+objectQuestionsSnapShot.getKey());
+
+                }
+
             }
 
             @Override
