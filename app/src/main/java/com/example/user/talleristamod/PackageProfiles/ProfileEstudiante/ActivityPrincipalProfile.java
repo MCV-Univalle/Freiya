@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.talleristamod.R;
@@ -17,9 +18,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ActivityPrincipalProfile extends AppCompatActivity implements View.OnClickListener {
-    public Button buttonContinuar;
     public Integer count1, count2, count3, count4, count5, count6, count7;
-    public TextView tv1,tv2, tv3, tv4, tv5, tv6, tv7, tvNameStudent;
+    public TextView tv1,tv2, tv3, tv4, tv5, tv6, tv7, tvNameStudent, tvPoints;
+    public ImageView imageViewPlayerlvl;
+    public String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
         setContentView(R.layout.activity__principal_profile);
         initialConfig();
         showBadges();
+        showLevelnPoints();
 
     }
 
@@ -39,6 +43,8 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
         count6 = 0;
         count7 = 0;
 
+        imageViewPlayerlvl = findViewById(R.id.imageViewPlayerLvl);
+        tvPoints = findViewById(R.id.textViewPoints);
         tvNameStudent = findViewById(R.id.textViewNameStudentBadges);
         tv1 = findViewById(R.id.textViewCountBadge1);
         tv2 = findViewById(R.id.textViewCountBadge2);
@@ -59,9 +65,36 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
 
     }
 
+
+    public void showLevelnPoints(){
+        final DatabaseReference databaseEstudianteLevel = FirebaseDatabase.getInstance().getReference("Estudiante/"+userId+"/Puntaje");
+        databaseEstudianteLevel.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String PointsStr = dataSnapshot.getValue().toString();
+                Integer PointsInt = Integer.parseInt(PointsStr);
+
+                tvPoints.setText(PointsStr);
+                if (PointsInt>=1000){
+                    imageViewPlayerlvl.setImageResource(R.drawable.gatodos);
+                } else if (PointsInt >=2000){
+
+                }else if (PointsInt>=3000){
+
+                }else {
+                    imageViewPlayerlvl.setImageResource(R.drawable.gatouno);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
     public void showBadges(){
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+
         tvNameStudent.setText(userName);
 
         final DatabaseReference databaseEstudianteRegister = FirebaseDatabase.getInstance().getReference("Estudiante/"+userId+"/Badges");
