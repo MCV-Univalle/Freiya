@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageProfiles.DatabaseProfiles;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DatabaseReference;
@@ -21,9 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ActivityShowImaginarie extends AppCompatActivity implements View.OnClickListener{
 
-    Button buttonSendSignal, buttonFinishImg, buttonSignalPlay;
+    Button buttonSendSignal, buttonFinishImg, buttonSignalPlay, buttonGivePointsImg;
     TextView textSelectedStudent, textCodeA;
     DatabaseImaginaries dataBaseSets;
+    DatabaseProfiles databaseProfiles;
     RecyclerView recyclerViewStudents;
 
     @Override
@@ -31,14 +33,18 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_imaginarie);
 
+        databaseProfiles = new DatabaseProfiles(this, "ActivityImaginaries");
+
         textSelectedStudent = (TextView) findViewById(R.id.textViewStudentName);
         textCodeA = (TextView) findViewById(R.id.textViewACodeImg);
         textCodeA.setText(GlobalVariables.JOIN_CODE);
 
+        buttonGivePointsImg = findViewById(R.id.buttonGivePointsImg);
         buttonSendSignal = (Button) findViewById(R.id.buttonSendSignal);
         buttonFinishImg = (Button) findViewById(R.id.buttonFinishImg);
         buttonSignalPlay = (Button) findViewById(R.id.buttonTing);
 
+        buttonGivePointsImg.setOnClickListener(this);
         buttonSendSignal.setOnClickListener(this);
         buttonFinishImg.setOnClickListener(this);
         buttonSignalPlay.setOnClickListener(this);
@@ -65,6 +71,9 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
                 break;
             case R.id.buttonTing:
                 dataBaseSets.sendSignalPlay(textSelectedStudent);
+                break;
+            case R.id.buttonGivePointsImg:
+                databaseProfiles.givePointsList();
                 break;
 
         }

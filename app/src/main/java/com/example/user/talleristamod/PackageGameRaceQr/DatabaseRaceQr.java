@@ -32,7 +32,7 @@ public class DatabaseRaceQr {
     }
 
 
-    /*public void addStudentPoints (final int recivedPoints){
+   /* public void addStudentPoints (final int recivedPoints){
         final FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference databaseEstudiantePoints = FirebaseDatabase.getInstance().getReference("Estudiante/"+user+"/Puntaje");
 

@@ -44,7 +44,7 @@ public class ActivityShowResourses extends AppCompatActivity implements View.OnC
         imageViewStop.setVisibility(View.INVISIBLE);
         imageViewAudio.setVisibility(View.INVISIBLE);
         imageViewStop.setOnClickListener(this);
-        progressDialog= new ProgressDialog(this);
+        //progressDialog= new ProgressDialog(this);
         player = new MediaPlayer();
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 

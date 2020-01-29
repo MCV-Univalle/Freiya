@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,6 +38,7 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
     TextView textViewJoinCode, tvTitleParticipantes,tvTitleLeader;
     Button buttonFinishQr, buttonGivePoints;
     TabLayout tablayout;
+
 
 
     @Override
@@ -56,7 +59,7 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
         buttonGivePoints.setOnClickListener(this);
         buttonFinishQr.setOnClickListener(this);
 
-        dataBaseSets = new DatabaseProfiles(this);
+        dataBaseSets = new DatabaseProfiles(this, "ActivityQrRace");
         tablayout = findViewById(R.id.tabLayoutLeader);
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -105,36 +108,13 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                 finishChallenge();
                 break;
             case R.id.buttonGivePointsQr:
-                finishChallenge();
+                dataBaseSets.givePointsList();
                 break;
 
         }
     }
 
-    public void givePointsList(){
-        final String[] points = { "100 ", "200", "300 ", "400", "500 "};
-        final String[] selectedItem = new String[1];
-        new AlertDialog.Builder(this)
-                .setTitle("Elige Cuantos Puntos Daras ")
-                .setSingleChoiceItems(points, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                         selectedItem[0] = Arrays.asList(points).get(i);
 
-                        Toast.makeText(ActivityLeaderBoard.this
-                                , "Se entregaron "+selectedItem[0]+" a todos los participantes"
-                                , Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.cancel();
-                    }
-                }).show();
-
-    }
 
     public void onBackPressed (){
         finishChallenge();
@@ -161,10 +141,8 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                                 DataSnapshot dataSnapshot1 = dataSnapshot.child("LeaderBoard");
                                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot1.getChildren())
                                 {
-                                    //Toast.makeText(getApplicationContext(), objectQuestionsSnapShot.getKey()+"",Toast.LENGTH_SHORT).show();
                                     ObjectLeaderBoardRaceQr objectLeaderBoardRaceQr = objectQuestionsSnapShot.getValue(ObjectLeaderBoardRaceQr.class);
                                     listObjectLeaderBoard.add(objectLeaderBoardRaceQr);
-
                                 }
 
                                 DatabaseReference database = FirebaseDatabase.getInstance().getReference("ActivityPersistence/ActivityQrRace/");

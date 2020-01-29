@@ -22,8 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 public class ActivityQrRaceEarnedPoints extends AppCompatActivity {
 
     int recivedPoints = 20;
-    DatabaseRaceQr databaseRaceQr;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +41,13 @@ public class ActivityQrRaceEarnedPoints extends AppCompatActivity {
             }
         });
 
+        givePointsSingleStudent ();
+
+    }
+
+    public void givePointsSingleStudent (){
         final String user =  FirebaseAuth.getInstance().getCurrentUser().getUid();
         final DatabaseReference databaseEstudiantePoints = FirebaseDatabase.getInstance().getReference("Estudiante/"+user+"/Puntaje");
-
 
         databaseEstudiantePoints.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -62,6 +64,5 @@ public class ActivityQrRaceEarnedPoints extends AppCompatActivity {
 
             }
         });
-
     }
 }
