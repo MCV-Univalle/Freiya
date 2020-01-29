@@ -85,6 +85,7 @@ public class TalleristaPrincipalMenu extends AppCompatActivity implements View.O
     private void checkingLogin() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         if (user != null) {
 
             DatabaseLogin dataBaseSets = new DatabaseLogin(this);

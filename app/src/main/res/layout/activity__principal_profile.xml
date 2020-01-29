@@ -414,7 +414,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline55">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewPlayerLvl"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
@@ -529,7 +529,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline50" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textViewPoints"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adjustViewBounds="true"

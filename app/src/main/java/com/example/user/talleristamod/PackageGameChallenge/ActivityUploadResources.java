@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
@@ -26,7 +27,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.ByteArrayOutputStream;
 
 public class ActivityUploadResources extends AppCompatActivity {
@@ -40,7 +40,7 @@ public class ActivityUploadResources extends AppCompatActivity {
 
     //Crear referencia a firebase storage
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    StorageReference reference = storage.getReferenceFromUrl("gs://freiyaproject-65b0b.appspot.com");
+    StorageReference reference = storage.getReferenceFromUrl("gs://freiya.appspot.com/");
 
 
     @Override
@@ -170,7 +170,7 @@ public class ActivityUploadResources extends AppCompatActivity {
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                             double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                           progressDialog.setMessage("Uploaded " + (int) progress + "%");
                         }
                     });
         } else {

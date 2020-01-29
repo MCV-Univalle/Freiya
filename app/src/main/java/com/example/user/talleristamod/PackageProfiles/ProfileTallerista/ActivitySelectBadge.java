@@ -1,5 +1,7 @@
 package com.example.user.talleristamod.PackageProfiles.ProfileTallerista;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -12,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ActivitySelectBadge extends AppCompatActivity implements View.OnClickListener {
 
-    public String idStudent;
+    public String idStudent, nameStudent;
     public ImageButton GiveMedalButton1, GiveMedalButton2,GiveMedalButton3, GiveMedalButton4, GiveMedalButton5,GiveMedalButton6,GiveMedalButton7;
 
     @Override
@@ -23,6 +25,7 @@ public class ActivitySelectBadge extends AppCompatActivity implements View.OnCli
         Bundle parametros = this.getIntent().getExtras();
         if (parametros != null) {
             idStudent = parametros.getString("idStudent");
+            nameStudent = parametros.getString("nameStudent");
 
         }
 
@@ -51,39 +54,53 @@ public class ActivitySelectBadge extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        DatabaseReference databaseEstudianteRegister = FirebaseDatabase.getInstance().getReference("Estudiante/"+idStudent+"/Badges");
+
         switch (v.getId()) {
             case R.id.buttonBadge1:
-
-                databaseEstudianteRegister.push().setValue("001");
+                confirmBadge(nameStudent, "001");
                 break;
             case R.id.buttonBadge2:
-
-                databaseEstudianteRegister.push().setValue("002");
+                confirmBadge(nameStudent, "002");
                 break;
             case R.id.buttonBadge3:
-
-                databaseEstudianteRegister.push().setValue("003");
+                confirmBadge(nameStudent, "003");
                 break;
             case R.id.buttonBadge4:
-
-                databaseEstudianteRegister.push().setValue("004");
+                confirmBadge(nameStudent, "004");
                 break;
             case R.id.buttonBadge5:
-
-                databaseEstudianteRegister.push().setValue("005");
+                confirmBadge(nameStudent, "005");
                 break;
             case R.id.buttonBadge6:
-
-                databaseEstudianteRegister.push().setValue("006");
+                confirmBadge(nameStudent, "006");
                 break;
             case R.id.buttonBadge7:
-
-                databaseEstudianteRegister.push().setValue("007");
+                confirmBadge(nameStudent, "007");
                 break;
 
 
 
         }
+    }
+
+    public void confirmBadge(final String badgeName, String studentName){
+        new AlertDialog.Builder(this)
+                .setTitle("Entregar Medalla ")
+                .setMessage("¿Estas seguro de entregar la medalla "+badgeName+"al estudiante" +studentName+"?")
+                .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DatabaseReference databaseEstudianteRegister = FirebaseDatabase.getInstance().getReference("Estudiante/"+idStudent+"/Badges");
+                        databaseEstudianteRegister.push().setValue(badgeName);
+                    }
+
+
+                }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        }).show();
+
     }
 }

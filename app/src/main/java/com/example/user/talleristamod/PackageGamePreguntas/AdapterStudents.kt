@@ -42,6 +42,7 @@ class AdapterStudents (var list: ArrayList<AdapterStudentsClass>): RecyclerView.
                 buttton.setOnClickListener(View.OnClickListener {
                     val intent = Intent(itemView.context, ActivitySelectBadge::class.java)
                     intent.putExtra("idStudent", data.id)
+                    intent.putExtra("nameStudent", data.name)
                     itemView.context.startActivity(intent)
                 })
 

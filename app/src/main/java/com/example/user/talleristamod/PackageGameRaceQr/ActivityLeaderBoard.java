@@ -2,12 +2,14 @@ package com.example.user.talleristamod.PackageGameRaceQr;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,7 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ActivityLeaderBoard extends AppCompatActivity implements View.OnClickListener {
@@ -32,8 +36,9 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
     ListView listViewLeaderBoard, listViewPlayers;
     DatabaseProfiles dataBaseSets;
     TextView textViewJoinCode, tvTitleParticipantes,tvTitleLeader;
-    Button buttonFinishQr;
+    Button buttonFinishQr, buttonGivePoints;
     TabLayout tablayout;
+
 
 
     @Override
@@ -49,9 +54,12 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
         listViewLeaderBoard = findViewById(R.id.listViewBoardRace);
         listViewPlayers = findViewById(R.id.listViewPlayersRace);
         buttonFinishQr = findViewById(R.id.buttonFinishQr);
+        buttonGivePoints = findViewById(R.id.buttonGivePointsQr);
+
+        buttonGivePoints.setOnClickListener(this);
         buttonFinishQr.setOnClickListener(this);
 
-        dataBaseSets = new DatabaseProfiles(this);
+        dataBaseSets = new DatabaseProfiles(this, "ActivityQrRace");
         tablayout = findViewById(R.id.tabLayoutLeader);
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -99,9 +107,14 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
             case R.id.buttonFinishQr:
                 finishChallenge();
                 break;
+            case R.id.buttonGivePointsQr:
+                dataBaseSets.givePointsList();
+                break;
 
         }
     }
+
+
 
     public void onBackPressed (){
         finishChallenge();
@@ -128,10 +141,8 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                                 DataSnapshot dataSnapshot1 = dataSnapshot.child("LeaderBoard");
                                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot1.getChildren())
                                 {
-                                    //Toast.makeText(getApplicationContext(), objectQuestionsSnapShot.getKey()+"",Toast.LENGTH_SHORT).show();
                                     ObjectLeaderBoardRaceQr objectLeaderBoardRaceQr = objectQuestionsSnapShot.getValue(ObjectLeaderBoardRaceQr.class);
                                     listObjectLeaderBoard.add(objectLeaderBoardRaceQr);
-
                                 }
 
                                 DatabaseReference database = FirebaseDatabase.getInstance().getReference("ActivityPersistence/ActivityQrRace/");
