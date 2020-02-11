@@ -10,11 +10,11 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline41"
+        app:layout_constraintBottom_toTopOf="@+id/guideline61"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+        app:layout_constraintStart_toStartOf="@+id/guideline41"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
         <TextView
             android:id="@+id/textViewCountBadge7"
@@ -52,13 +52,14 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline95"
             app:layout_constraintStart_toStartOf="@+id/guideline94"
             app:layout_constraintTop_toTopOf="@+id/guideline92">
+
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:backgroundTint="@color/buttonTextColor"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/apps"/>
+                app:srcCompat="@drawable/apps" />
 
         </android.support.v7.widget.CardView>
 
@@ -98,13 +99,14 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline98"
             app:layout_constraintStart_toStartOf="@+id/guideline97"
             app:layout_constraintTop_toTopOf="@+id/guideline92">
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:backgroundTint="@color/buttonTextColor"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/apps" />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@color/buttonTextColor"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/apps" />
         </android.support.v7.widget.CardView>
 
         <android.support.constraint.Guideline
@@ -133,11 +135,11 @@
         android:id="@+id/constraintLayout4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline62"
+        app:layout_constraintBottom_toTopOf="@+id/guideline61"
         app:layout_constraintEnd_toStartOf="@+id/guideline41"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+        app:layout_constraintTop_toTopOf="@+id/guideline60">
 
         <TextView
             android:id="@+id/textViewCountBadge5"
@@ -174,15 +176,15 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline84"
             app:layout_constraintEnd_toStartOf="@+id/guideline86"
             app:layout_constraintStart_toStartOf="@+id/guideline85"
-            app:layout_constraintTop_toTopOf="@+id/guideline83" >
+            app:layout_constraintTop_toTopOf="@+id/guideline83">
 
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:backgroundTint="@color/buttonTextColor"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/apps" />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@color/buttonTextColor"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/apps" />
         </android.support.v7.widget.CardView>
 
         <android.support.constraint.Guideline
@@ -220,14 +222,15 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline84"
             app:layout_constraintEnd_toStartOf="@+id/guideline89"
             app:layout_constraintStart_toStartOf="@+id/guideline88"
-            app:layout_constraintTop_toTopOf="@+id/guideline83" >
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:backgroundTint="@color/buttonTextColor"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/apps" />
+            app:layout_constraintTop_toTopOf="@+id/guideline83">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@color/buttonTextColor"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/apps" />
         </android.support.v7.widget.CardView>
 
         <android.support.constraint.Guideline
@@ -256,11 +259,11 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline61"
-        app:layout_constraintEnd_toStartOf="@+id/guideline41"
+        app:layout_constraintBottom_toTopOf="@+id/guideline60"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline60">
+        app:layout_constraintStart_toStartOf="@+id/guideline41"
+        app:layout_constraintTop_toTopOf="@+id/guideline42">
 
         <TextView
             android:id="@+id/textViewCountBadge3"
@@ -295,14 +298,15 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline72"
             app:layout_constraintEnd_toStartOf="@+id/guideline80"
             app:layout_constraintStart_toStartOf="@+id/guideline76"
-            app:layout_constraintTop_toTopOf="@+id/guideline77" >
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:backgroundTint="@color/buttonTextColor"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/apps" />
+            app:layout_constraintTop_toTopOf="@+id/guideline77">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:backgroundTint="@color/buttonTextColor"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/apps" />
         </android.support.v7.widget.CardView>
 
         <android.support.constraint.Guideline
@@ -340,7 +344,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline72"
             app:layout_constraintEnd_toStartOf="@+id/guideline74"
             app:layout_constraintStart_toStartOf="@+id/guideline73"
-            app:layout_constraintTop_toTopOf="@+id/guideline77" >
+            app:layout_constraintTop_toTopOf="@+id/guideline77">
 
             <ImageButton
                 android:layout_width="match_parent"
@@ -403,13 +407,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
-        app:layout_constraintEnd_toStartOf="@+id/guideline41"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline55">
 
@@ -484,8 +488,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline55"
-        app:layout_constraintEnd_toStartOf="@+id/guideline41"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline91"
+        app:layout_constraintStart_toStartOf="@+id/guideline62"
         app:layout_constraintTop_toTopOf="@+id/guideline40">
 
         <android.support.constraint.Guideline
@@ -570,9 +574,9 @@
             android:id="@+id/textView23"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="Lukas"
             android:gravity="center"
             android:scaleType="fitCenter"
+            android:text="Lukas"
             app:layout_constraintBottom_toTopOf="@+id/progressBar2"
             app:layout_constraintEnd_toStartOf="@+id/guideline51"
             app:layout_constraintHorizontal_bias="0.0"
@@ -641,23 +645,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5875" />
+        app:layout_constraintGuide_percent="0.8" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline61"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.725" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline62"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8625" />
+        app:layout_constraintGuide_percent="1" />
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout6"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline60"
@@ -781,6 +779,20 @@
             app:layout_constraintStart_toStartOf="@+id/guideline71"
             app:layout_constraintTop_toTopOf="@+id/guideline68" />
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline62"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline91"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
 
 
 </android.support.constraint.ConstraintLayout>

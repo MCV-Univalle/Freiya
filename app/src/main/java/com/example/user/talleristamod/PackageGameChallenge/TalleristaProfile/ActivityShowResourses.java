@@ -50,7 +50,7 @@ public class ActivityShowResourses extends AppCompatActivity implements View.OnC
 
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        reference = storage.getReferenceFromUrl("gs://freiyaproject-65b0b.appspot.com");
+        reference = storage.getReferenceFromUrl("gs://freiya.appspot.com");
         ref = reference.child(GlobalVariables.IDRESOURCE);
 
         ref.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
@@ -84,6 +84,8 @@ public class ActivityShowResourses extends AppCompatActivity implements View.OnC
 
     public void loadImageFromStorage()
     {
+
+        progressDialog = new ProgressDialog(this);
         //agregas un mensaje en el ProgressDialog
         progressDialog.setMessage("cargando");
         //muestras el ProgressDialog
