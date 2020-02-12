@@ -219,43 +219,42 @@ public class DatabaseImaginaries {
         final DatabaseReference databaseQuestion;
         databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
 
-        databaseQuestion.addValueEventListener(new ValueEventListener() {
+        databaseQuestion.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<String> listNameParticipants = new ArrayList<>();
                 ArrayList<String> listIdParticipants = new ArrayList<>();
-                listNameParticipants.clear();
                 listIdParticipants.clear();
 
                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
-                    String participantName = (String) objectQuestionsSnapShot.getValue();
                     String participantId = (String) objectQuestionsSnapShot.getKey();
-                    listNameParticipants.add(participantName);
                     listIdParticipants.add(participantId);
                 }
 
                 if(listIdParticipants.isEmpty()){
                     Toast.makeText(context, "No se han unido estudiantes", Toast.LENGTH_SHORT).show();
-                    databaseQuestion.removeEventListener(this);
                 } else{
-                    int jumpsNumber = (int)(Math.random() * listIdParticipants.size())+1;
+                    int roundsNumber = (int)(Math.random() * 4)+1;
+                    int numberParticipants = listIdParticipants.size();
+                    DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
 
-                    for (int i = 0; i < jumpsNumber ; i++ ){
-                        int selected = (int)(Math.random() * listIdParticipants.size());
-                        int sleepNumber = obtainTemporizer(Math.random());
+                    for (int a = roundsNumber; a >= 1; a--){
+                        for (int i = 0; i < numberParticipants ; i++ ) {
+                            if (a == 1) {
+                                int selected = (int) (Math.random() * listIdParticipants.size());
+                                databaseCreateImg.child("temporizador").setValue(5);
+                                databaseCreateImg.child("elegido").setValue("");
+                                databaseCreateImg.child("elegido").setValue(listIdParticipants.get(selected));
 
-                        DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
-                        databaseCreateImg.child("temporizador").setValue(sleepNumber);
-                        databaseCreateImg.child("elegido").setValue("");
-                        databaseCreateImg.child("elegido").setValue(listIdParticipants.get(selected));
-                        try {
-                            Thread.sleep(sleepNumber*1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                            } else try {
+                                Thread.sleep(a*1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                    }
+
+
 
                     }
-                    databaseQuestion.removeEventListener(this);
                 }
             }
 
@@ -265,14 +264,7 @@ public class DatabaseImaginaries {
         });
     }
 
-    public int obtainTemporizer (double number){
-        if(number < 0.3)// el 30% de las veces
-            return 1;
-        else if(number < 0.8)// el 50% de las veces
-            return 2;
-        else// el 20% restante
-            return 3;
-    }
+
 
     public void selectIndividualStudent(String idStudent){
 

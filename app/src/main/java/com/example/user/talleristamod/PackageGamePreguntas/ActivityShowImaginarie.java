@@ -109,6 +109,7 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
                         Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        finish();
 
                     }
                 })
@@ -164,4 +165,10 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
         databaseStudent.addValueEventListener(valueEventStudent);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        databaseStudent.removeEventListener(valueEventStudent);
+        databaseStateAImg.removeEventListener(valueEventListenerSelected);
+    }
 }

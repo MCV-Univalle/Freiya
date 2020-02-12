@@ -89,8 +89,8 @@ public class ActivityReceptorImaginaries extends AppCompatActivity {
 }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         databaseChosen.removeEventListener(valueEventListenerReceptor);
     }
 }
