@@ -102,9 +102,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:backgroundTint="#00FFFFFF"
                 android:scaleType="fitCenter"
-                android:tint="#00FFFFFF"
+                android:backgroundTint="@color/buttonTextColor"
                 app:srcCompat="@drawable/apps" />
         </android.support.v7.widget.CardView>
 

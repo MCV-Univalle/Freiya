@@ -176,7 +176,7 @@ public class DatabaseImaginaries {
         context.startActivity(intent);
     }
 
-    public void sendSignal(final TextView textSelectedStudent){
+    public void sendSignal(){
 
         final DatabaseReference databaseQuestion;
         databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
@@ -184,15 +184,12 @@ public class DatabaseImaginaries {
         databaseQuestion.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ArrayList<String> listNameParticipants = new ArrayList<>();
                 ArrayList<String> listIdParticipants = new ArrayList<>();
-                listNameParticipants.clear();
+
                 listIdParticipants.clear();
 
                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
-                    String participantName = (String) objectQuestionsSnapShot.getValue();
                     String participantId = (String) objectQuestionsSnapShot.getKey();
-                    listNameParticipants.add(participantName);
                     listIdParticipants.add(participantId);
                 }
 
@@ -201,9 +198,7 @@ public class DatabaseImaginaries {
 
                 } else{
 
-                    int numero = (int) (Math.random() * listNameParticipants.size());
-
-                    textSelectedStudent.setText(listNameParticipants.get(numero));
+                    int numero = (int) (Math.random() * listIdParticipants.size());
 
                     DatabaseReference databaseCreateImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
                     databaseCreateImg.child("temporizador").setValue(4);
@@ -219,7 +214,7 @@ public class DatabaseImaginaries {
         });
     }
 
-    public void sendSignalPlay(final TextView textSelectedStudent){
+    public void sendSignalPlay(){
 
         final DatabaseReference databaseQuestion;
         databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
@@ -253,7 +248,6 @@ public class DatabaseImaginaries {
                         databaseCreateImg.child("temporizador").setValue(sleepNumber);
                         databaseCreateImg.child("elegido").setValue("");
                         databaseCreateImg.child("elegido").setValue(listIdParticipants.get(selected));
-                        textSelectedStudent.setText(listNameParticipants.get(selected));
                         try {
                             Thread.sleep(sleepNumber*1000);
                         } catch (InterruptedException e) {
@@ -278,51 +272,6 @@ public class DatabaseImaginaries {
             return 2;
         else// el 20% restante
             return 3;
-    }
-
-    public void receptorSignal(final TextView textViewSelectedStudent){
-
-        FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
-        final String userUid = user.getUid();
-
-        final DatabaseReference databaseChosen;
-        databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);
-
-        databaseChosen.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int temp = 0;
-                String idChosen = (String) dataSnapshot.child("elegido").getValue();
-                if (dataSnapshot.child("temporizador").exists()){
-                    temp = Integer.parseInt(dataSnapshot.child("temporizador").getValue().toString());
-                }
-
-                if (userUid.equals(idChosen)){
-                    textViewSelectedStudent.setText("Fuiste Elegido");
-
-                    Vibrator vibrator = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
-                    vibrator.vibrate(temp*1000);
-
-                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-                    final MediaPlayer mp = MediaPlayer.create(context, notification);
-
-                    mp.start();
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mp.stop();
-                        }
-                    },temp*1000);
-
-                } else textViewSelectedStudent.setText("Espera a ser selegido");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 
     public void selectIndividualStudent(String idStudent){

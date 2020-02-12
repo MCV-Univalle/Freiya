@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.talleristamod.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,8 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
     public ImageView imageViewPlayerlvl;
     public String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     public String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+    public DatabaseReference databaseEstudianteRegister, databaseEstudianteLevel;
+    public ValueEventListener valueEventListenerBadges, valueEventListenerPoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +71,13 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
 
 
     public void showLevelnPoints(){
-        final DatabaseReference databaseEstudianteLevel = FirebaseDatabase.getInstance().getReference("Estudiante/"+userId+"/Puntaje");
-        databaseEstudianteLevel.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseEstudianteLevel = FirebaseDatabase.getInstance().getReference("Estudiante/"+userId+"/Puntaje");
+
+        valueEventListenerPoints = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String PointsStr = dataSnapshot.getValue().toString();
                 Integer PointsInt = Integer.parseInt(PointsStr);
-
                 tvPoints.setText(PointsStr);
                 if (PointsInt>=1000){
                     imageViewPlayerlvl.setImageResource(R.drawable.gatodos);
@@ -87,24 +91,30 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
 
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        };
+
+
+
+        databaseEstudianteLevel.addValueEventListener(valueEventListenerPoints);
     }
     public void showBadges(){
 
         tvNameStudent.setText(userName);
 
-        final DatabaseReference databaseEstudianteRegister = FirebaseDatabase.getInstance().getReference("Estudiante/"+userId+"/Badges");
+       databaseEstudianteRegister = FirebaseDatabase.getInstance().getReference("Estudiante/"+userId+"/Badges");
 
-        databaseEstudianteRegister.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren())
-                {
-                    String MedalCode = (String) objectQuestionsSnapShot.getValue();
+
+       valueEventListenerBadges = new ValueEventListener() {
+           @Override
+           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren())
+               {
+                   String MedalCode = (String) objectQuestionsSnapShot.getValue();
 
                    switch (MedalCode){
                        case "001":
@@ -129,25 +139,32 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
                            count7++;
                            break;
                    }
+               }
+               tv1.setText("x"+count1.toString());
+               tv2.setText("x"+count2.toString());
+               tv3.setText("x"+count3.toString());
+               tv4.setText("x"+count4.toString());
+               tv5.setText("x"+count5.toString());
+               tv6.setText("x"+count6.toString());
+               tv7.setText("x"+count7.toString());
+           }
 
-                }
+           @Override
+           public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                tv1.setText("x"+count1.toString());
-                tv2.setText("x"+count2.toString());
-                tv3.setText("x"+count3.toString());
-                tv4.setText("x"+count4.toString());
-                tv5.setText("x"+count5.toString());
-                tv6.setText("x"+count6.toString());
-                tv7.setText("x"+count7.toString());
+           }
+       };
 
-                databaseEstudianteRegister.removeEventListener(this);
-            }
+        databaseEstudianteRegister.addValueEventListener(valueEventListenerBadges);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+    }
 
-            }
-        });
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        databaseEstudianteLevel.removeEventListener(valueEventListenerPoints);
+        databaseEstudianteRegister.removeEventListener(valueEventListenerBadges);
+        finish();
     }
 }

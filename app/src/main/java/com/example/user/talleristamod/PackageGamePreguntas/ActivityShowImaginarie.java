@@ -3,6 +3,7 @@ package com.example.user.talleristamod.PackageGamePreguntas;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,8 +18,11 @@ import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageProfiles.DatabaseProfiles;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ActivityShowImaginarie extends AppCompatActivity implements View.OnClickListener{
 
@@ -27,6 +31,8 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
     DatabaseImaginaries dataBaseSets;
     DatabaseProfiles databaseProfiles;
     RecyclerView recyclerViewStudents;
+    DatabaseReference databaseStateAImg,databaseStudent;
+    ValueEventListener valueEventListenerSelected, valueEventStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,7 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
         buttonSignalPlay.setOnClickListener(this);
         dataBaseSets = new DatabaseImaginaries(this);
         showStudents();
+        selectedStudentListener ();
 
         }
 
@@ -64,13 +71,13 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
         switch (v.getId())
         {
             case R.id.buttonSendSignal:
-                dataBaseSets.sendSignal(textSelectedStudent);
+                dataBaseSets.sendSignal();
                 break;
             case R.id.buttonFinishImg:
                 finishChallenge();
                 break;
             case R.id.buttonTing:
-                dataBaseSets.sendSignalPlay(textSelectedStudent);
+                dataBaseSets.sendSignalPlay();
                 break;
             case R.id.buttonGivePointsImg:
                 databaseProfiles.givePointsList();
@@ -117,4 +124,44 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
     public void onBackPressed (){
         finishChallenge();
     }
+
+    public void selectedStudentListener (){
+        databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/elegido");
+
+        valueEventListenerSelected= new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                setSelectedStudent((String) dataSnapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        databaseStateAImg.addValueEventListener(valueEventListenerSelected);
+    }
+
+    public void setSelectedStudent (final String idStudent){
+        databaseStudent = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
+
+        valueEventStudent = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
+                    String SnapIdStudent = objectQuestionsSnapShot.getKey();
+                   if (SnapIdStudent.equals(idStudent)){
+                       textSelectedStudent.setText(objectQuestionsSnapShot.getValue().toString());
+                   }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        databaseStudent.addValueEventListener(valueEventStudent);
+    }
+
 }

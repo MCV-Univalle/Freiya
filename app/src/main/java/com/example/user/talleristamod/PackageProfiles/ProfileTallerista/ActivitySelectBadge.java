@@ -83,7 +83,7 @@ public class ActivitySelectBadge extends AppCompatActivity implements View.OnCli
         }
     }
 
-    public void confirmBadge(final String badgeName, String studentName){
+    public void confirmBadge(String studentName , final String badgeName){
         new AlertDialog.Builder(this)
                 .setTitle("Entregar Medalla ")
                 .setMessage("¿Estas seguro de entregar la medalla "+badgeName+"al estudiante" +studentName+"?")
