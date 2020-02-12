@@ -137,10 +137,10 @@ public class DatabaseProfiles {
                     case 0:
                         intPoints = 100;
                         break;
-                    case 2:
+                    case 1:
                         intPoints = 200;
                         break;
-                    case 1:
+                    case 2:
                         intPoints = 300;
                         break;
                 }}});
@@ -149,7 +149,7 @@ public class DatabaseProfiles {
             public void onClick(DialogInterface dialog, int which) {
                 if (intPoints!= null){
                     listPlayersGivePoints(intPoints);
-                    Toast.makeText(context, "Se entregaron "+ intPoints+" a todos los participantes", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Se entregaron "+ intPoints +" a todos los participantes", Toast.LENGTH_SHORT).show();
                 } else Toast.makeText(context, "Selecciona un puntaje", Toast.LENGTH_SHORT).show();
             }});
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

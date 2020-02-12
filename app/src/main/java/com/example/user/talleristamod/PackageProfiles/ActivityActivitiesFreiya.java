@@ -186,7 +186,7 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                 .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        dataBaseSetsImg.validateCode(input.getText().toString());
+                        dataBaseSetsImg.validateCode(input.getText().toString().toUpperCase());
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -212,7 +212,7 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                 .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        databaseRaceQr.validateCode(input.getText().toString());
+                        databaseRaceQr.validateCode(input.getText().toString().toUpperCase());
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -238,7 +238,7 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                 .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        databaseChallenge.validateCode(input.getText().toString());
+                        databaseChallenge.validateCode(input.getText().toString().toUpperCase());
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
