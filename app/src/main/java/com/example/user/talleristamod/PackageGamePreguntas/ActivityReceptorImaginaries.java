@@ -31,6 +31,7 @@ public class ActivityReceptorImaginaries extends AppCompatActivity {
     public Integer temp;
     public MediaPlayer mediaPlayer;
     public Vibrator vibrator;
+    DatabaseReference databaseChosen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class ActivityReceptorImaginaries extends AppCompatActivity {
 
     public void receptorSignal (){
         userUid =  FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);;
+        databaseChosen = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY);;
 
         valueEventListenerReceptor = new ValueEventListener() {
             @Override
@@ -85,4 +86,12 @@ public class ActivityReceptorImaginaries extends AppCompatActivity {
             }};
 
         databaseChosen.addValueEventListener(valueEventListenerReceptor);
-}}
+}
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        databaseChosen.removeEventListener(valueEventListenerReceptor);
+    }
+}
+
