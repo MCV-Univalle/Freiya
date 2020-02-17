@@ -43,9 +43,6 @@
             android:name=".PackageProfiles.ProfileEstudiante.ActivityPrincipalProfile"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".PackageProfiles.ProfileTallerista.ActivitySettingsTallerista"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".PackageGameChallenge.ActivitySelectChallenge"
             android:screenOrientation="portrait" />
         <activity

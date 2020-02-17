@@ -247,6 +247,9 @@ public class DatabaseImaginaries {
 
                             } else try {
                                 Thread.sleep(a*1000);
+                                databaseCreateImg.child("temporizador").setValue(a);
+                                databaseCreateImg.child("elegido").setValue("");
+                                databaseCreateImg.child("elegido").setValue(listIdParticipants.get(i));
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

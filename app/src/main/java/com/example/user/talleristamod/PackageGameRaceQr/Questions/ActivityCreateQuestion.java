@@ -43,7 +43,7 @@ public class ActivityCreateQuestion extends AppCompatActivity implements View.On
 
 
         //Cambiar fuente
-        Typeface face=Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
+        Typeface face=Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
         editTextTitle.setTypeface(face);
 
         buttonAddQuestion.setOnClickListener(this);

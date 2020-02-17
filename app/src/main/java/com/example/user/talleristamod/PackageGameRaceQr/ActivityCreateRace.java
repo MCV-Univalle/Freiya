@@ -61,7 +61,7 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
 
         textViewSteps = (TextView) findViewById(R.id.textViewRaceQ);
         //Cambiar fuente
-        Typeface face=Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
+        Typeface face=Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
         textViewTitle.setTypeface(face);
 
         listViewQuestionsLab.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);

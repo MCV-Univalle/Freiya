@@ -113,6 +113,10 @@ public class DatabaseProfiles {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String value = (String) dataSnapshot.getValue();
+                if (value != null){
+
+                } else value = "0";
+
                 Integer totalPoints = Integer.parseInt(value);
                 totalPoints += recivedPoints;
                 databaseEstudiantePoints.setValue(totalPoints.toString());

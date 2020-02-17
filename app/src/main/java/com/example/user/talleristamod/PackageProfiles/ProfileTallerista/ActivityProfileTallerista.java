@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
+import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
 import com.example.user.talleristamod.R;
 
 public class ActivityProfileTallerista extends AppCompatActivity implements View.OnClickListener {
     CardView cardViewSettings, cardViewActivities, cardViewActivateActivities, cardViewPersistenceActivities;
+    LinearLayout layoutBackTallerista;
 
 
     @Override
@@ -19,12 +22,13 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_tallerista);
 
-
+        layoutBackTallerista = findViewById(R.id.layoutBackTallerista);
         cardViewSettings = findViewById(R.id.cdProfile);
         cardViewActivities = findViewById(R.id.cdActivities);
         cardViewActivateActivities = findViewById(R.id.cdAtivateActivities);
         cardViewPersistenceActivities = findViewById(R.id.cdPersistenceActivities);
 
+        layoutBackTallerista.setOnClickListener(this);
         cardViewSettings.setOnClickListener(this);
         cardViewActivities.setOnClickListener(this);
         cardViewActivateActivities.setOnClickListener(this);
@@ -61,6 +65,14 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
                Intent intentB = new Intent(this, ActivityActivitiesFreiya.class);
                startActivity(intentB);
                GlobalVariables.ACTIVITY_FUNCTION = "Persistence";
+               break;
+
+           case R.id.layoutBackTallerista:
+
+               Intent intentD = new Intent(this, TalleristaPrincipalMenu.class);
+               startActivity(intentD);
+               GlobalVariables.ACTIVITY_FUNCTION = "";
+               finish();
                break;
        }
     }

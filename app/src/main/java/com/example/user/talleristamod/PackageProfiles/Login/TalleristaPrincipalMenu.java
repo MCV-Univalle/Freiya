@@ -52,6 +52,7 @@ public class TalleristaPrincipalMenu extends AppCompatActivity implements View.O
                 Intent intent = new Intent(v.getContext(), ActivityProfileTallerista.class);
                 USER_TYPE = "Tallerista";
                 v.getContext().startActivity(intent);
+                finish();
                 break;
 
             case R.id.bEstudiante:
@@ -59,6 +60,7 @@ public class TalleristaPrincipalMenu extends AppCompatActivity implements View.O
                 USER_TYPE = "Estudiante";
                 GlobalVariables.ACTIVITY_FUNCTION = "";
                 v.getContext().startActivity(intent1);
+                finish();
                 break;
         }
     }

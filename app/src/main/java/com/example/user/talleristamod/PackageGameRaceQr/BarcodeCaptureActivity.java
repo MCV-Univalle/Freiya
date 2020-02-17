@@ -38,8 +38,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.user.talleristamod.PackageGameRaceQr.Questions.ActivityShowQuestion;
-import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
-import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivitySettingsTallerista;
 import com.example.user.talleristamod.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;

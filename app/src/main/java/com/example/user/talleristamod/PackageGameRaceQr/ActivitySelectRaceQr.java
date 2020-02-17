@@ -40,7 +40,7 @@ public class ActivitySelectRaceQr extends AppCompatActivity {
         SetAdapterFire(filter1, filter2);
 
         //Cambiar fuente
-        Typeface face = Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
+        Typeface face = Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
         textViewSelectRace.setTypeface(face);
 
         tabLayoutQr.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
