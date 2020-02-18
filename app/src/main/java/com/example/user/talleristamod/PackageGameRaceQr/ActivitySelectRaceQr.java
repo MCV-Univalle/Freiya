@@ -39,9 +39,6 @@ public class ActivitySelectRaceQr extends AppCompatActivity {
         filter2 =  FirebaseAuth.getInstance().getCurrentUser().getUid();
         SetAdapterFire(filter1, filter2);
 
-        //Cambiar fuente
-        Typeface face = Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
-        textViewSelectRace.setTypeface(face);
 
         tabLayoutQr.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 

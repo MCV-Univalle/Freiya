@@ -41,11 +41,6 @@ public class ActivityCreateQuestion extends AppCompatActivity implements View.On
         editTextOption3 = (EditText) findViewById(R.id.editTextWrongAnsw3);
         buttonAddQuestion = (Button) findViewById(R.id.buttonAddQuestion);
 
-
-        //Cambiar fuente
-        Typeface face=Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
-        editTextTitle.setTypeface(face);
-
         buttonAddQuestion.setOnClickListener(this);
         dataBaseSets = new DatabaseRaceQr(this);
 

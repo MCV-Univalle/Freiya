@@ -31,14 +31,14 @@ import java.util.ArrayList;
 
 public class ActivityCreateRace extends AppCompatActivity implements View.OnClickListener{
 
-    private Button buttonAddQuestion, buttonCreateActivity;
+    private Button buttonAddQuestion, buttonNextCreateQr, buttonBackCreateQr;
     private DatabaseReference databaseQuestion;
     private ListView listViewQuestionsLab;
     private EditText editTextRaceName;
-    private TextView textViewTitle, textViewSteps;
+    private TextView textViewCreateQ, textViewSteps;
     private ArrayList<String> selected;
-    TabLayout tabLayoutStepsRace;
-    DatabaseRaceQr dataBaseSets;
+    private DatabaseRaceQr dataBaseSets;
+    private Integer countStep = 0;
 
 
     @Override
@@ -51,74 +51,19 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
     }
 
     private void InitialConfig() {
-        buttonAddQuestion = (Button) findViewById(R.id.buttonAddQuestionLab);
-        buttonCreateActivity = (Button) findViewById(R.id.buttonCreateActivityLab);
-        listViewQuestionsLab = (ListView) findViewById(R.id.listViewPreguntasRace);
-        editTextRaceName = (EditText) findViewById(R.id.editTextActivityRaceName);
-        textViewTitle = (TextView) findViewById(R.id.textViewTitle);
-        tabLayoutStepsRace = (TabLayout) findViewById(R.id.tabCreateRace);
-        
-
-        textViewSteps = (TextView) findViewById(R.id.textViewRaceQ);
-        //Cambiar fuente
-        Typeface face=Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
-        textViewTitle.setTypeface(face);
+        buttonAddQuestion = findViewById(R.id.buttonAddQuestionLab);
+        buttonNextCreateQr = findViewById(R.id.buttonNextCreateQr);
+        buttonBackCreateQr = findViewById(R.id.buttonBackCreateQr);
+        listViewQuestionsLab = findViewById(R.id.listViewPreguntasRace);
+        editTextRaceName = findViewById(R.id.editTextActivityRaceName);
+        textViewCreateQ = findViewById(R.id.textViewCreateQ);
+        textViewSteps = findViewById(R.id.textViewRaceQ);
 
         listViewQuestionsLab.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
         buttonAddQuestion.setOnClickListener(this);
-        buttonCreateActivity.setOnClickListener(this);
-
-
-        tabLayoutStepsRace.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-                        textViewSteps.setText("Selecciona las preguntas o ");
-                        buttonAddQuestion.setVisibility(View.VISIBLE);
-                        buttonAddQuestion.setEnabled(true);
-                        listViewQuestionsLab.setVisibility(View.VISIBLE);
-                        listViewQuestionsLab.setEnabled(true);
-                        editTextRaceName.setVisibility(View.INVISIBLE);
-                        editTextRaceName.setEnabled(false);
-                        buttonCreateActivity.setText("Siguiente");
-                        break;
-                    case 1:
-                        textViewSteps.setText("Ingresa el nombre de la carrera");
-                        buttonAddQuestion.setVisibility(View.INVISIBLE);
-                        buttonAddQuestion.setEnabled(false);
-                        listViewQuestionsLab.setVisibility(View.INVISIBLE);
-                        listViewQuestionsLab.setEnabled(false);
-                        editTextRaceName.setVisibility(View.VISIBLE);
-                        editTextRaceName.setEnabled(true);
-                        buttonCreateActivity.setText("Siguiente");
-                        break;
-                    case 2:
-                        textViewSteps.setText("Los codigos Qr estaran en tu galeria");
-                        buttonAddQuestion.setVisibility(View.INVISIBLE);
-                        buttonAddQuestion.setEnabled(false);
-                        listViewQuestionsLab.setVisibility(View.INVISIBLE);
-                        listViewQuestionsLab.setEnabled(false);
-                        editTextRaceName.setVisibility(View.INVISIBLE);
-                        editTextRaceName.setEnabled(false);
-                        buttonCreateActivity.setText("Crear Carrera");
-                        break;
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-
+        buttonNextCreateQr.setOnClickListener(this);
+        buttonBackCreateQr.setOnClickListener(this);
     }
 
     @Override
@@ -162,16 +107,38 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
                 startActivity(intent);
                 break;
 
-            case R.id.buttonCreateActivityLab:
+            case R.id.buttonNextCreateQr:
+                if (countStep == 0)
+                {
+                    buttonBackCreateQr.setVisibility(View.VISIBLE);
+                    buttonBackCreateQr.setEnabled(true);
+                    textViewSteps.setText("Selecciona las preguntas que quieres en tu carrera Qr ");
+                    buttonAddQuestion.setVisibility(View.VISIBLE);
+                    buttonAddQuestion.setEnabled(true);
+                    listViewQuestionsLab.setVisibility(View.VISIBLE);
+                    listViewQuestionsLab.setEnabled(true);
+                    editTextRaceName.setVisibility(View.INVISIBLE);
+                    editTextRaceName.setEnabled(false);
+                    buttonNextCreateQr.setText("Crear Carrera");
+                    countStep++;
 
 
-                //tabLayoutStepsRace.getSelectedTabPosition();
-                if(tabLayoutStepsRace.getSelectedTabPosition() != 2) {
-                    tabLayoutStepsRace.getTabAt(tabLayoutStepsRace.getSelectedTabPosition() + 1).select();
-                } else {
-                    createRace();
-                }
 
+                } else if (countStep == 1) createRace();
+                break;
+
+            case R.id.buttonBackCreateQr:
+                textViewSteps.setText("Ingresa el nombre de la carrera");
+                buttonAddQuestion.setVisibility(View.INVISIBLE);
+                buttonAddQuestion.setEnabled(false);
+                listViewQuestionsLab.setVisibility(View.INVISIBLE);
+                listViewQuestionsLab.setEnabled(false);
+                editTextRaceName.setVisibility(View.VISIBLE);
+                editTextRaceName.setEnabled(true);
+                buttonNextCreateQr.setText("Siguiente");
+                buttonBackCreateQr.setVisibility(View.INVISIBLE);
+                buttonBackCreateQr.setEnabled(false);
+                countStep--;
                 break;
 
         }
@@ -212,18 +179,14 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
                 if(editTextRaceName.getText().toString().length()<=18){
                 messageConfirmCreateCreate();
                 } else{
-                    tabLayoutStepsRace.getTabAt(1).select();
                     Toast.makeText(this,"El nombre debe tener menos de 18 caracteres",Toast.LENGTH_SHORT).show();
 
                 }
             } else{
-                tabLayoutStepsRace.getTabAt(1).select();
                 Toast.makeText(this,"Debes nombrar la carrera",Toast.LENGTH_SHORT).show();
             }
        }
        else  {
-
-           tabLayoutStepsRace.getTabAt(0).select();
            Toast.makeText(this,"No hay preguntas seleccionadas",Toast.LENGTH_SHORT).show();
        }
 

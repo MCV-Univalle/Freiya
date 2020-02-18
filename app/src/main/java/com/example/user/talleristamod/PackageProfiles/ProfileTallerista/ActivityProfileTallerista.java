@@ -45,12 +45,14 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
                Intent intentA = new Intent(this, ActivityGiveBadges.class);
                startActivity(intentA);
                GlobalVariables.ACTIVITY_FUNCTION = "Badges";
+               finish();
                break;
 
            case R.id.cdActivities:
                Intent intent = new Intent(this, ActivityActivitiesFreiya.class);
                startActivity(intent);
                GlobalVariables.ACTIVITY_FUNCTION = "Create";
+               finish();
                break;
 
            case R.id.cdAtivateActivities:
@@ -58,6 +60,7 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
                Intent intentC = new Intent(this, ActivityActivitiesFreiya.class);
                startActivity(intentC);
                GlobalVariables.ACTIVITY_FUNCTION = "Activate";
+               finish();
                break;
 
            case R.id.cdPersistenceActivities:
@@ -65,6 +68,7 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
                Intent intentB = new Intent(this, ActivityActivitiesFreiya.class);
                startActivity(intentB);
                GlobalVariables.ACTIVITY_FUNCTION = "Persistence";
+               finish();
                break;
 
            case R.id.layoutBackTallerista:
