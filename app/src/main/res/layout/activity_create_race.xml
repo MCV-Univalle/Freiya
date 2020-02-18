@@ -4,138 +4,268 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondoselectqr"
     tools:context=".PackageGameRaceQr.ActivityCreateRace">
+
+    <include
+        android:id="@+id/toolbar_top_level"
+        layout="@layout/toolbar_tallerista"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline107"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <EditText
         android:id="@+id/editTextActivityRaceName"
-        android:layout_width="260dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/roundededittext"
         android:ems="10"
-        android:enabled="false"
         android:hint="Nombre:"
         android:inputType="textPersonName"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRaceQ" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline157"
+        app:layout_constraintEnd_toStartOf="@+id/guideline112"
+        app:layout_constraintStart_toStartOf="@+id/guideline108"
+        app:layout_constraintTop_toTopOf="@+id/guideline148" />
 
     <ListView
         android:id="@+id/listViewPreguntasRace"
-        android:layout_width="329dp"
-        android:layout_height="256dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:cacheColorHint="@color/colorAccent"
         android:scrollbarFadeDuration="0"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreateActivityLab"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAddQuestionLab"
-        app:layout_constraintVertical_bias="0.546" />
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline147"
+        app:layout_constraintEnd_toStartOf="@+id/guideline112"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline108"
+        app:layout_constraintTop_toTopOf="@+id/guideline148"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewRaceQ"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:text="1. Selecciona las preguntas o "
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabCreateRace" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:text="Selecciona las preguntas que quieres en tu carrera Qr "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline154"
+        app:layout_constraintEnd_toStartOf="@+id/guideline112"
+        app:layout_constraintStart_toStartOf="@+id/guideline108"
+        app:layout_constraintTop_toTopOf="@+id/guideline155" />
 
     <Button
-        android:id="@+id/buttonCreateActivityLab"
-        android:layout_width="161dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/buttonNextCreateQr"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/roundedbutton"
         android:backgroundTint="#2196F3"
         android:text="Siguiente"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline142"
+        app:layout_constraintEnd_toStartOf="@+id/guideline112"
+        app:layout_constraintHorizontal_bias="0.965"
+        app:layout_constraintStart_toStartOf="@+id/guideline145"
+        app:layout_constraintTop_toTopOf="@+id/guideline143" />
 
     <Button
-        android:id="@+id/buttonAddQuestionLab"
-        android:layout_width="122dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:drawableLeft="@android:drawable/ic_input_add"
-        android:text="Crealas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textViewRaceQ"
-        app:layout_constraintTop_toBottomOf="@+id/tabCreateRace" />
+        android:id="@+id/buttonBackCreateQr"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="#2196F3"
+        android:text="Anterior"
+        android:visibility="invisible"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        app:layout_constraintBottom_toTopOf="@+id/guideline142"
+        app:layout_constraintEnd_toStartOf="@+id/guideline133"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="@+id/guideline108"
+        app:layout_constraintTop_toTopOf="@+id/guideline143" />
 
     <TextView
         android:id="@+id/textViewTitle"
-        android:layout_width="196dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text="Carrera Qr"
-        android:textAppearance="@android:style/TextAppearance.Material.Title"
-        android:textColor="@color/buttonTextColor"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.582"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:text="Crear Carrera Qr"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline121"
+        app:layout_constraintEnd_toStartOf="@+id/guideline112"
+        app:layout_constraintStart_toStartOf="@+id/guideline108"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_top_level" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabCreateRace"
-        android:layout_width="348dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.404"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
-        app:tabIndicatorColor="#4CAF50">
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline107"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
 
-        <android.support.design.widget.TabItem
-            android:id="@+id/paso1"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline108"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline112"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.93" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline121"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline133"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".48" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline142"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline143"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline145"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".52" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline147"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline148"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline149"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.84" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline150"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.76" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline149"
+        app:layout_constraintEnd_toStartOf="@+id/guideline112"
+        app:layout_constraintStart_toStartOf="@+id/guideline108"
+        app:layout_constraintTop_toTopOf="@+id/guideline150">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline151"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Paso 1" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6" />
 
-        <android.support.design.widget.TabItem
-            android:id="@+id/paso2"
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline152"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="false"
-            android:text="Paso 2" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".65" />
 
-        <android.support.design.widget.TabItem
-            android:id="@+id/paso3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:text="Paso 3" />
-    </android.support.design.widget.TabLayout>
+        <TextView
+            android:id="@+id/textViewCreateQ"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeStepGranularity="2sp"
+            android:fontFamily="@font/adventpro_light"
+            android:text="No encuentras la pregunta que quieres?"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline151"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonAddQuestionLab"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:drawableLeft="@android:drawable/ic_input_add"
+            android:text="Creala"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline152"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline154"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".3" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline155"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.21" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline157"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
 
 
 </android.support.constraint.ConstraintLayout>

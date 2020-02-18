@@ -17,10 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.talleristamod.PackageGameRaceQr.ActivityCreateRace;
 import com.example.user.talleristamod.PackageGameRaceQr.DatabaseRaceQr;
-import com.example.user.talleristamod.PackageGameRaceQr.Questions.ActivityCreateQuestion;
-import com.example.user.talleristamod.PackageGameRaceQr.Questions.ObjectQuestion;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DataSnapshot;
@@ -65,7 +62,7 @@ public class ActivityCreateInterPlay extends AppCompatActivity implements View.O
 
         textViewSteps = (TextView) findViewById(R.id.textViewIP);
         //Cambiar fuente
-        Typeface face=Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
+        Typeface face=Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
         textViewTitle.setTypeface(face);
 
         listViewQuestionsIP.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);

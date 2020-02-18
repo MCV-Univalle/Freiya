@@ -1,15 +1,21 @@
 package com.example.user.talleristamod.PackageGameRaceQr.Questions;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.user.talleristamod.PackageGameRaceQr.ActivityCreateRace;
 import com.example.user.talleristamod.PackageGameRaceQr.DatabaseRaceQr;
+import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 
 import java.util.ArrayList;
@@ -22,7 +28,7 @@ public class ActivityCreateQuestion extends AppCompatActivity implements View.On
     private List<String> respuestas;
     private String question;
     private DatabaseRaceQr dataBaseSets;
-    private TextView editTextTitle;
+    private ConstraintLayout layoutHomeT, layoutAtrasT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +39,9 @@ public class ActivityCreateQuestion extends AppCompatActivity implements View.On
     }
 
     private void InitialConfig() {
-        editTextTitle = (TextView) findViewById(R.id.textViewTitleQuestion);
+        layoutHomeT = findViewById(R.id.layoutHomeT);
+        layoutAtrasT = findViewById(R.id.layoutAtrasT);
+
         editTextQuestion = (EditText) findViewById(R.id.editTextQuestionName);
         editTextCorrectAnsw = (EditText) findViewById(R.id.editTextCorrectAnsw);
         editTextOption1 = (EditText) findViewById(R.id.editTextWrongAnsw1);
@@ -41,13 +49,10 @@ public class ActivityCreateQuestion extends AppCompatActivity implements View.On
         editTextOption3 = (EditText) findViewById(R.id.editTextWrongAnsw3);
         buttonAddQuestion = (Button) findViewById(R.id.buttonAddQuestion);
 
-
-        //Cambiar fuente
-        Typeface face=Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
-        editTextTitle.setTypeface(face);
-
         buttonAddQuestion.setOnClickListener(this);
         dataBaseSets = new DatabaseRaceQr(this);
+        layoutHomeT.setOnClickListener(this);
+        layoutAtrasT.setOnClickListener(this);
 
     }
 
@@ -56,6 +61,16 @@ public class ActivityCreateQuestion extends AppCompatActivity implements View.On
 
         switch (v.getId())
         {
+            case R.id.layoutHomeT:
+                Intent intentC = new Intent(this, ActivityCreateRace.class);
+                startActivity(intentC);
+                finish();
+                break;
+            case R.id.layoutAtrasT:
+                Intent intent = new Intent(this, ActivityCreateRace.class);
+                startActivity(intent);
+                finish();
+                break;
             //Botones TalleristaActivityLab -----------------------------------------
             case R.id.buttonAddQuestion:
 
@@ -92,4 +107,6 @@ public class ActivityCreateQuestion extends AppCompatActivity implements View.On
         }
 
     }
+
+
 }

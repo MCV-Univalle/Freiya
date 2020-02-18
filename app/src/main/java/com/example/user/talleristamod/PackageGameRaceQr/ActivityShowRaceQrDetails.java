@@ -8,9 +8,7 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameRaceQr.Questions.ObjectQuestion;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DataSnapshot;
@@ -47,7 +45,7 @@ public class ActivityShowRaceQrDetails extends AppCompatActivity {
         nameQrRace = parametros.getString("nameRace");
 
         textViewNameRace.setText(nameQrRace);
-        Typeface face = Typeface.createFromAsset(getAssets(),"fonts/adventpro-light.ttf");
+        Typeface face = Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
         textViewTitle.setTypeface(face);
 
         final DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Question");
