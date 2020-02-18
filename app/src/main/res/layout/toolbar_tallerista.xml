@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.15" />
+                app:layout_constraintGuide_percent="0.1" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline15"
@@ -157,35 +157,6 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/layoutProfileT"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:gravity="left"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/layoutHomeT"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/perfilToolbar"
-                android:layout_width="40dp"
-                android:layout_height="25dp"
-                android:src="@drawable/iconoperfil" />
-
-            <TextView
-                android:id="@+id/tvuser"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:text="Perfil"
-                android:textAlignment="center"
-                android:textColor="@color/common_google_signin_btn_text_dark_pressed" />
-        </LinearLayout>
-
         <android.support.constraint.Guideline
             android:id="@+id/guideline9"
             android:layout_width="wrap_content"
@@ -199,13 +170,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.85" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.70" />
 
     </android.support.constraint.ConstraintLayout>
 

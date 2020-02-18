@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +42,8 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
     private DatabaseRaceQr dataBaseSets;
     private Integer countStep = 0;
 
+    private ConstraintLayout layoutHomeT, layoutAtrasT;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,8 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
     }
 
     private void InitialConfig() {
+        layoutHomeT = findViewById(R.id.layoutHomeT);
+        layoutAtrasT = findViewById(R.id.layoutAtrasT);
         buttonAddQuestion = findViewById(R.id.buttonAddQuestionLab);
         buttonNextCreateQr = findViewById(R.id.buttonNextCreateQr);
         buttonBackCreateQr = findViewById(R.id.buttonBackCreateQr);
@@ -61,6 +67,8 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
 
         listViewQuestionsLab.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
+        layoutHomeT.setOnClickListener(this);
+        layoutAtrasT.setOnClickListener(this);
         buttonAddQuestion.setOnClickListener(this);
         buttonNextCreateQr.setOnClickListener(this);
         buttonBackCreateQr.setOnClickListener(this);
@@ -102,11 +110,20 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
         switch (v.getId())
         {
             //Botones TalleristaActivityLab -----------------------------------------
-            case R.id.buttonAddQuestionLab:
-                Intent intent = new Intent(this, ActivityCreateQuestion.class);
-                startActivity(intent);
+            case R.id.layoutHomeT:
+                Intent intentC = new Intent(this, ActivityProfileTallerista.class);
+                startActivity(intentC);
+                finish();
                 break;
-
+            case R.id.layoutAtrasT:
+                Intent intent = new Intent(this, ActivityProfileTallerista.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.buttonAddQuestionLab:
+                Intent intentB = new Intent(this, ActivityCreateQuestion.class);
+                startActivity(intentB);
+                break;
             case R.id.buttonNextCreateQr:
                 if (countStep == 0)
                 {
@@ -119,14 +136,11 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
                     listViewQuestionsLab.setEnabled(true);
                     editTextRaceName.setVisibility(View.INVISIBLE);
                     editTextRaceName.setEnabled(false);
+                    textViewCreateQ.setVisibility(View.VISIBLE);
                     buttonNextCreateQr.setText("Crear Carrera");
                     countStep++;
-
-
-
                 } else if (countStep == 1) createRace();
                 break;
-
             case R.id.buttonBackCreateQr:
                 textViewSteps.setText("Ingresa el nombre de la carrera");
                 buttonAddQuestion.setVisibility(View.INVISIBLE);
@@ -138,6 +152,7 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
                 buttonNextCreateQr.setText("Siguiente");
                 buttonBackCreateQr.setVisibility(View.INVISIBLE);
                 buttonBackCreateQr.setEnabled(false);
+                textViewCreateQ.setVisibility(View.INVISIBLE);
                 countStep--;
                 break;
 
@@ -157,7 +172,7 @@ public class ActivityCreateRace extends AppCompatActivity implements View.OnClic
                        Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                        startActivity(intent);
-
+                       finish();
                    }
                })
                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
