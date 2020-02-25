@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ActivityCreateImag extends AppCompatActivity implements View.OnClickListener{
 
     private Button buttonCreateImg;
-    private EditText editTextImgQuestion, editTextNameImg;
+    private EditText editTextNameImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,6 @@ public class ActivityCreateImag extends AppCompatActivity implements View.OnClic
 
     private void InitialConfig() {
         editTextNameImg = (EditText) findViewById(R.id.editTextNameImg);
-        editTextImgQuestion = (EditText) findViewById(R.id.editTextQuestionImg);
         buttonCreateImg = (Button) findViewById(R.id.buttonCreateImg);
         buttonCreateImg.setOnClickListener(this);
 
@@ -41,7 +40,6 @@ public class ActivityCreateImag extends AppCompatActivity implements View.OnClic
             case R.id.buttonCreateImg:
                 final ObjectActivityImaginaries objectActivityImaginaries = new ObjectActivityImaginaries();
                 objectActivityImaginaries.setNombre(editTextNameImg.getText().toString());
-                objectActivityImaginaries.setPregunta(editTextImgQuestion.getText().toString());
                 objectActivityImaginaries.setJoinCode("none");
                 objectActivityImaginaries.setStateA("Disable");
                 objectActivityImaginaries.setCopyA("false");
