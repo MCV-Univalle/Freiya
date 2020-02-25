@@ -1,6 +1,8 @@
 package com.example.user.talleristamod.PackageProfiles.ProfileEstudiante;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +30,7 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
     public String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
     public DatabaseReference databaseEstudianteRegister, databaseEstudianteLevel;
     public ValueEventListener valueEventListenerBadges, valueEventListenerPoints;
+    public ConstraintLayout linearLayoutBack, linearLayoutHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,12 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
         tv5 = findViewById(R.id.textViewCountBadge5);
         tv6 = findViewById(R.id.textViewCountBadge6);
         tv7 = findViewById(R.id.textViewCountBadge7);
+
+        linearLayoutBack = findViewById(R.id.layoutAtrasT);
+        linearLayoutHome = findViewById(R.id.layoutHomeT);
+
+        linearLayoutBack.setOnClickListener(this);
+        linearLayoutHome.setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +74,13 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
     {
         switch (view.getId())
         {
+            case R.id.layoutAtrasT:
+                finishActivity();
+                break;
+
+            case R.id.layoutHomeT:
+                finishActivity();
+                break;
 
         }
 
@@ -138,6 +155,7 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
                        case "007":
                            count7++;
                            break;
+
                    }
                }
                tv1.setText("x"+count1.toString());
@@ -147,6 +165,13 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
                tv5.setText("x"+count5.toString());
                tv6.setText("x"+count6.toString());
                tv7.setText("x"+count7.toString());
+               count1 = 0;
+               count2 = 0;
+               count3 = 0;
+               count4 = 0;
+               count5 = 0;
+               count6 = 0;
+               count7 = 0;
            }
 
            @Override
@@ -160,11 +185,16 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
     }
 
 
-    @Override
-    protected void onStop() {
-        super.onStop();
+    private void finishActivity (){
         databaseEstudianteLevel.removeEventListener(valueEventListenerPoints);
         databaseEstudianteRegister.removeEventListener(valueEventListenerBadges);
         finish();
+    }
+
+    @Override
+    public void onBackPressed (){
+        Intent intent = new Intent(getApplicationContext(), ActivityProfileEstudiante.class);
+        startActivity(intent);
+        finishActivity();
     }
 }
