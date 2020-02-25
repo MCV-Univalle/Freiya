@@ -25,7 +25,7 @@ import com.example.user.talleristamod.R;
 import static com.example.user.talleristamod.GlobalVariables.GlobalVariables.USER_TYPE;
 
 public class ActivityActivitiesFreiya extends AppCompatActivity implements View.OnClickListener {
-    Button bCreateRace, bCreateReto, bCreateImg, bCreateInterplay;
+    Button bCreateRace, bCreateReto, bCreateImg;
     LinearLayout linearLayoutBack, linearLayoutProfile;
 
 
@@ -39,7 +39,6 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
         bCreateImg = findViewById(R.id.buttonCreateImg);
         bCreateRace = findViewById(R.id.buttonCreateRace);
         bCreateReto = findViewById(R.id.buttonCreateRetos);
-        bCreateInterplay = findViewById(R.id.buttonCreateCuatro);
         linearLayoutBack = findViewById(R.id.layoutAtrasT);
         linearLayoutProfile = findViewById(R.id.layoutProfileT);
         textButtons ();
@@ -49,7 +48,6 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
         linearLayoutBack.setOnClickListener(this);
         bCreateRace.setOnClickListener(this);
         bCreateReto.setOnClickListener(this);
-        bCreateInterplay.setOnClickListener(this);
 
     }
 
@@ -60,7 +58,6 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
             bCreateImg.setText("Unirse");
             bCreateReto.setText("Unirse");
             bCreateRace.setText("Unirse");
-            bCreateInterplay.setText("Unirse");
         }
 
         else if(USER_TYPE.equals("Tallerista"))
@@ -70,20 +67,17 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                 bCreateImg.setText("Crear");
                 bCreateReto.setText("Crear");
                 bCreateRace.setText("Crear");
-                bCreateInterplay.setText("Crear");
             }
             if(GlobalVariables.ACTIVITY_FUNCTION.equals("Activate")){
                 bCreateImg.setText("Activar");
                 bCreateReto.setText("Activar");
                 bCreateRace.setText("Activar");
-                bCreateInterplay.setText("Activar");
             }
 
             if(GlobalVariables.ACTIVITY_FUNCTION.equals("Persistence")){
                 bCreateImg.setText("Ver");
                 bCreateReto.setText("Ver");
                 bCreateRace.setText("Ver");
-                bCreateInterplay.setText("Ver");
             }
         }
     }
@@ -161,10 +155,10 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                 finish();
                 break;
 
-            case R.id.buttonCreateCuatro:
+            /*case R.id.buttonCreateCuatro:
 
                         Intent intent = new Intent(this, ActivityCreateInterPlay.class);
-                        startActivity(intent);
+                        startActivity(intent);*/
 
 
                 }
