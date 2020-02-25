@@ -93,6 +93,7 @@ public class ActivityActivitiesFreiya extends AppCompatActivity implements View.
                 bCreateReto.setText("Ver");
                 bCreateRace.setText("Ver");
             }
+
         }
     }
 
