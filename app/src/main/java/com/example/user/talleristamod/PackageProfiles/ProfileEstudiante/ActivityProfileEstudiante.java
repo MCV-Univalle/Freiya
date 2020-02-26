@@ -2,6 +2,7 @@ package com.example.user.talleristamod.PackageProfiles.ProfileEstudiante;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
+import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
 import com.example.user.talleristamod.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,7 +24,7 @@ public class ActivityProfileEstudiante extends AppCompatActivity implements Card
     CircleImageView imageViewProfilePhoto;
     TextView textViewNameProfile;
     CardView cardViewActivities, cardViewProfile;
-    LinearLayout profile;
+    ConstraintLayout layoutAtras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,33 +43,45 @@ public class ActivityProfileEstudiante extends AppCompatActivity implements Card
         cardViewActivities.setOnClickListener(this);
 
 
-
-        profile = findViewById(R.id.layoutStudents);
+        layoutAtras = findViewById(R.id.layoutAtras);
         textViewNameProfile = (TextView) findViewById(R.id.textViewNameEstudianteProfile);
         textViewNameProfile.setText(nameUser);
-        profile.setOnClickListener(this);
+        layoutAtras.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.cdActivities:
                 Intent intent1 = new Intent(v.getContext(), ActivityActivitiesFreiya.class);
                 v.getContext().startActivity(intent1);
+                finish();
                 break;
 
-            case R.id.layoutStudents:
-                Intent intent = new Intent(v.getContext(), ActivityPrincipalProfile.class);
-                v.getContext().startActivity(intent);
-                break;
             case R.id.cdProfile:
                 Intent intent2 = new Intent(v.getContext(), ActivityPrincipalProfile.class);
                 v.getContext().startActivity(intent2);
+                finish();
                 break;
-
+            case R.id.layoutAtras:
+                finishActivity ();
+                break;
 
         }
     }
+
+    @Override
+    public void onBackPressed (){
+        finishActivity();
+    }
+
+    private void finishActivity (){
+        Intent intent = new Intent(getApplicationContext(), TalleristaPrincipalMenu.class);
+        startActivity(intent);
+        finish();
+    }
+
+
 
 }
