@@ -11,18 +11,14 @@ import android.view.View;
 import android.widget.LinearLayout;
 import com.example.user.talleristamod.PackageGamePreguntas.AdapterStudents;
 import com.example.user.talleristamod.PackageGamePreguntas.AdapterStudentsClass;
-import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityPrincipalProfile;
-import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityProfileEstudiante;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
-import static com.example.user.talleristamod.GlobalVariables.GlobalVariables.USER_TYPE;
 
 public class ActivityGiveBadges extends AppCompatActivity implements View.OnClickListener {
 

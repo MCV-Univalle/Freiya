@@ -2,6 +2,7 @@ package com.example.user.talleristamod.PackageGameRaceQr;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
@@ -18,6 +19,7 @@ import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.ObjectLeaderBoardRaceQr;
 import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.ObjectPersistenceRaceQr;
 import com.example.user.talleristamod.PackageProfiles.DatabaseProfiles;
+import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityPrincipalProfile;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +40,7 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
     TextView textViewJoinCode, tvTitleParticipantes,tvTitleLeader;
     Button buttonFinishQr, buttonGivePoints;
     TabLayout tablayout;
+    private ConstraintLayout linearLayoutBack, linearLayoutHome;
 
 
 
@@ -55,6 +58,11 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
         listViewPlayers = findViewById(R.id.listViewPlayersRace);
         buttonFinishQr = findViewById(R.id.buttonFinishQr);
         buttonGivePoints = findViewById(R.id.buttonGivePointsQr);
+        linearLayoutBack = findViewById(R.id.layoutAtrasT);
+        linearLayoutHome = findViewById(R.id.layoutHomeT);
+
+        linearLayoutBack.setOnClickListener(this);
+        linearLayoutHome.setOnClickListener(this);
 
         buttonGivePoints.setOnClickListener(this);
         buttonFinishQr.setOnClickListener(this);
@@ -109,6 +117,13 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.buttonGivePointsQr:
                 dataBaseSets.givePointsList();
+                break;
+            case R.id.layoutAtrasT:
+                finishChallenge();
+                break;
+
+            case R.id.layoutHomeT:
+                finishChallenge();
                 break;
 
         }
@@ -168,7 +183,7 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                         });
 
 
-
+                    finish();
 
                     }
                 })
@@ -179,4 +194,5 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                     }
                 }).show();
     }
+
 }
