@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameChallenge.DatabaseChallenge;
 import com.example.user.talleristamod.PackageGameChallenge.TalleristaProfile.ActivityCreateChallenge;
@@ -21,7 +19,6 @@ import com.example.user.talleristamod.PackageGamePreguntas.ActivitySelectImg;
 import com.example.user.talleristamod.PackageGamePreguntas.DatabaseImaginaries;
 import com.example.user.talleristamod.PackageGameRaceQr.ActivitySelectRaceQr;
 import com.example.user.talleristamod.PackageGameRaceQr.DatabaseRaceQr;
-import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
 import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityPrincipalProfile;
 import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityProfileEstudiante;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
@@ -31,7 +28,7 @@ import static com.example.user.talleristamod.GlobalVariables.GlobalVariables.USE
 
 public class ActivityActivitiesFreiya extends AppCompatActivity implements View.OnClickListener {
     Button bCreateRace, bCreateReto, bCreateImg;
-    ConstraintLayout linearLayoutBack, linearLayoutProfile, linearLayoutHome;
+    private ConstraintLayout linearLayoutBack, linearLayoutProfile, linearLayoutHome;
 
 
 
