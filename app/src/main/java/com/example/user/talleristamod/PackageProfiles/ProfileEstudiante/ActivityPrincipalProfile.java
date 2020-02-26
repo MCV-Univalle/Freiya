@@ -186,6 +186,8 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
 
 
     private void finishActivity (){
+        Intent intent = new Intent(getApplicationContext(), ActivityProfileEstudiante.class);
+        startActivity(intent);
         databaseEstudianteLevel.removeEventListener(valueEventListenerPoints);
         databaseEstudianteRegister.removeEventListener(valueEventListenerBadges);
         finish();
@@ -193,8 +195,6 @@ public class ActivityPrincipalProfile extends AppCompatActivity implements View.
 
     @Override
     public void onBackPressed (){
-        Intent intent = new Intent(getApplicationContext(), ActivityProfileEstudiante.class);
-        startActivity(intent);
         finishActivity();
     }
 }
