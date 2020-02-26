@@ -46,8 +46,14 @@ public class ActivityReceiveChallenge extends AppCompatActivity implements View.
             case R.id.buttonAceptarReto:
                 Intent intent1 = new Intent(this, ActivityUploadResources.class);
                 startActivity(intent1);
+                finish();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed (){
+        Toast.makeText(this,"La funcion de volver esta deshabilitada durante el reto" ,Toast.LENGTH_SHORT).show();
     }
 
 }

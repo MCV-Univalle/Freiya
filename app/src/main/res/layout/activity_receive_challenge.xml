@@ -10,57 +10,101 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
-        android:layout_width="206dp"
-        android:layout_height="117dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/race"
-        android:visibility="visible"
-        app:civ_border_color="#FFF"
-        app:civ_border_width="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/tvDescriptionChallenge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline303"
+        app:layout_constraintEnd_toStartOf="@+id/guideline305"
+        app:layout_constraintStart_toStartOf="@+id/guideline304"
+        app:layout_constraintTop_toTopOf="@+id/guideline302" />
 
     <TextView
         android:id="@+id/tvDescriptionChallenge"
-        android:layout_width="267dp"
-        android:layout_height="183dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="236dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/roundededittext"
-        android:backgroundTint="#09070C"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="10sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
         android:gravity="center"
-        android:text="TextView"
-        android:textColor="#0E0D0D"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Reto"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        android:fontFamily="@font/adventpro_light"
+        app:layout_constraintBottom_toTopOf="@+id/guideline307"
+        app:layout_constraintEnd_toStartOf="@+id/guideline305"
+        app:layout_constraintStart_toStartOf="@+id/guideline304"
+        app:layout_constraintTop_toTopOf="@+id/guideline306" />
 
     <Button
         android:id="@+id/buttonAceptarReto"
-        android:layout_width="404dp"
-        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#00BCD4"
         android:text="ACEPTAR RETO"
         android:textColor="@color/colorWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline309"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionChallenge"
+        app:layout_constraintTop_toTopOf="@+id/guideline308"
         app:layout_constraintVertical_bias="0.25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline302"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline303"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline304"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline305"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline306"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline307"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline308"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.73" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline309"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
 
 
 </android.support.constraint.ConstraintLayout>
