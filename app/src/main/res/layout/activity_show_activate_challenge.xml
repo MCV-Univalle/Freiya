@@ -1,74 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
     tools:context=".PackageGameChallenge.TalleristaProfile.ActivityShowActivateChallenge">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/toolbar_top_level"
-            layout="@layout/toolbar"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline348"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
 
-        <TextView
-            android:id="@+id/textView2Challenges"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="280dp"
-            android:text="Código:"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_top_level" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline350"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerActivateChallenge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="44dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewJoinCodeChallenge"
-            app:layout_constraintVertical_bias="1.0" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline351"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
 
-        <Button
-            android:id="@+id/buttonFinishChallenge"
-            android:layout_width="133dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/roundedbutton"
-            android:backgroundTint="#03A9F4"
-            android:text="Terminar Actividad"
-            android:textColor="#FDFDFD"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.79"
-            app:layout_constraintStart_toEndOf="@+id/textViewJoinCodeChallenge"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_top_level" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline352"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07" />
 
-        <TextView
-            android:id="@+id/textViewJoinCodeChallenge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            android:textColor="#FF9800"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2Challenges" />
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline353"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
 
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline354"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline355"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.26" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline356"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline357"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline358"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline359"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline360"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <include
+        android:id="@+id/toolbar_top_level"
+        layout="@layout/toolbar_tallerista"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline332"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2Challenges"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Código de ingreso a la actividad:"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        android:fontFamily="@font/adventpro_light"
+        app:layout_constraintBottom_toTopOf="@+id/guideline356"
+        app:layout_constraintEnd_toStartOf="@+id/guideline350"
+        app:layout_constraintStart_toStartOf="@+id/guideline352"
+        app:layout_constraintTop_toTopOf="@+id/guideline354" />
+
+    <TextView
+        android:id="@+id/textView2Challenges3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:gravity="center"
+        android:text="Recursos recibidos"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline359"
+        app:layout_constraintEnd_toStartOf="@+id/guideline263"
+        app:layout_constraintStart_toStartOf="@+id/guideline352"
+        app:layout_constraintTop_toTopOf="@+id/guideline358" />
+
+    <TextView
+        android:id="@+id/textView2Challenges2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:gravity="center"
+        android:text="Actividad de Reto"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline353"
+        app:layout_constraintEnd_toStartOf="@+id/guideline263"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline352"
+        app:layout_constraintTop_toTopOf="@+id/guideline332"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerActivateChallenge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline263"
+        app:layout_constraintStart_toStartOf="@+id/guideline352"
+        app:layout_constraintTop_toTopOf="@+id/guideline360" />
+
+    <Button
+        android:id="@+id/buttonFinishChallenge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="#03A9F4"
+        android:text="Terminar Actividad"
+        android:textColor="#FDFDFD"
+        app:layout_constraintBottom_toTopOf="@+id/guideline357"
+        app:layout_constraintEnd_toStartOf="@+id/guideline263"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline348"
+        app:layout_constraintTop_toTopOf="@+id/guideline355" />
+
+    <TextView
+        android:id="@+id/textViewJoinCodeChallenge"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:gravity="center"
+        android:text="Espera un momento"
+        android:textAlignment="center"
+        android:textColor="#FF9800"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline357"
+        app:layout_constraintEnd_toStartOf="@+id/guideline350"
+        app:layout_constraintStart_toStartOf="@+id/guideline352"
+        app:layout_constraintTop_toTopOf="@+id/guideline355" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline332"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline263"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.93" />
+
+</android.support.constraint.ConstraintLayout>
