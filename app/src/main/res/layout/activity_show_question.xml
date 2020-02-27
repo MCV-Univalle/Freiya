@@ -4,91 +4,179 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondopregunta"
     tools:context=".PackageGameRaceQr.Questions.ActivityShowQuestion">
 
     <TextView
         android:id="@+id/textViewPregunta"
-        android:layout_width="267dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.272" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Cargando Pregunta"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        android:fontFamily="@font/adventpro_light"
+        app:layout_constraintBottom_toTopOf="@+id/guideline379"
+        app:layout_constraintEnd_toStartOf="@+id/guideline376"
+        app:layout_constraintStart_toStartOf="@+id/guideline377"
+        app:layout_constraintTop_toTopOf="@+id/guideline378"/>
 
     <RadioGroup
         android:id="@+id/radioGroupRespuestas"
-        android:layout_width="275dp"
-        android:layout_height="197dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center|start|center_horizontal"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSiguiente"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline383"
+        app:layout_constraintEnd_toStartOf="@+id/guideline376"
         app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPregunta"
-        app:layout_constraintVertical_bias="0.569">
+        app:layout_constraintStart_toStartOf="@+id/guideline377"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6">
 
         <RadioButton
             android:id="@+id/rbRespuestaUno"
-            android:layout_width="257dp"
-            android:layout_height="13dp"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="5sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"/>
 
         <RadioButton
             android:id="@+id/rbRespuestaDos"
-            android:layout_width="257dp"
-            android:layout_height="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:visibility="visible" />
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="5sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"/>
 
         <RadioButton
             android:id="@+id/rbRespuestaTres"
-            android:layout_width="257dp"
-            android:layout_height="13dp"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="5sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"/>
 
         <RadioButton
             android:id="@+id/rbRespuestaCuatro"
-            android:layout_width="257dp"
-            android:layout_height="13dp"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="5sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"/>
     </RadioGroup>
 
     <Button
         android:id="@+id/buttonSiguiente"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Siguiente"
+        android:textColor="#FAFAFA"
+        android:backgroundTint="#00BCD4"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintBottom_toTopOf="@+id/guideline384"
+        app:layout_constraintEnd_toStartOf="@+id/guideline376"
+        app:layout_constraintStart_toStartOf="@+id/guideline377"
+        app:layout_constraintTop_toTopOf="@+id/guideline385" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline376"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="Siguiente"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
 
-    <TextView
-        android:id="@+id/textViewPuntos"
-        android:layout_width="84dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="80dp"
-        android:text="0"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPregunta"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline377"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline378"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".18" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline379"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/round_box"
+        app:layout_constraintBottom_toTopOf="@+id/guideline381"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline380"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline380"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline381"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline383"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.86" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline384"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline385"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88" />
+
 </android.support.constraint.ConstraintLayout>

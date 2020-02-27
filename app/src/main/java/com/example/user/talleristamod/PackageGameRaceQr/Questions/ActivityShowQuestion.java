@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameRaceQr.ActivityFollowCodeQr;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 
 public class ActivityShowQuestion extends AppCompatActivity implements View.OnClickListener {
 
-    TextView pregunta, puntos;
+    TextView pregunta;
     Button bSiguiente;
     RadioGroup respuestas;
     RadioButton rbrespuesta1;
@@ -57,7 +58,6 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
         rbrespuesta2 = findViewById(R.id.rbRespuestaDos);
         rbrespuesta3 = findViewById(R.id.rbRespuestaTres);
         rbrespuesta4 = findViewById(R.id.rbRespuestaCuatro);
-        puntos = findViewById(R.id.textViewPuntos);
         bSiguiente = (Button) findViewById(R.id.buttonSiguiente);
         respuestas = (RadioGroup) findViewById(R.id.radioGroupRespuestas);
         dataBaseSets = new DatabaseRaceQr(this);
@@ -191,7 +191,6 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
             rbrespuesta2.setText(questions.get(GlobalVariables.POINTS_EARNED).respuestas.get(indicePreguntas.get(1)-1));
             rbrespuesta3.setText(questions.get(GlobalVariables.POINTS_EARNED).respuestas.get(indicePreguntas.get(2)-1));
             rbrespuesta4.setText(questions.get(GlobalVariables.POINTS_EARNED).respuestas.get(indicePreguntas.get(3)-1));
-            puntos.setText(puntosObtenidos + "");
         }
         else
         {
@@ -199,6 +198,11 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed (){
+        Toast.makeText(this, "La funcion volver esta deshabilitada durante la carrera", Toast.LENGTH_SHORT).show();
     }
 
 
