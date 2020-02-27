@@ -81,5 +81,12 @@ public class ActivityProfileTallerista extends AppCompatActivity implements View
        }
     }
 
+    @Override
+    public void onBackPressed () {
+        Intent intentD = new Intent(this, TalleristaPrincipalMenu.class);
+        startActivity(intentD);
+        finish();
+    }
+
 
 }

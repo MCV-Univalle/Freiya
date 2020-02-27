@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            layout="@layout/toolbar_prueba"
+            layout="@layout/toolbar_tallerista"
             android:id="@+id/toolBarPrueba"
             android:elevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"

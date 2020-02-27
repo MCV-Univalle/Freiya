@@ -22,7 +22,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PackageProfiles.ProfileTallerista.ActivityGivePoints"></activity>
         <activity android:name=".PackageProfiles.ProfileTallerista.ActivitySelectBadge" />
         <activity android:name=".PackageProfiles.ProfileTallerista.ActivityGiveBadges" />
         <activity android:name=".PackageGameCuatro.ActivityCreateQuestionIP" />

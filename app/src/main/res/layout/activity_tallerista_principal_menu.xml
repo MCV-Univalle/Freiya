@@ -96,7 +96,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline102"
         app:layout_constraintStart_toStartOf="@+id/guideline101"
         app:layout_constraintTop_toTopOf="@+id/guideline104"
-        app:layout_constraintVertical_bias="0.936" />
+        />
 
     <Button
         android:id="@+id/bEstudiante"
@@ -108,7 +108,6 @@
         android:text="Estudiante"
         app:layout_constraintBottom_toTopOf="@+id/guideline105"
         app:layout_constraintEnd_toStartOf="@+id/guideline102"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="@+id/guideline101"
         app:layout_constraintTop_toTopOf="@+id/guideline106" />
 

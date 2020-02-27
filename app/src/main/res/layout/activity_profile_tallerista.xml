@@ -61,13 +61,14 @@
         android:layout_height="0dp"
         android:layout_below="@+id/profile_image"
         android:layout_alignBottom="@+id/toolbar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="center_horizontal"
-        android:text="Herramientas de Taller"
+        android:gravity="center"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="5sp"
+        android:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform"
         android:textAlignment="center"
+        android:text="Herramientas de Taller"
         android:textColor="@color/buttonTextColor"
-        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline109"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,14 +100,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline114"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.92" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline115"
@@ -164,8 +165,7 @@
             android:id="@+id/cdAtivateActivities"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline118"
@@ -177,7 +177,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -259,7 +259,6 @@
             android:id="@+id/cdActivities"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_alignParentStart="true"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline123"
@@ -273,7 +272,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <ImageView
@@ -353,8 +352,6 @@
             android:id="@+id/cdPersistenceActivities"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline126"
@@ -366,7 +363,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <android.support.constraint.Guideline
@@ -448,9 +445,6 @@
             android:id="@+id/cdProfile"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_alignParentStart="true"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline134"
@@ -462,7 +456,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <ImageView

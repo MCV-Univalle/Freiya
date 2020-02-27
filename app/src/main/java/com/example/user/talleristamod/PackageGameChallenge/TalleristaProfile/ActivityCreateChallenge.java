@@ -2,6 +2,7 @@ package com.example.user.talleristamod.PackageGameChallenge.TalleristaProfile;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,9 +16,13 @@ import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameChallenge.DatabaseChallenge;
 import com.example.user.talleristamod.PackageGameChallenge.ObjectActivityChallenge;
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
+import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityPrincipalProfile;
+import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityProfileEstudiante;
 import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.R;
 import com.google.firebase.auth.FirebaseAuth;
+
+import static com.example.user.talleristamod.GlobalVariables.GlobalVariables.USER_TYPE;
 
 public class ActivityCreateChallenge extends AppCompatActivity implements View.OnClickListener
 {
@@ -25,6 +30,7 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
     private EditText editTextChallengeName, editTextChallengeDescription;
     private RadioButton rbAudio, rbImagen;
     private Button buttonCreateChallenge;
+    private ConstraintLayout linearLayoutBack, linearLayoutHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +46,11 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
         buttonCreateChallenge = (Button) findViewById(R.id.buttonCreateChallenge);
         rbAudio = (RadioButton) findViewById(R.id.radioButtonAudio);
         rbImagen = (RadioButton) findViewById(R.id.radioButtonImagen);
+        linearLayoutBack = findViewById(R.id.layoutAtrasT);
+        linearLayoutHome = findViewById(R.id.layoutHomeT);
+
+        linearLayoutBack.setOnClickListener(this);
+        linearLayoutHome.setOnClickListener(this);
         buttonCreateChallenge.setOnClickListener(this);
 
     }
@@ -91,7 +102,28 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
 
                 break;
 
+            case R.id.layoutAtrasT:
+                finishActivity();
+                break;
+
+            case R.id.layoutHomeT:
+                finishActivity();
+                break;
+
+
         }
+    }
+
+    private void finishActivity(){
+        Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+        startActivity(intent);
+        finish();
+
+    }
+
+    @Override
+    public void onBackPressed (){
+        finishActivity();
     }
 
     private boolean validations() {

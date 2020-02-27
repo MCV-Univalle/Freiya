@@ -1,29 +1,29 @@
 package com.example.user.talleristamod.PackageProfiles.ProfileTallerista;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.LinearLayout;
-
-import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGamePreguntas.AdapterStudents;
 import com.example.user.talleristamod.PackageGamePreguntas.AdapterStudentsClass;
-import com.example.user.talleristamod.PackageGamePreguntas.DatabaseImaginaries;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
-public class ActivityGiveBadges extends AppCompatActivity {
 
-    DatabaseImaginaries dataBaseSets;
-    RecyclerView recyclerViewStudents;
+public class ActivityGiveBadges extends AppCompatActivity implements View.OnClickListener {
+
+    public RecyclerView recyclerViewStudents;
+    private ConstraintLayout linearLayoutBack, linearLayoutHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,13 @@ public class ActivityGiveBadges extends AppCompatActivity {
     }
 
     public void showStudents(){
+        linearLayoutBack = findViewById(R.id.layoutAtrasT);
+        linearLayoutHome = findViewById(R.id.layoutHomeT);
+
+        linearLayoutBack.setOnClickListener(this);
+        linearLayoutHome.setOnClickListener(this);
+
+
         recyclerViewStudents = (RecyclerView) findViewById(R.id.reciverViewBadges);
         recyclerViewStudents.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL, false));
         obtainTotalStudentsList(recyclerViewStudents);
@@ -71,4 +78,33 @@ public class ActivityGiveBadges extends AppCompatActivity {
 
     }
 
-}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.layoutAtrasT:
+                finishActivity();
+                break;
+
+            case R.id.layoutHomeT:
+                finishActivity();
+                break;
+        }
+
+
+        }
+
+    private void finishActivity(){
+
+        Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+        startActivity(intent);
+        finish();
+
+    }
+
+    @Override
+    public void onBackPressed (){
+        finishActivity();
+    }
+
+    }
+

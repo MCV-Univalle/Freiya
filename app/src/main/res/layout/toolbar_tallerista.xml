@@ -1,5 +1,6 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolBarPrueba"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -84,48 +85,35 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_height="0dp"
+
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:foregroundGravity="center"
+                android:src="@drawable/iconohome"
                 app:layout_constraintBottom_toTopOf="@+id/guideline15"
-                app:layout_constraintTop_toBottomOf="@+id/guideline13"
-                app:layout_constraintEnd_toStartOf="@id/guideline17"
-                app:layout_constraintStart_toEndOf="@id/guideline16">
+                app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline13"
+                app:layout_constraintVertical_bias="0.0" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:foregroundGravity="center"
-                    android:src="@drawable/iconohome"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-            </android.support.constraint.ConstraintLayout>
-            <android.support.constraint.ConstraintLayout
-                android:layout_height="0dp"
+            <TextView
+                android:id="@+id/tvhome"
                 android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="2sp"
+                android:autoSizeStepGranularity="2sp"
+                android:text="Menú"
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/guideline15"
-                app:layout_constraintEnd_toStartOf="@id/guideline17"
-                app:layout_constraintStart_toEndOf="@id/guideline16">
+                app:layout_constraintEnd_toStartOf="@+id/guideline17"
+                app:layout_constraintStart_toStartOf="@+id/guideline16"
+                app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
-                <TextView
-                    android:id="@+id/tvhome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autoSizeTextType="uniform"
-                    android:text="Menú"
-                    android:gravity="center"
-                    android:textColor="@color/common_google_signin_btn_text_dark_pressed"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-            </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline13"
@@ -171,6 +159,86 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.85" />
 
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutProfileT"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            android:saveEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline182"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <TextView
+                android:id="@+id/tvuser"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeMaxTextSize="100sp"
+                android:autoSizeMinTextSize="2sp"
+                android:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
+                android:text="Perfil"
+                android:textAlignment="center"
+
+                android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline208"
+                app:layout_constraintStart_toStartOf="@+id/guideline205"
+                app:layout_constraintTop_toTopOf="@+id/guideline204" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline204"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline205"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline207"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline208"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <ImageView
+                android:id="@+id/perfilToolbar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/iconoperfil"
+                app:layout_constraintBottom_toTopOf="@+id/guideline204"
+                app:layout_constraintEnd_toStartOf="@+id/guideline208"
+                app:layout_constraintStart_toStartOf="@+id/guideline205"
+                app:layout_constraintTop_toTopOf="@+id/guideline207" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline182"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+
+
     </android.support.constraint.ConstraintLayout>
+
 
 </android.support.v7.widget.Toolbar>

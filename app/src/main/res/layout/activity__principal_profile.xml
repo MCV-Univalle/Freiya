@@ -386,7 +386,7 @@
 
     <include
         android:id="@+id/toolbar_top_level"
-        layout="@layout/toolbar"
+        layout="@layout/toolbar_tallerista"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline47"
@@ -546,7 +546,7 @@
             android:autoSizeTextType="uniform"
             android:gravity="center"
             android:scaleType="fitCenter"
-            android:text="1500"
+            android:text="0"
             app:layout_constraintBottom_toTopOf="@+id/progressBar2"
             app:layout_constraintEnd_toStartOf="@+id/guideline53"
             app:layout_constraintStart_toStartOf="@+id/guideline52"

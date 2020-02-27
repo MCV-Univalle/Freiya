@@ -106,7 +106,7 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
     public void comprobarRespuesta(RadioGroup respuestas)
     {
         int radioButtonId = respuestas.getCheckedRadioButtonId();
-        RadioButton rb = (RadioButton) findViewById(radioButtonId);
+        RadioButton rb = findViewById(radioButtonId);
         String texto = rb.getText().toString();
         respuestaCorrecta = questions.get(GlobalVariables.POINTS_EARNED).respuestas.get(0);
 
@@ -163,25 +163,9 @@ public class ActivityShowQuestion extends AppCompatActivity implements View.OnCl
         GlobalVariables.RACEQR_ERRORS.clear();
         GlobalVariables.RACEQR_ERRORS_COUNTER = 0;
 
-
-        /*DatabaseRaceQr dataBaseSets = new DatabaseRaceQr(this);
-        dataBaseSets.oila();*/
-
         Intent intent = new Intent(getApplicationContext(), ActivityQrRaceEarnedPoints.class);
         startActivity(intent);
 
-        /*new AlertDialog.Builder(this)
-                .setTitle("Respuesta Correcta!")
-                .setMessage("Felicitaciones, Llegaste al final!")
-                .setIcon(R.drawable.robotcontinuar)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                        Intent intent = new Intent(getApplicationContext(), TalleristaPrincipalMenu.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }).show();*/
     }
 
 

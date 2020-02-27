@@ -30,7 +30,6 @@ public class ActivityQrRaceEarnedPoints extends AppCompatActivity {
 
         TextView textViewPoints = findViewById(R.id.TextViewQrPointsEarned);
         Button buttonBack = findViewById(R.id.buttonQrPointsBack);
-        textViewPoints.setText(""+recivedPoints);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,11 +40,11 @@ public class ActivityQrRaceEarnedPoints extends AppCompatActivity {
             }
         });
 
-        givePointsSingleStudent ();
+
 
     }
 
-    public void givePointsSingleStudent (){
+   /* public void givePointsSingleStudent (){
         final String user =  FirebaseAuth.getInstance().getCurrentUser().getUid();
         final DatabaseReference databaseEstudiantePoints = FirebaseDatabase.getInstance().getReference("Estudiante/"+user+"/Puntaje");
 
@@ -64,5 +63,5 @@ public class ActivityQrRaceEarnedPoints extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 }
