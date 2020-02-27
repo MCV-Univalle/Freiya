@@ -56,29 +56,27 @@ public class ActivityReceptorImaginaries extends AppCompatActivity {
                 mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.selectedsound);
 
 
-                if (vibrator.hasVibrator()) {
-                    temp = 0;
-                    if (dataSnapshot.child("temporizador").exists()) {
-                        temp = Integer.parseInt(dataSnapshot.child("temporizador").getValue().toString());
-                        String idChosen = (String) dataSnapshot.child("elegido").getValue();
-
-                        if (userUid.equals(idChosen)) {
-                            textViewSelectedStudent.setText("Fuiste Elegido");
-                            vibrator.vibrate(temp*1000);
-                            mediaPlayer.start();
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mediaPlayer.stop();
-                                }
-                            }, temp*1000);
-
-                        } else
-
-                            textViewSelectedStudent.setText("Manten en celular en tu mano sin salir de la aplicacion");
-                    }
-                } else
+                if (!vibrator.hasVibrator()) {
                     Toast.makeText(getApplicationContext(), "este dispositivo no puede vibrar", Toast.LENGTH_SHORT).show();
+                }
+
+                String idChosen = (String) dataSnapshot.child("elegido").getValue();
+
+                if (userUid.equals(idChosen)) {
+                    temp = Integer.parseInt(dataSnapshot.child("temporizador").getValue().toString());
+                    textViewSelectedStudent.setText("Fuiste Seleccionado");
+                    vibrator.vibrate(temp*1000);
+                    mediaPlayer.start();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mediaPlayer.stop();
+                        }
+                        }, temp*1000);
+
+                        } else textViewSelectedStudent.setText("Mantén el celular en tu mano sin salir de la aplicación");
+
+
             }
 
             @Override
@@ -92,6 +90,11 @@ public class ActivityReceptorImaginaries extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         databaseChosen.removeEventListener(valueEventListenerReceptor);
+    }
+
+    @Override
+    public void onBackPressed (){
+        Toast.makeText(this,"La funcion de volver esta deshabilitada durante la actividad" ,Toast.LENGTH_SHORT).show();
     }
 }
 

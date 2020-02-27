@@ -4,20 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondochalle"
     tools:context=".PackageGamePreguntas.ActivityReceptorImaginaries">
 
     <TextView
         android:id="@+id/textViewSelectedStudent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="10sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:gravity="center"
+        android:text="Espera a Ser Seleccionado"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline311"
+        app:layout_constraintEnd_toStartOf="@+id/guideline313"
+        app:layout_constraintStart_toStartOf="@+id/guideline312"
+        app:layout_constraintTop_toTopOf="@+id/guideline310" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline310"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="NombreSeleccionado"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline311"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline312"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline313"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
 </android.support.constraint.ConstraintLayout>
