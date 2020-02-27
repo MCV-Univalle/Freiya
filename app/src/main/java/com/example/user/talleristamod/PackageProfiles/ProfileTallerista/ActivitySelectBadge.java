@@ -1,6 +1,8 @@
 package com.example.user.talleristamod.PackageProfiles.ProfileTallerista;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +10,8 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.user.talleristamod.PackageProfiles.Login.TalleristaPrincipalMenu;
+import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityPrincipalProfile;
 import com.example.user.talleristamod.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -16,6 +20,7 @@ public class ActivitySelectBadge extends AppCompatActivity implements View.OnCli
 
     public String idStudent, nameStudent;
     public ImageButton GiveMedalButton1, GiveMedalButton2,GiveMedalButton3, GiveMedalButton4, GiveMedalButton5,GiveMedalButton6,GiveMedalButton7;
+    private ConstraintLayout linearLayoutBack, linearLayoutHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,12 @@ public class ActivitySelectBadge extends AppCompatActivity implements View.OnCli
         GiveMedalButton5 = findViewById(R.id.buttonBadge5);
         GiveMedalButton6 = findViewById(R.id.buttonBadge6);
         GiveMedalButton7 = findViewById(R.id.buttonBadge7);
+
+        linearLayoutBack = findViewById(R.id.layoutAtrasT);
+        linearLayoutHome = findViewById(R.id.layoutHomeT);
+
+        linearLayoutBack.setOnClickListener(this);
+        linearLayoutHome.setOnClickListener(this);
 
         GiveMedalButton1.setOnClickListener(this);
         GiveMedalButton2.setOnClickListener(this);
@@ -77,16 +88,36 @@ public class ActivitySelectBadge extends AppCompatActivity implements View.OnCli
             case R.id.buttonBadge7:
                 confirmBadge(nameStudent, "007");
                 break;
+            case R.id.layoutAtrasT:
+                backSelection();
+                break;
+
+            case R.id.layoutHomeT:
+                Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+                startActivity(intent);
+                finish();
+                break;
 
 
 
         }
     }
 
+    @Override
+    public void onBackPressed (){
+        backSelection();
+    }
+
+    private void backSelection (){
+        Intent intent = new Intent(getApplicationContext(), ActivityGiveBadges.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void confirmBadge(String studentName , final String badgeName){
         new AlertDialog.Builder(this)
                 .setTitle("Entregar Medalla ")
-                .setMessage("¿Estas seguro de entregar la medalla "+badgeName+"al estudiante" +studentName+"?")
+                .setMessage("¿Estas seguro de entregar la medalla "+badgeName+" al estudiante " +studentName+"?")
                 .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
