@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.09" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -53,14 +53,31 @@
             android:id="@+id/recyclerViewQuestions"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/guideline330"
+            app:layout_constraintStart_toStartOf="@+id/guideline331"
+            app:layout_constraintTop_toTopOf="@+id/guideline333" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline330"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.92" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline331"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.03" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.Guideline
@@ -82,55 +99,155 @@
 
         <TextView
             android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:text="Nombre:"
-            app:layout_constraintStart_toStartOf="parent"
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"
+            android:fontFamily="@font/adventpro_light"
+            app:layout_constraintBottom_toTopOf="@+id/guideline347"
+            app:layout_constraintEnd_toStartOf="@+id/guideline349"
+            app:layout_constraintStart_toStartOf="@+id/guideline344"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Fecha:"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Fecha de creacion:"
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"
+            android:fontFamily="@font/adventpro_light"
+            app:layout_constraintBottom_toTopOf="@+id/guideline335"
+            app:layout_constraintEnd_toStartOf="@+id/guideline349"
+            app:layout_constraintStart_toStartOf="@+id/guideline344"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
         <TextView
             android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:text="Detalles de la Carrera"
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="center"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:autoSizeTextType="uniform"
+            android:fontFamily="@font/adventpro_light"
+            app:layout_constraintBottom_toTopOf="@+id/guideline343"
+            app:layout_constraintEnd_toStartOf="@+id/guideline345"
+            app:layout_constraintStart_toStartOf="@+id/guideline344"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewNamePersistenceRace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="left"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"
+            android:fontFamily="@font/adventpro_light"
+            app:layout_constraintBottom_toTopOf="@+id/guideline347"
+            app:layout_constraintEnd_toStartOf="@+id/guideline345"
+            app:layout_constraintStart_toStartOf="@+id/guideline346"
+            app:layout_constraintTop_toTopOf="@+id/guideline334" />
 
         <TextView
             android:id="@+id/textViewDatePersistenceRace"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="TextView"
+            android:autoSizeMaxTextSize="30sp"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeStepGranularity="2sp"
+            android:gravity="left"
+            android:textColor="@color/black"
+            app:autoSizeTextType="uniform"
+            android:fontFamily="@font/adventpro_light"
+            app:layout_constraintBottom_toTopOf="@+id/guideline335"
+            app:layout_constraintEnd_toStartOf="@+id/guideline345"
+            app:layout_constraintStart_toStartOf="@+id/guideline346"
+            app:layout_constraintTop_toTopOf="@+id/guideline329" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline329"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/textViewNamePersistenceRace" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.62" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline334"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline335"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".9" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline343"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".28" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline344"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline345"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".9" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline346"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline347"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.58" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline349"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".28" />
+
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
