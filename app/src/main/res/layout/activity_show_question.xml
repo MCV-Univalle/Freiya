@@ -44,8 +44,7 @@
             android:autoSizeMaxTextSize="30sp"
             android:autoSizeMinTextSize="5sp"
             android:autoSizeStepGranularity="2sp"
-            android:gravity="center"
-            android:textAlignment="center"
+            android:gravity="center_vertical"
             android:textColor="@color/black"
             app:autoSizeTextType="uniform"/>
 
@@ -57,7 +56,7 @@
             android:autoSizeMaxTextSize="30sp"
             android:autoSizeMinTextSize="5sp"
             android:autoSizeStepGranularity="2sp"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:textAlignment="center"
             android:textColor="@color/black"
             app:autoSizeTextType="uniform"/>
@@ -70,8 +69,7 @@
             android:autoSizeMaxTextSize="30sp"
             android:autoSizeMinTextSize="5sp"
             android:autoSizeStepGranularity="2sp"
-            android:gravity="center"
-            android:textAlignment="center"
+            android:gravity="center_vertical"
             android:textColor="@color/black"
             app:autoSizeTextType="uniform"/>
 
@@ -83,8 +81,7 @@
             android:autoSizeMaxTextSize="30sp"
             android:autoSizeMinTextSize="5sp"
             android:autoSizeStepGranularity="2sp"
-            android:gravity="center"
-            android:textAlignment="center"
+            android:gravity="center_vertical"
             android:textColor="@color/black"
             app:autoSizeTextType="uniform"/>
     </RadioGroup>
