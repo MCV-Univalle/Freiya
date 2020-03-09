@@ -36,6 +36,7 @@ public class ActivityShowResourses extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resourses);
+
         imageView = findViewById(R.id.imageViewResourse);
         imageView.setOnClickListener(this);
         imageViewAudio = findViewById(R.id.imageViewAudio);

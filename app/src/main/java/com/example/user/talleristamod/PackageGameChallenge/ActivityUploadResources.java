@@ -89,7 +89,6 @@ public class ActivityUploadResources extends AppCompatActivity {
                     Intent intent = new Intent();
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
-                    //Toast.makeText(getApplicationContext(), " = " + GlobalVariables.SELECTED_CHALLENGE, Toast.LENGTH_SHORT).show();
                     startActivityForResult(Intent.createChooser(intent, "Selecciona una Imagen"), PICK_IMAGE_REQUEST);
                 }
             });
