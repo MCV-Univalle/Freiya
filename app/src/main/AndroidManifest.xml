@@ -24,9 +24,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".PackageProfiles.ProfileTallerista.ActivitySelectBadge" />
         <activity android:name=".PackageProfiles.ProfileTallerista.ActivityGiveBadges" />
-        <activity android:name=".PackageGameCuatro.ActivityCreateQuestionIP" />
         <activity android:name=".PackageGameRaceQr.RaceQrEconomy.ActivityQrRaceEarnedPoints" />
-        <activity android:name=".PackageGameCuatro.ActivityCreateInterPlay" />
         <activity android:name=".PackageGameRaceQr.RaceQrPersistence.ActivityDetailsPersistenceRace" />
         <activity android:name=".PackageGameRaceQr.ActivityShowRaceQrDetails" />
         <activity

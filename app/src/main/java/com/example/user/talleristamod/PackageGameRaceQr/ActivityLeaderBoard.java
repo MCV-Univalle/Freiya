@@ -28,6 +28,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -142,48 +144,7 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                 .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
-
-                        final DatabaseReference databaseStateAQr = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY);
-                        databaseStateAQr.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                String name = (String) dataSnapshot.child("nombre").getValue();
-                                List<String> listquestions = (ArrayList<String>) dataSnapshot.child("idQuestions").getValue();
-                                List<ObjectLeaderBoardRaceQr> listObjectLeaderBoard = new ArrayList<>();
-
-                                DataSnapshot dataSnapshot1 = dataSnapshot.child("LeaderBoard");
-                                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot1.getChildren())
-                                {
-                                    ObjectLeaderBoardRaceQr objectLeaderBoardRaceQr = objectQuestionsSnapShot.getValue(ObjectLeaderBoardRaceQr.class);
-                                    listObjectLeaderBoard.add(objectLeaderBoardRaceQr);
-                                }
-
-                                DatabaseReference database = FirebaseDatabase.getInstance().getReference("ActivityPersistence/ActivityQrRace/");
-                                String key = database.push().getKey();
-                                ObjectPersistenceRaceQr objectPersistenceRaceQr = new ObjectPersistenceRaceQr(name,"hoy", listObjectLeaderBoard, listquestions);
-                                database.child(key).setValue(objectPersistenceRaceQr);
-
-                                if (GlobalVariables.IS_COPY.equals("true")) {
-                                    databaseStateAQr.removeValue();
-                                } else databaseStateAQr.child("stateA").setValue("Disable");
-
-                                Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
-
-                                databaseStateAQr.removeEventListener(this);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-
-
-                    finish();
+                        finishChallengeComands();
 
                     }
                 })
@@ -194,5 +155,64 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                     }
                 }).show();
     }
+
+    public void finishChallengeComands(){
+
+        final DatabaseReference databaseStateAQr = FirebaseDatabase.getInstance().getReference("Activity/ActivityQrRace/"+GlobalVariables.ID_ACTIVITY);
+        databaseStateAQr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = (String) dataSnapshot.child("nombre").getValue();
+                List<String> listquestions = (ArrayList<String>) dataSnapshot.child("idQuestions").getValue();
+                List<ObjectLeaderBoardRaceQr> listObjectLeaderBoard = new ArrayList<>();
+
+                DataSnapshot dataSnapshot1 = dataSnapshot.child("LeaderBoard");
+                for (DataSnapshot objectQuestionsSnapShot : dataSnapshot1.getChildren())
+                {
+                    ObjectLeaderBoardRaceQr objectLeaderBoardRaceQr = objectQuestionsSnapShot.getValue(ObjectLeaderBoardRaceQr.class);
+                    listObjectLeaderBoard.add(objectLeaderBoardRaceQr);
+                }
+
+                DatabaseReference database = FirebaseDatabase.getInstance().getReference("ActivityPersistence/ActivityQrRace/");
+                String key = database.push().getKey();
+                ObjectPersistenceRaceQr objectPersistenceRaceQr = new ObjectPersistenceRaceQr(name,"hoy", listObjectLeaderBoard, listquestions);
+                database.child(key).setValue(objectPersistenceRaceQr);
+
+                if (GlobalVariables.IS_COPY.equals("true")) {
+                    databaseStateAQr.removeValue();
+                } else {
+                    databaseStateAQr.child("stateA").setValue("Disable");
+                    databaseStateAQr.child("LeaderBoard").removeValue();
+                    databaseStateAQr.child("Participantes").removeValue();
+                }
+
+                Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
+
+                databaseStateAQr.removeEventListener(this);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        finish();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
+        finishChallengeComands();
+
+    }
+
+
 
 }

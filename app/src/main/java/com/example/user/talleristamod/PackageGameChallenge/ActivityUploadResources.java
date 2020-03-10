@@ -133,17 +133,20 @@ public class ActivityUploadResources extends AppCompatActivity {
     {
         if (filePath != null)
         {
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Subiendo...");
-            progressDialog.show();
 
-
-            final DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/Resources");
+            final DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY+"/Resources");
             final String idResource = databaseReferenceRace.push().getKey();
             final StorageReference ref = reference.child(idResource);
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             final String studentName = user.getDisplayName();
             final String studentId = user.getUid();
+
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Subiendo...");
+            progressDialog.show();
+
+
+
 
 
             ref.putFile(filePath)

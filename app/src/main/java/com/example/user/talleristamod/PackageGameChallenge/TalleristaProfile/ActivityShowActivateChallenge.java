@@ -56,7 +56,7 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference referencia = database.getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/Resources");
+        DatabaseReference referencia = database.getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY+"/Resources");
 
         AdaptadorFirebaseChallengesResources adaptadorFirebase = new AdaptadorFirebaseChallengesResources(ObjectResourceChallenge.class,R.layout.adapter_recycler_view
                 , QrRaceHolder.class,referencia,this);
@@ -100,7 +100,7 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
 
                         Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
 
-                        DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE);
+                        DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY);
 
                         if (GlobalVariables.IS_COPY.equals("true")) {
                             databaseStateAImg.removeValue();

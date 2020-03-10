@@ -7,9 +7,12 @@ import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameChallenge.TalleristaProfile.ActivityShowActivateChallenge;
+import com.example.user.talleristamod.PackageGamePreguntas.ActivityReceptorImaginaries;
 import com.example.user.talleristamod.PackageGamePreguntas.ActivityShowImaginarie;
 import com.example.user.talleristamod.PackageGamePreguntas.ObjectActivityImaginaries;
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
@@ -43,13 +46,13 @@ public class DatabaseChallenge {
                     String challenge = objectQuestionsSnapShot.getKey();
                     listChallenge.add(challenge);
 
-                    if (challenge.equals(GlobalVariables.SELECTED_CHALLENGE)) {
-                        stateActivity = (String) dataSnapshot.child(GlobalVariables.SELECTED_CHALLENGE).child("stateA").getValue();
+                    if (challenge.equals(GlobalVariables.ID_ACTIVITY)) {
+                        stateActivity = (String) dataSnapshot.child(GlobalVariables.ID_ACTIVITY).child("stateA").getValue();
                         break;
                     }
                 }
 
-                if (!listChallenge.contains(GlobalVariables.SELECTED_CHALLENGE)) {
+                if (!listChallenge.contains(GlobalVariables.ID_ACTIVITY)) {
                     Toast.makeText(context, "Actividad Deshabilitada", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, ActivityActivitiesFreiya.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -85,7 +88,7 @@ public class DatabaseChallenge {
         databaseCreateImg.child(id).child("Copy").setValue(true);
         databaseCreateImg.child(id).child("joinCode").setValue(randomCode);
 
-        GlobalVariables.SELECTED_CHALLENGE = id;
+        GlobalVariables.ID_ACTIVITY = id;
         Intent intent = new Intent(context, ActivityShowActivateChallenge.class);
         context.startActivity(intent);
     }
@@ -119,12 +122,12 @@ public class DatabaseChallenge {
                     String randomCode = new BigInteger(20, random).toString(32).toUpperCase();
 
                     GlobalVariables.JOIN_CODE = randomCode;
-                    GlobalVariables.SELECTED_CHALLENGE = challenge.getChallengeId();
+                    GlobalVariables.ID_ACTIVITY = challenge.getChallengeId();
 
-                    DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/joinCode");
+                    DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY+"/joinCode");
                     databaseQuestion.setValue(randomCode);
 
-                    DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/stateA");
+                    DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY+"/stateA");
                     databaseStateAImg.setValue("Enabled");
 
                     //-----------------------------------------------------------------------
@@ -161,13 +164,9 @@ public class DatabaseChallenge {
                     listChallenge.add(challenge.getJoinCode());
 
                     if (challenge.getJoinCode().equals(selectedActivityCode)){
-                        GlobalVariables.SELECTED_CHALLENGE = challenge.getChallengeId();
+                        GlobalVariables.ID_ACTIVITY = challenge.getChallengeId();
 
-                        Intent intent = new Intent(context, ActivityReceiveChallenge.class);
-                        intent.putExtra("nameChallenge", challenge.getChallengeName());
-                        intent.putExtra("descriptionChallenge", challenge.getChallengeDescription());
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-                        context.startActivity(intent);
+                        joinActivityChallenge(challenge.getChallengeName(), challenge.getChallengeDescription());
                         break;
                     }
                 }
@@ -179,6 +178,22 @@ public class DatabaseChallenge {
 
             }
         });
+    }
+
+    public void joinActivityChallenge(String challengeName, String challengeDescription){
+        FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
+        final String userUid = user.getUid();
+        final String userName = user.getDisplayName();
+
+
+        DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
+        databaseReferenceRace.child(userUid).setValue(userName);
+
+        Intent intent = new Intent(context, ActivityReceiveChallenge.class);
+        intent.putExtra("nameChallenge", challengeName);
+        intent.putExtra("descriptionChallenge", challengeDescription);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 
 }
