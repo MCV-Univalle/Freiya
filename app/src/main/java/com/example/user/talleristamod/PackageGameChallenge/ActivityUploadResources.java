@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityProfileEstudiante;
 import com.example.user.talleristamod.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -157,6 +158,9 @@ public class ActivityUploadResources extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Subido exitosamente", Toast.LENGTH_SHORT).show();
                             ObjectResourceChallenge objectResourceChallenge = new ObjectResourceChallenge(studentName, studentId, idResource);
                             databaseReferenceRace.child(idResource).setValue(objectResourceChallenge);
+                            Intent intentR = new Intent(getApplicationContext(), ActivityProfileEstudiante.class);
+                            startActivity(intentR);
+                            finish();
 
                         }
                     })
