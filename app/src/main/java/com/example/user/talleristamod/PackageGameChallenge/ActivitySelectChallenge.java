@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.talleristamod.PackageProfiles.ActivityActivitiesFreiya;
 import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityPrincipalProfile;
@@ -80,6 +81,8 @@ public class ActivitySelectChallenge extends AppCompatActivity implements View.O
     }
 
     public void SetAdapterFire (String filter1, String filter2){
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference referencia = database.getReference("Activity/ActivityChallenge");
 

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -52,6 +53,18 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
         linearLayoutBack.setOnClickListener(this);
         linearLayoutHome.setOnClickListener(this);
         buttonCreateChallenge.setOnClickListener(this);
+        rbAudio.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) rbImagen.setChecked(false);
+            }
+        });
+        rbImagen.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) rbAudio.setChecked(false);
+            }
+        });
 
     }
 
@@ -64,14 +77,7 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
                 if (validations()) {
                     final String challengeName = editTextChallengeName.getText().toString();
                     final String challengeDescription = editTextChallengeDescription.getText().toString();
-                    if (rbAudio.isChecked()) {
-                        GlobalVariables.TIPE_SOLUTION= "AUDIO";
-                    }
-                    else if(rbImagen.isChecked())
-                    {
 
-                        GlobalVariables.TIPE_SOLUTION= "IMAGEN";
-                    }
 
 
                     new AlertDialog.Builder(this)
@@ -80,9 +86,21 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
                             .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    ObjectActivityChallenge objectActivityChallenge = new ObjectActivityChallenge(challengeName, challengeDescription, "none", "Disable", FirebaseAuth.getInstance().getCurrentUser().getUid(), "false");
+                                    String type = "";
+
+                                    if (rbAudio.isChecked()) {
+                                        type= "AUDIO";
+                                    }
+                                    else if(rbImagen.isChecked())
+                                    {
+
+                                        type= "IMAGEN";
+                                    }
+
+                                    ObjectActivityChallenge objectActivityChallenge = new ObjectActivityChallenge(challengeName, challengeDescription, "none", "dasddf" , "Disable", FirebaseAuth.getInstance().getCurrentUser().getUid(),"false", type);
                                     DatabaseChallenge dataBaseSets = new DatabaseChallenge(getApplicationContext());
                                     dataBaseSets.createChallenge(objectActivityChallenge);
+
 
                                     Toast.makeText(getApplicationContext(), "Has creado el desafio " + challengeName, Toast.LENGTH_LONG).show();
 
@@ -128,10 +146,10 @@ public class ActivityCreateChallenge extends AppCompatActivity implements View.O
 
     private boolean validations() {
 
-        if(editTextChallengeName.getText() != null && editTextChallengeDescription.getText() != null ){
+        if(editTextChallengeName.getText() != null && editTextChallengeDescription.getText() != null &&(rbImagen.isChecked() || rbAudio.isChecked())){
             return true;
         } else {
-            Toast.makeText(this, "Debes dar un nombre y una descripcion al reto", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Debes dar un nombre, una descripcion al reto y seleccionar el tipo de reto", Toast.LENGTH_LONG).show();
             return false;
         }
     }
