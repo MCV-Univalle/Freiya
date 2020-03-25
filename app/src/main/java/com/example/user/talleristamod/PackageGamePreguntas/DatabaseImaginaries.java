@@ -181,7 +181,7 @@ public class DatabaseImaginaries {
         final DatabaseReference databaseQuestion;
         databaseQuestion = FirebaseDatabase.getInstance().getReference("Activity/ActivityImaginaries/"+GlobalVariables.ID_ACTIVITY+"/Participantes");
 
-        databaseQuestion.addValueEventListener(new ValueEventListener() {
+        databaseQuestion.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<String> listIdParticipants = new ArrayList<>();
@@ -189,7 +189,7 @@ public class DatabaseImaginaries {
                 listIdParticipants.clear();
 
                 for (DataSnapshot objectQuestionsSnapShot : dataSnapshot.getChildren()) {
-                    String participantId = (String) objectQuestionsSnapShot.getKey();
+                    String participantId = objectQuestionsSnapShot.getKey();
                     listIdParticipants.add(participantId);
                 }
 
@@ -204,7 +204,6 @@ public class DatabaseImaginaries {
                     databaseCreateImg.child("temporizador").setValue(4);
                     databaseCreateImg.child("elegido").setValue("");
                     databaseCreateImg.child("elegido").setValue(listIdParticipants.get(numero));
-                    databaseQuestion.removeEventListener(this);
                 }
             }
 

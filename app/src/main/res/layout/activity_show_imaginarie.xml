@@ -1,136 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PackageGamePreguntas.ActivityShowImaginarie">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/buttonSendSignal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            android:text="Elegir al Azar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewStudentName" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:text="Preguntas"
-            android:textSize="19sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="8dp"
-            android:text="Estudiante Seleccionado:"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonFinishImg"/>
-
-        <TextView
-            android:id="@+id/textViewStudentName"
-            android:layout_width="wrap_content"
-            android:layout_height="27dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerViewImaginarieStudents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonSendSignal" />
-
-        <Button
-            android:id="@+id/buttonFinishImg"
-            android:layout_width="126dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/roundedbutton"
-            android:backgroundTint="#00BCD4"
-            android:text="Terminar Actividad"
-            android:textColor="#FAFAFA"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.716"
-            app:layout_constraintStart_toEndOf="@+id/textViewJoinCode"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-        <Button
-            android:id="@+id/buttonGivePointsImg"
-            android:layout_width="126dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/roundedbutton"
-            android:backgroundTint="#00BCD4"
-            android:text="Dar Puntos"
-            android:textColor="#FAFAFA"
-            app:layout_constraintBottom_toTopOf="@+id/buttonFinishImg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.71"
-            app:layout_constraintStart_toEndOf="@+id/textViewJoinCode"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-        <TextView
-        android:id="@+id/textViewJoinCode"
-        android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="#FF9800"
-        android:textSize="18sp"
+    <include
+        android:id="@+id/toolbar_top_level"
+        layout="@layout/toolbar_tallerista"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline371"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewACodeImg" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline371"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline372"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.93" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline351"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline361"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline362"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline363"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline364"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline365"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline366"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline367"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline368"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.36" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline369"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline370"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.43" />
+
+    <Button
+        android:id="@+id/buttonSendSignal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Elegir al Azar"
+        android:textColor="#FAFAFA"
+        android:backgroundTint="#19ACC7"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintBottom_toTopOf="@+id/guideline367"
+        app:layout_constraintEnd_toStartOf="@+id/guideline372"
+        app:layout_constraintStart_toStartOf="@+id/guideline351"
+        app:layout_constraintTop_toTopOf="@+id/guideline365" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Estudiantes unidos a la actividad"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        android:fontFamily="@font/adventpro_light"
+        app:layout_constraintBottom_toTopOf="@+id/guideline373"
+        app:layout_constraintEnd_toStartOf="@+id/guideline372"
+        app:layout_constraintStart_toStartOf="@+id/guideline362"
+        app:layout_constraintTop_toTopOf="@+id/guideline370" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Estudiante Seleccionado:"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        android:fontFamily="@font/adventpro_light"
+        app:layout_constraintBottom_toTopOf="@+id/guideline367"
+        app:layout_constraintEnd_toStartOf="@+id/guideline361"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="@+id/guideline362"
+        app:layout_constraintTop_toTopOf="@+id/guideline365" />
+
+    <TextView
+        android:id="@+id/textViewStudentName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:gravity="center"
+        android:text="Ninguno seleccionado"
+        android:textAlignment="center"
+        android:textColor="#FF9800"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline369"
+        app:layout_constraintEnd_toStartOf="@+id/guideline361"
+        app:layout_constraintStart_toStartOf="@+id/guideline362"
+        app:layout_constraintTop_toTopOf="@+id/guideline368" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewImaginarieStudents"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline372"
+        app:layout_constraintStart_toStartOf="@+id/guideline362"
+        app:layout_constraintTop_toTopOf="@+id/guideline375" />
+
+    <Button
+        android:id="@+id/buttonFinishImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="#19ACC7"
+        android:text="Terminar Actividad"
+        android:textColor="#FAFAFA"
+        app:layout_constraintBottom_toTopOf="@+id/guideline363"
+        app:layout_constraintEnd_toStartOf="@+id/guideline372"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="@+id/guideline351"
+        app:layout_constraintTop_toTopOf="@+id/guideline374" />
+
+    <Button
+        android:id="@+id/buttonGivePointsImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/roundedbutton"
+        android:backgroundTint="#19ACC7"
+        android:text="Dar Puntos"
+        android:textColor="#FAFAFA"
+        app:layout_constraintBottom_toTopOf="@+id/guideline366"
+        app:layout_constraintEnd_toStartOf="@+id/guideline372"
+        app:layout_constraintStart_toStartOf="@+id/guideline351"
+        app:layout_constraintTop_toTopOf="@+id/guideline364" />
+
+    <TextView
+        android:id="@+id/textViewJoinCode"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:gravity="center"
+        android:text="Espera un momento"
+        android:textAlignment="center"
+        android:textColor="#FF9800"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline366"
+        app:layout_constraintEnd_toStartOf="@+id/guideline361"
+        app:layout_constraintStart_toStartOf="@+id/guideline362"
+        app:layout_constraintTop_toTopOf="@+id/guideline364" />
 
     <TextView
         android:id="@+id/textViewACodeImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Código de ingreso a la actividad:"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        android:fontFamily="@font/adventpro_light"
+        app:layout_constraintBottom_toTopOf="@+id/guideline363"
+        app:layout_constraintEnd_toStartOf="@+id/guideline361"
+        app:layout_constraintStart_toStartOf="@+id/guideline362"
+        app:layout_constraintTop_toTopOf="@+id/guideline374" />
+
+    <Button
+        android:id="@+id/buttonTing"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Jugar"
+        android:textColor="#FAFAFA"
+        android:backgroundTint="#19ACC7"
+        android:background="@drawable/roundedbutton"
+        app:layout_constraintBottom_toTopOf="@+id/guideline369"
+        app:layout_constraintEnd_toStartOf="@+id/guideline372"
+        app:layout_constraintStart_toStartOf="@+id/guideline351"
+        app:layout_constraintTop_toTopOf="@+id/guideline368" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline373"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="40dp"
-        android:text="Codigo:"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.49" />
 
-        <Button
-            android:id="@+id/buttonTing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:text="Jugar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewStudentName" />
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline374"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline375"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</android.support.constraint.ConstraintLayout>

@@ -54,11 +54,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/guideline263"
         app:layout_constraintEnd_toStartOf="@+id/guideline249"
         app:layout_constraintStart_toStartOf="@+id/guideline248"
-        app:layout_constraintTop_toTopOf="@+id/guideline262"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="@+id/guideline262">
 
     </ListView>
 
@@ -66,9 +64,7 @@
         android:id="@+id/listViewPlayersRace"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline263"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline249"
         app:layout_constraintStart_toStartOf="@+id/guideline248"
         app:layout_constraintTop_toTopOf="@+id/guideline262" />
@@ -150,7 +146,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#03A9F4"
+        android:backgroundTint="#19ACC7"
         android:text="Finalizar Actividad"
         android:textColor="#FAFAFA"
         app:layout_constraintBottom_toTopOf="@+id/guideline256"
@@ -164,7 +160,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#03A9F4"
+        android:backgroundTint="#19ACC7"
         android:text="Dar Puntos"
         android:textColor="#FAFAFA"
         app:layout_constraintBottom_toTopOf="@+id/guideline254"
@@ -269,12 +265,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.42" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline263"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
 
 </android.support.constraint.ConstraintLayout>

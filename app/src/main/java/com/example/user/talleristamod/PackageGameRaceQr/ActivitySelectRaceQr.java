@@ -1,18 +1,22 @@
 package com.example.user.talleristamod.PackageGameRaceQr;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.AdaptadorFirebasePersistenceQrRace;
 import com.example.user.talleristamod.PackageGameRaceQr.RaceQrPersistence.ObjectPersistenceRaceQr;
+import com.example.user.talleristamod.PackageProfiles.ProfileTallerista.ActivityProfileTallerista;
 import com.example.user.talleristamod.QrRaceHolder;
 import com.example.user.talleristamod.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,16 +25,23 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 
-public class ActivitySelectRaceQr extends AppCompatActivity {
+public class ActivitySelectRaceQr extends AppCompatActivity implements View.OnClickListener{
     RecyclerView recyclerView;
     TextView textViewSelectRace;
     TabLayout tabLayoutQr;
     String filter1, filter2;
+    private ConstraintLayout linearLayoutBack, linearLayoutHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_game);
+
+        linearLayoutBack = findViewById(R.id.layoutAtrasT);
+        linearLayoutHome = findViewById(R.id.layoutHomeT);
+
+        linearLayoutBack.setOnClickListener(this);
+        linearLayoutHome.setOnClickListener(this);
 
         textViewSelectRace = findViewById(R.id.textViewSelecRace);
         recyclerView = findViewById(R.id.recyclerQrSelect);
@@ -101,6 +112,28 @@ public class ActivitySelectRaceQr extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.layoutAtrasT:
+                finishActivity();
+                break;
 
+            case R.id.layoutHomeT:
+                finishActivity();
+                break;
+        }
     }
+
+    private void finishActivity(){
+        Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed (){
+        finishActivity();
+    }
+}
 

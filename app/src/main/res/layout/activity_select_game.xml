@@ -4,47 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo"
     tools:context=".PackageGameRaceQr.ActivitySelectRaceQr">
 
-        <include
-            android:id="@+id/toolbar_top_level"
-            layout="@layout/toolbar"/>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline325"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline326"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.17" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline327"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.21" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline328"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".22" />
+
+    <include
+        android:id="@+id/toolbar_top_level"
+        layout="@layout/toolbar_tallerista"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline324"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewSelecRace"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="30sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:fontFamily="@font/adventpro_light"
+        android:gravity="center"
         android:text="Selecciona una actividad:"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayoutQrActivities" />
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/guideline327"
+        app:layout_constraintEnd_toStartOf="@+id/guideline323"
+        app:layout_constraintStart_toStartOf="@+id/guideline322"
+        app:layout_constraintTop_toTopOf="@+id/guideline326" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerQrSelect"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSelecRace" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline323"
+        app:layout_constraintStart_toStartOf="@+id/guideline322"
+        app:layout_constraintTop_toTopOf="@+id/guideline328" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayoutQrActivities"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline325"
+        app:layout_constraintEnd_toStartOf="@+id/guideline323"
+        app:layout_constraintStart_toStartOf="@+id/guideline322"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_top_level"
         app:tabIndicatorColor="#4CAF50">
 
@@ -59,5 +92,26 @@
             android:text="Todas las Actividades" />
 
     </android.support.design.widget.TabLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline322"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline323"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline324"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
 
 </android.support.constraint.ConstraintLayout>

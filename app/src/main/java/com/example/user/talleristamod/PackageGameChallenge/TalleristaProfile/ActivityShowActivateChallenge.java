@@ -3,6 +3,7 @@ package com.example.user.talleristamod.PackageGameChallenge.TalleristaProfile;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,8 +32,9 @@ import java.security.SecureRandom;
 public class ActivityShowActivateChallenge extends AppCompatActivity implements View.OnClickListener{
 
     RecyclerView recyclerViewChallenges;
-    TextView title, textViewJoinCodeChallenge;
+    TextView textViewJoinCodeChallenge;
     Button buttonFinishChallenge;
+    private ConstraintLayout linearLayoutBack, linearLayoutHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +46,17 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
         textViewJoinCodeChallenge.setText(GlobalVariables.JOIN_CODE);
 
         buttonFinishChallenge = (Button) findViewById(R.id.buttonFinishChallenge);
+
+        linearLayoutBack = findViewById(R.id.layoutAtrasT);
+        linearLayoutHome = findViewById(R.id.layoutHomeT);
+
+        linearLayoutBack.setOnClickListener(this);
+        linearLayoutHome.setOnClickListener(this);
         buttonFinishChallenge.setOnClickListener(this);
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference referencia = database.getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/Resources");
+        DatabaseReference referencia = database.getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY+"/Resources");
 
         AdaptadorFirebaseChallengesResources adaptadorFirebase = new AdaptadorFirebaseChallengesResources(ObjectResourceChallenge.class,R.layout.adapter_recycler_view
                 , QrRaceHolder.class,referencia,this);
@@ -63,6 +71,13 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
         {
 
             case R.id.buttonFinishChallenge:
+                finishChallenge();
+                break;
+            case R.id.layoutAtrasT:
+                finishChallenge();
+                break;
+
+            case R.id.layoutHomeT:
                 finishChallenge();
                 break;
 
@@ -85,7 +100,7 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
 
                         Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
 
-                        DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE);
+                        DatabaseReference databaseStateAImg = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY);
 
                         if (GlobalVariables.IS_COPY.equals("true")) {
                             databaseStateAImg.removeValue();
@@ -94,6 +109,7 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
                         Intent intent = new Intent(getApplicationContext(), ActivityProfileTallerista.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        finish();
 
                     }
                 })
@@ -104,7 +120,6 @@ public class ActivityShowActivateChallenge extends AppCompatActivity implements 
                     }
                 }).show();
     }
-
 
 
 }

@@ -36,6 +36,7 @@ public class ActivityShowResourses extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_resourses);
+
         imageView = findViewById(R.id.imageViewResourse);
         imageView.setOnClickListener(this);
         imageViewAudio = findViewById(R.id.imageViewAudio);
@@ -48,10 +49,11 @@ public class ActivityShowResourses extends AppCompatActivity implements View.OnC
         player = new MediaPlayer();
         player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
-
+        Toast.makeText(getApplicationContext(), "estoy en la actividad...", Toast.LENGTH_LONG).show();
         FirebaseStorage storage = FirebaseStorage.getInstance();
         reference = storage.getReferenceFromUrl("gs://freiya.appspot.com");
         ref = reference.child(GlobalVariables.IDRESOURCE);
+
 
         ref.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
             @Override

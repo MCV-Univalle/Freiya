@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,51 +10,110 @@
 
     <Button
         android:id="@+id/buttonUploadCameraImage"
-        android:layout_width="321dp"
-        android:layout_height="74dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="131dp"
-        android:layout_marginEnd="45dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#00BCD4"
+        android:backgroundTint="#19ACC7"
         android:drawableLeft="@drawable/camera"
         android:text="Enviar Foto"
-        android:textColor="@color/buttonTextColor" />
+        android:textColor="@color/buttonTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/guideline406"
+        app:layout_constraintEnd_toStartOf="@+id/guideline403"
+        app:layout_constraintStart_toStartOf="@+id/guideline402"
+        app:layout_constraintTop_toTopOf="@+id/guideline400" />
 
     <Button
         android:id="@+id/buttonUploadImage"
-        android:layout_width="320dp"
-        android:layout_height="71dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/buttonUploadCameraImage"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="43dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#00BCD4"
+        android:backgroundTint="#19ACC7"
         android:drawableLeft="@drawable/photo"
         android:text="Enviar Imagen"
-        android:textColor="@color/buttonTextColor" />
+        android:textColor="@color/buttonTextColor"
+        app:layout_constraintBottom_toTopOf="@+id/guideline405"
+        app:layout_constraintEnd_toStartOf="@+id/guideline403"
+        app:layout_constraintStart_toStartOf="@+id/guideline402"
+        app:layout_constraintTop_toTopOf="@+id/guideline404" />
 
     <Button
         android:id="@+id/buttonUploadAudio"
-        android:layout_width="306dp"
-        android:layout_height="64dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/buttonUploadImage"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="45dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#00BCD4"
+        android:backgroundTint="#19ACC7"
         android:drawableLeft="@drawable/microphone"
         android:text="Enviar Audio"
         android:textColor="@color/buttonTextColor"
-        android:visibility="visible" />
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline401"
+        app:layout_constraintEnd_toStartOf="@+id/guideline403"
+        app:layout_constraintStart_toStartOf="@+id/guideline402"
+        app:layout_constraintTop_toTopOf="@+id/guideline407" />
 
-</RelativeLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline400"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline401"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline402"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline403"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline404"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline405"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline406"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.43" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline407"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.57" />
+
+</android.support.constraint.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.user.talleristamod.PackageGameChallenge;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
 import com.example.user.talleristamod.QrRaceHolder;
@@ -26,7 +27,6 @@ public class AdaptadorFirebaseChallenges extends FirebaseRecyclerAdapter<ObjectA
     @Override
     protected void populateViewHolder(QrRaceHolder viewHolder, final ObjectActivityChallenge model, int position) {
         dataBaseSets = new DatabaseChallenge(context);
-
 
         viewHolder.nombre.setText(model.getChallengeName());
         viewHolder.cardView.setOnClickListener(new View.OnClickListener()

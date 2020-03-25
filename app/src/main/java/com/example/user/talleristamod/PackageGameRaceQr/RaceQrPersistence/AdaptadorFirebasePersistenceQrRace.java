@@ -38,23 +38,23 @@ public class AdaptadorFirebasePersistenceQrRace extends FirebaseRecyclerAdapter<
     @Override
     protected void populateViewHolder(QrRaceHolder viewHolder, final ObjectPersistenceRaceQr model, final int position) {
 
-        //model.getObjectPersistenceRaceQrs();
-
         viewHolder.nombre.setText(model.getNombre());
+
 
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final ArrayList<String> leaderBoard = new ArrayList<>();
+                if (model.getObjectPersistenceRaceQrs().isEmpty()){
+
+                } else {
+
                 for (int i = 0; i < model.getObjectPersistenceRaceQrs().size(); i++)
                     {
                         leaderBoard.add(model.getObjectPersistenceRaceQrs().get(i).getName());
-                        /*for (int j = 0; j < model.getObjectPersistenceRaceQrs().get(i).getAnswIncorrect().size(); j++)
-                        {
-
-                        }*/
                     }
+                }
 
                 final DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Question");
                 databaseQuestion.addListenerForSingleValueEvent(new ValueEventListener() {

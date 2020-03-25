@@ -16,13 +16,17 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.user.talleristamod.GlobalVariables.GlobalVariables;
+import com.example.user.talleristamod.PackageProfiles.ProfileEstudiante.ActivityProfileEstudiante;
 import com.example.user.talleristamod.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -53,48 +57,64 @@ public class ActivityUploadResources extends AppCompatActivity {
         BtnUploadImage = (Button) findViewById(R.id.buttonUploadImage);
         BtnUploadAudio = (Button) findViewById(R.id.buttonUploadAudio);
 
-        if(GlobalVariables.TIPE_SOLUTION.equalsIgnoreCase("AUDIO"))
-        {
-            BtnUploadCameraImage.setTextColor(Color.parseColor("#757575"));
-            BtnUploadImage.setTextColor(Color.parseColor("#757575"));
-
-            BtnUploadAudio.setOnClickListener(new View.OnClickListener()
-            {
-                @Override
-                public void onClick(View v)
+        DatabaseReference tipeSolutionRef = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY+"/type");
+        tipeSolutionRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String typeSolution = (String) dataSnapshot.getValue();
+                if(typeSolution.equalsIgnoreCase("AUDIO"))
                 {
-                    Intent intent = new Intent();
-                    intent.setType("audio/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Selecciona un Audio"), PICK_AUDIO_REQUEST);
-                }
-            });
-        }
-        else {
-            BtnUploadAudio.setTextColor(Color.parseColor("#757575"));
-            BtnUploadCameraImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                    BtnUploadCameraImage.setVisibility(View.INVISIBLE);
+                    BtnUploadCameraImage.setEnabled(false);
+                    BtnUploadImage.setVisibility(View.INVISIBLE);
+                    BtnUploadImage.setEnabled(false);
 
-                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                        startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
-                    }
+                    BtnUploadAudio.setOnClickListener(new View.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(View v)
+                        {
+                            Intent intent = new Intent();
+                            intent.setType("audio/*");
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            startActivityForResult(Intent.createChooser(intent, "Selecciona un Audio"), PICK_AUDIO_REQUEST);
+                        }
+                    });
                 }
-            });
+                else {
+                    BtnUploadAudio.setVisibility(View.INVISIBLE);
+                    BtnUploadAudio.setEnabled(false);
 
-            BtnUploadImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    //Toast.makeText(getApplicationContext(), " = " + GlobalVariables.SELECTED_CHALLENGE, Toast.LENGTH_SHORT).show();
-                    startActivityForResult(Intent.createChooser(intent, "Selecciona una Imagen"), PICK_IMAGE_REQUEST);
+                    BtnUploadCameraImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                                startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
+                            }
+                        }
+                    });
+
+                    BtnUploadImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent();
+                            intent.setType("image/*");
+                            intent.setAction(Intent.ACTION_GET_CONTENT);
+                            startActivityForResult(Intent.createChooser(intent, "Selecciona una Imagen"), PICK_IMAGE_REQUEST);
+                        }
+                    });
+
                 }
-            });
+            }
 
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
 
     }
@@ -134,17 +154,20 @@ public class ActivityUploadResources extends AppCompatActivity {
     {
         if (filePath != null)
         {
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Subiendo...");
-            progressDialog.show();
 
-
-            final DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.SELECTED_CHALLENGE+"/Resources");
+            final DatabaseReference databaseReferenceRace = FirebaseDatabase.getInstance().getReference("Activity/ActivityChallenge/"+GlobalVariables.ID_ACTIVITY+"/Resources");
             final String idResource = databaseReferenceRace.push().getKey();
             final StorageReference ref = reference.child(idResource);
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             final String studentName = user.getDisplayName();
             final String studentId = user.getUid();
+
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Subiendo...");
+            progressDialog.show();
+
+
+
 
 
             ref.putFile(filePath)
@@ -155,6 +178,9 @@ public class ActivityUploadResources extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Subido exitosamente", Toast.LENGTH_SHORT).show();
                             ObjectResourceChallenge objectResourceChallenge = new ObjectResourceChallenge(studentName, studentId, idResource);
                             databaseReferenceRace.child(idResource).setValue(objectResourceChallenge);
+                            Intent intentR = new Intent(getApplicationContext(), ActivityProfileEstudiante.class);
+                            startActivity(intentR);
+                            finish();
 
                         }
                     })

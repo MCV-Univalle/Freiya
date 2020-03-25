@@ -142,7 +142,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#00BCD4"
+        android:backgroundTint="#19ACC7"
         android:text="Añadir"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintBottom_toTopOf="@+id/guideline168"

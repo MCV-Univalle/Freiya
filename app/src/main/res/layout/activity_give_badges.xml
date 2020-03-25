@@ -63,13 +63,12 @@
         android:autoSizeStepGranularity="2sp"
         android:fontFamily="@font/adventpro_light"
         android:gravity="center"
-        android:text="Carrera Qr"
+        android:text="Selecciona el estudiante que quieres premiar"
         android:textAlignment="center"
         android:textColor="@color/black"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/reciverViewBadges"
         app:layout_constraintEnd_toStartOf="@+id/guideline246"
         app:layout_constraintStart_toStartOf="@+id/guideline245"
-        app:layout_constraintTop_toTopOf="@+id/guideline244"
-        tools:text="Selecciona el estudiante que quieres premiar" />
+        app:layout_constraintTop_toTopOf="@+id/guideline244" />
 </android.support.constraint.ConstraintLayout>

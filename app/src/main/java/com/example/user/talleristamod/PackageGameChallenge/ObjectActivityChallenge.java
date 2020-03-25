@@ -7,24 +7,19 @@ public class ObjectActivityChallenge {
     private String joinCode;
     private String stateA, creator;
     private String copyA;
+    private String type;
 
     public ObjectActivityChallenge() {}
 
-    public ObjectActivityChallenge(String challengeName, String challengeDescription, String challengeId, String joinCode,String stateA) {
+    public ObjectActivityChallenge(String challengeName, String challengeDescription, String challengeId, String joinCode, String stateA, String creator, String copyA, String type) {
         this.challengeName = challengeName;
         this.challengeDescription = challengeDescription;
         this.challengeId = challengeId;
         this.joinCode = joinCode;
         this.stateA = stateA;
-    }
-
-    public ObjectActivityChallenge(String challengeName, String challengeDescription, String joinCode,String stateA, String creator, String copyA) {
-        this.challengeName = challengeName;
-        this.challengeDescription = challengeDescription;
-        this.joinCode = joinCode;
-        this.stateA = stateA;
-        this.copyA = copyA;
         this.creator = creator;
+        this.copyA = copyA;
+        this.type = type;
     }
 
     public String getChallengeName() {
@@ -82,4 +77,14 @@ public class ObjectActivityChallenge {
     public void setCopyA(String copyA) {
         this.copyA = copyA;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
 }

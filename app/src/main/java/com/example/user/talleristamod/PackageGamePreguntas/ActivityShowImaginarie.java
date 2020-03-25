@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +34,7 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
     RecyclerView recyclerViewStudents;
     DatabaseReference databaseStateAImg,databaseStudent;
     ValueEventListener valueEventListenerSelected, valueEventStudent;
+    private ConstraintLayout linearLayoutBack, linearLayoutHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +48,14 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
         textCodeA.setText(GlobalVariables.JOIN_CODE);
 
         buttonGivePointsImg = findViewById(R.id.buttonGivePointsImg);
-        buttonSendSignal = (Button) findViewById(R.id.buttonSendSignal);
-        buttonFinishImg = (Button) findViewById(R.id.buttonFinishImg);
-        buttonSignalPlay = (Button) findViewById(R.id.buttonTing);
+        buttonSendSignal = findViewById(R.id.buttonSendSignal);
+        buttonFinishImg = findViewById(R.id.buttonFinishImg);
+        buttonSignalPlay = findViewById(R.id.buttonTing);
+        linearLayoutBack = findViewById(R.id.layoutAtrasT);
+        linearLayoutHome = findViewById(R.id.layoutHomeT);
+
+        linearLayoutBack.setOnClickListener(this);
+        linearLayoutHome.setOnClickListener(this);
 
         buttonGivePointsImg.setOnClickListener(this);
         buttonSendSignal.setOnClickListener(this);
@@ -81,6 +88,13 @@ public class ActivityShowImaginarie extends AppCompatActivity implements View.On
                 break;
             case R.id.buttonGivePointsImg:
                 databaseProfiles.givePointsList();
+                break;
+            case R.id.layoutAtrasT:
+                finishChallenge();
+                break;
+
+            case R.id.layoutHomeT:
+                finishChallenge();
                 break;
 
         }

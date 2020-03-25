@@ -47,7 +47,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@id/result_textview"
-        android:background="#00BCD4"
+        android:backgroundTint="#19ACC7"
         android:text="ESCANEAR"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/guideline243"
