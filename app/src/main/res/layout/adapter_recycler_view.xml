@@ -13,70 +13,102 @@
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="horizontal">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline419"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.93" />
+
+        <TextView
+            android:id="@+id/unirseHolder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="INICIAR"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/guideline422"
+            app:layout_constraintEnd_toStartOf="@+id/guideline419"
+            app:layout_constraintStart_toStartOf="@+id/guideline418"
+            app:layout_constraintTop_toTopOf="@+id/guideline420" />
+
+        <TextView
+            android:id="@+id/nombreHolder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Ejemplo"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline421"
+            app:layout_constraintEnd_toStartOf="@+id/guideline419"
+            app:layout_constraintStart_toStartOf="@+id/guideline418"
+            app:layout_constraintTop_toTopOf="@+id/guideline422" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline418"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_marginLeft="5dp"
-            android:padding="2dp"
             android:id="@+id/imagenHolder"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:src="@drawable/info" />
+            android:padding="2dp"
+            android:src="@drawable/bookvector"
+            app:layout_constraintBottom_toTopOf="@+id/guideline421"
+            app:layout_constraintEnd_toStartOf="@+id/guideline418"
+            app:layout_constraintStart_toStartOf="@+id/guideline423"
+            app:layout_constraintTop_toTopOf="@+id/guideline420" />
 
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline420"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
 
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/layoutHolder"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#00D11515"
-            android:gravity="center_horizontal"
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline421"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline422"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline423"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            app:layout_constraintGuide_percent="0.02" />
 
-            <TextView
-                android:id="@+id/nombreHolder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ejemplo"
-                android:textAlignment="center"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/unirseHolder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="INICIAR"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nombreHolder" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:padding="3dp"
+            android:src="@drawable/info"
+            app:layout_constraintBottom_toTopOf="@+id/guideline421"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline419"
+            app:layout_constraintTop_toTopOf="@+id/guideline420" />
 
 
-        </android.support.constraint.ConstraintLayout>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/imagenDetailsHolder"
-        android:layout_width="30dp"
-        android:layout_height="58dp"
-        android:layout_gravity="right"
-        android:orientation="horizontal">
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_marginRight="5dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center"
-        android:padding="3dp"
-        android:src="@drawable/info" />
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

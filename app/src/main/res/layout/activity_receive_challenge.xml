@@ -40,7 +40,7 @@
         android:id="@+id/buttonAceptarReto"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#00BCD4"
+        android:background="#19ACC7"
         android:text="ACEPTAR RETO"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/guideline309"

@@ -73,7 +73,7 @@
         android:layout_height="0dp"
         android:text="Siguiente"
         android:textColor="#FAFAFA"
-        android:backgroundTint="#00BCD4"
+        android:backgroundTint="#19ACC7"
         android:background="@drawable/roundedbutton"
         app:layout_constraintBottom_toTopOf="@+id/guideline384"
         app:layout_constraintEnd_toStartOf="@+id/guideline376"

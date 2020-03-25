@@ -164,7 +164,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#03A9F4"
+        android:backgroundTint="#19ACC7"
         android:text="Terminar Actividad"
         android:textColor="#FDFDFD"
         app:layout_constraintBottom_toTopOf="@+id/guideline357"

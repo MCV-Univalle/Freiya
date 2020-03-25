@@ -1,59 +1,108 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardViewHolder"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:orientation="horizontal"
     android:layout_gravity="center"
     android:elevation="10dp"
+    android:orientation="horizontal"
     android:padding="2dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="2dp"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvStudentNameHolder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Student Name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:autoSizeMinTextSize="10sp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeStepGranularity="2sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline414"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline415"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/buttonSelectStudent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/roundedbutton"
+            android:backgroundTint="#19ACC7"
+            android:text="Select"
+            android:textColor="@color/buttonTextColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline412"
+            app:layout_constraintStart_toStartOf="@+id/guideline416"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagenHolder"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:src="@drawable/resourceestu" />
+            android:src="@drawable/resourceestu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline417"
+            app:layout_constraintStart_toStartOf="@+id/guideline413"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="10dp">
-        <TextView
-            android:id="@+id/tvStudentNameHolder"
-            android:layout_width="match_parent"
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline412"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Student Name"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="10dp">
+            app:layout_constraintGuide_percent="0.97" />
 
-            <Button
-                android:id="@+id/buttonSelectStudent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Select" />
-        </LinearLayout>
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline413"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03" />
 
-    </LinearLayout>
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline414"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.70" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline415"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline416"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.72" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline417"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.18" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>

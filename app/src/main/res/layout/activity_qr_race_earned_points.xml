@@ -29,7 +29,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/roundedbutton"
-        android:backgroundTint="#00BCD4"
+        android:backgroundTint="#19ACC7"
         android:elevation="13dp"
         android:text="Volver"
         app:layout_constraintBottom_toTopOf="@+id/guideline301"
