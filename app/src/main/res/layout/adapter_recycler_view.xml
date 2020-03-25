@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.93" />
+            app:layout_constraintGuide_percent="0.9" />
 
         <TextView
             android:id="@+id/unirseHolder"
@@ -65,24 +65,24 @@
             android:layout_gravity="center"
             android:padding="2dp"
             android:src="@drawable/bookvector"
-            app:layout_constraintBottom_toTopOf="@+id/guideline421"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline418"
             app:layout_constraintStart_toStartOf="@+id/guideline423"
-            app:layout_constraintTop_toTopOf="@+id/guideline420" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline420"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.05" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline421"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.9" />
+            app:layout_constraintGuide_percent="0.95" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline422"
@@ -103,12 +103,18 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:padding="3dp"
             android:src="@drawable/info"
             app:layout_constraintBottom_toTopOf="@+id/guideline421"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline424"
             app:layout_constraintStart_toStartOf="@+id/guideline419"
             app:layout_constraintTop_toTopOf="@+id/guideline420" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline424"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.98" />
 
 
     </android.support.constraint.ConstraintLayout>

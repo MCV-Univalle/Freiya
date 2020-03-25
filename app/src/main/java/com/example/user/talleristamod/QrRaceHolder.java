@@ -22,7 +22,7 @@ public class QrRaceHolder extends RecyclerView.ViewHolder {
     public CircleImageView imagen;
     public CardView cardView;
     public TextView nombre, unirse;
-    public LinearLayout imagenDetails;
+    public CircleImageView imagenDetails;
 
 
     public QrRaceHolder(View itemView) {

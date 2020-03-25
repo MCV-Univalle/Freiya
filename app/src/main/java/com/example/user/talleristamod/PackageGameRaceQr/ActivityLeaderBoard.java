@@ -173,6 +173,12 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
                     listObjectLeaderBoard.add(objectLeaderBoardRaceQr);
                 }
 
+                if (listObjectLeaderBoard.isEmpty()){
+                    List<Integer> list = new ArrayList<>();
+                    list.add(0);
+                    listObjectLeaderBoard.add(new  ObjectLeaderBoardRaceQr("No se obtuvo tablero de lideres", list));
+                }
+
                 DatabaseReference database = FirebaseDatabase.getInstance().getReference("ActivityPersistence/ActivityQrRace/");
                 String key = database.push().getKey();
                 ObjectPersistenceRaceQr objectPersistenceRaceQr = new ObjectPersistenceRaceQr(name,"hoy", listObjectLeaderBoard, listquestions);
@@ -205,13 +211,8 @@ public class ActivityLeaderBoard extends AppCompatActivity implements View.OnCli
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(getApplicationContext(), "Actividad Finalizada ", Toast.LENGTH_LONG).show();
-        finishChallengeComands();
 
-    }
+
 
 
 

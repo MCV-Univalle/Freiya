@@ -22,19 +22,19 @@
             android:id="@+id/tvStudentNameHolder"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="Student Name"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textAlignment="center"
-            android:gravity="center_vertical"
-            android:autoSizeMinTextSize="10sp"
-            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMaxTextSize="10sp"
+            android:autoSizeMinTextSize="3sp"
             android:autoSizeStepGranularity="2sp"
+            android:gravity="center_vertical"
+            android:text="Student Name"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline426"
             app:layout_constraintEnd_toStartOf="@+id/guideline414"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline415"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline425"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
@@ -45,10 +45,10 @@
             android:backgroundTint="#19ACC7"
             android:text="Select"
             android:textColor="@color/buttonTextColor"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline426"
             app:layout_constraintEnd_toStartOf="@+id/guideline412"
             app:layout_constraintStart_toStartOf="@+id/guideline416"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/guideline425" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imagenHolder"
@@ -56,10 +56,10 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:src="@drawable/resourceestu"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline426"
             app:layout_constraintEnd_toStartOf="@+id/guideline417"
             app:layout_constraintStart_toStartOf="@+id/guideline413"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/guideline425" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline412"
@@ -102,6 +102,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.18" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline425"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline426"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
 
     </android.support.constraint.ConstraintLayout>
 
