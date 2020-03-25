@@ -61,8 +61,6 @@ public class ActivityShowRaceQrDetails extends AppCompatActivity implements View
         nameQrRace = parametros.getString("nameRace");
 
         textViewNameRace.setText(nameQrRace);
-        Typeface face = Typeface.createFromAsset(getAssets(), "font/adventpro_light.ttf");
-        textViewTitle.setTypeface(face);
 
         final DatabaseReference databaseQuestion = FirebaseDatabase.getInstance().getReference("Question");
         databaseQuestion.addListenerForSingleValueEvent(new ValueEventListener() {

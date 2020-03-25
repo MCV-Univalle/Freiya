@@ -64,8 +64,10 @@ public class ActivityUploadResources extends AppCompatActivity {
                 String typeSolution = (String) dataSnapshot.getValue();
                 if(typeSolution.equalsIgnoreCase("AUDIO"))
                 {
-                    BtnUploadCameraImage.setTextColor(Color.parseColor("#757575"));
-                    BtnUploadImage.setTextColor(Color.parseColor("#757575"));
+                    BtnUploadCameraImage.setVisibility(View.INVISIBLE);
+                    BtnUploadCameraImage.setEnabled(false);
+                    BtnUploadImage.setVisibility(View.INVISIBLE);
+                    BtnUploadImage.setEnabled(false);
 
                     BtnUploadAudio.setOnClickListener(new View.OnClickListener()
                     {
@@ -80,7 +82,9 @@ public class ActivityUploadResources extends AppCompatActivity {
                     });
                 }
                 else {
-                    BtnUploadAudio.setTextColor(Color.parseColor("#757575"));
+                    BtnUploadAudio.setVisibility(View.INVISIBLE);
+                    BtnUploadAudio.setEnabled(false);
+
                     BtnUploadCameraImage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
