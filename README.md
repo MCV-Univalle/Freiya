@@ -6,3 +6,4 @@ Esta es la base de freiya
 
 1) Download android studio IDE from https://developer.android.com/studio
 2) Import from Github and synchronize project
+3) Enable kotlin extension on android studio
